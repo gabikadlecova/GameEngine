@@ -1,6 +1,13 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Casting.Environment;
+using Casting.Environment.Interfaces;
+using Casting.Environment.Tools;
+using Casting.RayCasting;
+using Casting.RayCasting.Interfaces;
+using Input;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Input.Touch;
 
 namespace Game
 {
@@ -9,8 +16,11 @@ namespace Game
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
+        private IWallContainer _walls;
+        private IRayCaster _caster;
+        private EngineSettings _settings;
 
         public Game1()
         {
@@ -27,7 +37,13 @@ namespace Game
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            MapReader reader = new MapReader();
 
+            IMap map = reader.ReadMap(_settings.MapFilePath);
+            _walls = reader.ReadWalls(_settings.WallFilePath);
+
+            _caster = new RayCaster(map, _walls);
+            
             base.Initialize();
         }
 
@@ -39,7 +55,7 @@ namespace Game
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            
             // TODO: use this.Content to load your game content here
         }
 

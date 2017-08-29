@@ -59,6 +59,16 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Casting\Casting.csproj">
+      <Project>{0425dc0b-8e55-4646-8d7d-f639b82c62cb}</Project>
+      <Name>Casting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Input\Input.csproj">
+      <Project>{7D05764D-6110-459F-A93C-76A139B9C94A}</Project>
+      <Name>Input</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
