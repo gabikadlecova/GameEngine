@@ -11,20 +11,19 @@ using System.Threading.Tasks;
 using Casting.RayCasting;
 using Casting.RayCasting.Interfaces;
 using Rendering.Interfaces;
+using System.Windows.Media.Imaging;
 
 namespace Rendering
 {
-    public class BackgroundPainter : IDisposable
+    public class BackgroundPainter
     {
 
-        private Bitmap _bitmap;
-        private BitmapBuffer _buffer;
+        public BitmapBuffer Buffer { get; }
 
 
         public BackgroundPainter(int width, int height)
         {
-            _bitmap = new Bitmap(width, height);
-            _buffer = new BitmapBuffer(width, height);
+            Buffer = new BitmapBuffer(width, height);
         }
 
         public void UpdateBuffer(IRay ray, int columnNr)
@@ -32,25 +31,25 @@ namespace Rendering
             
                 Stopwatch watch = Stopwatch.StartNew();
                 //todo copy column data
-                IColumn column = new Column(columnNr, _buffer.Height);
+                IColumn column = new Column(columnNr, Buffer.Height);
                 column.SetPixels(ray);
 
-                for (int i = 0; i < _buffer.Height; i++)
+                for (int i = 0; i < Buffer.Height; i++)
                 {
-                    _buffer[columnNr, i] = column.Pixels[i];
+                    Buffer[columnNr, i] = column.Pixels[i];
                 }
 
                 watch.Stop();
                 
         }
 
-        public void RenderBitmap(Graphics g)
+        /*public void RenderBitmap(Graphics g)
         {
             //todo which pixel format
             //todo think of what is quicker
 
-            int width = _buffer.Width;
-            int height = _buffer.Height;
+            int width = Buffer.Width;
+            int height = Buffer.Height;
 
             var rectangle = new Rectangle(0,0,width, height);
             BitmapData data = _bitmap.LockBits(rectangle, ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
@@ -59,7 +58,7 @@ namespace Rendering
             
 
             
-            Marshal.Copy(_buffer.BufferData, 0, ptr, _buffer.BufferData.Length);
+            //Marshal.Copy(Buffer.BufferData, 0, ptr, Buffer.BufferData.Length);
             _bitmap.UnlockBits(data);
 
             Stopwatch secWatch = Stopwatch.StartNew();
@@ -67,20 +66,20 @@ namespace Rendering
             //todo should be done differently
             g.DrawImage(_bitmap, new Point(0,0));
             secWatch.Stop();
-        }
+        }*/
 
         //ToDo check which side is x and which y (bitmap context)
         public void ChangeResolution(int width, int height)
         {
-            _buffer = new BitmapBuffer(width, height);
-            _bitmap = new Bitmap(_bitmap, new Size(width, height));
+            Buffer.Resize(width, height);
+            //_bitmap = new Bitmap(_bitmap, new Size(width, height));
         }
 
 
 
-        public void Dispose()
+       /* public void Dispose()
         {
             _bitmap.Dispose();
-        }
+        }*/
     }
 }

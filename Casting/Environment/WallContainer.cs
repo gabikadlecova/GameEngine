@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Casting.Environment.Exceptions;
 using Casting.Environment.Interfaces;
@@ -27,6 +28,16 @@ namespace Casting.Environment
                 _wallTypes[i] = value;
             }
         }
-       
+
+
+        public IEnumerator<IWall> GetEnumerator()
+        {
+            return _wallTypes.Values.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }

@@ -92,7 +92,7 @@ namespace Casting.RayCasting
             
 
 
-            if(gridPoint && _map[mapY, mapX] > 0)
+            if(gridPoint && _map[mapX, mapY] > 0)
             {
                 stopCondition.WallCrossed(0);
             }
@@ -131,10 +131,10 @@ namespace Casting.RayCasting
                 }
 
                 //todo check mapX and mapY
-                if (!_map.IsInRange(mapY, mapX))
+                if (!_map.IsInRange(mapX, mapY))
                     return resultRay;
 
-                int index = _map[mapY, mapX];
+                int index = _map[mapX, mapY];
                 if (index > 0)
                 {
 
@@ -152,7 +152,7 @@ namespace Casting.RayCasting
                             wallDistance = !gridPoint ? wallDistance + (1 - sideX) / 2 : wallDistance;
                             
                             wallDistance /= direction.X;
-                            xWallPoint = rayPositionX + wallDistance * direction.Y;
+                            xWallPoint = rayPositionY + wallDistance * direction.Y;
 
                             break;
                         //crossed on y or diagonal
@@ -163,7 +163,7 @@ namespace Casting.RayCasting
                             
                             wallDistance /= direction.Y;
 
-                            xWallPoint = rayPositionY + wallDistance * direction.X;
+                            xWallPoint = rayPositionX + wallDistance * direction.X;
                             xWallPoint = side == Side.Corner ? 0 : xWallPoint;
                             break;
                         default:

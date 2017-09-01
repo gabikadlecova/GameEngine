@@ -1,10 +1,11 @@
 ﻿using Casting.RayCasting.Interfaces;
+using Microsoft.Xna.Framework;
 
 namespace Rendering.Interfaces
 {
     interface IColumn
     {
-        int[] Pixels { get; set; }
+        Color[] Pixels { get; set; }
 
         int ColumnNr { get; }
 

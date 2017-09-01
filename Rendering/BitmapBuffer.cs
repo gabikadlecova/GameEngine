@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using Microsoft.Xna.Framework;
 
 namespace Rendering
 {
-    class BitmapBuffer
+    public class BitmapBuffer
     {
-        public int[] BufferData { get; private set; }
+        public Color[] BufferData { get; private set; }
 
-        public int Height { get; set; }
-        public int Width { get; set; }
+        public int Height { get; private set; }
+        public int Width { get; private set; }
 
-        public int this[int x, int y]
+        public Color this[int x, int y]
         {
             get { return BufferData[y * Width + x]; }
             set { BufferData[y * Width + x] = value; }
@@ -21,7 +23,14 @@ namespace Rendering
 
         public BitmapBuffer(int width, int height)
         {
-            BufferData = new int[height * width];
+            BufferData = new Color[height * width];
+            Width = width;
+            Height = height;
+        }
+
+        public void Resize(int width, int height)
+        {
+            BufferData = new Color[height * width];
             Width = width;
             Height = height;
         }

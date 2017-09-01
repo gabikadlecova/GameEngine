@@ -9,6 +9,8 @@
         double Norm { get; }
 
         void Resize(double multiplier);
-        
+
+        void Rotate(double alpha);
+
     }
 }

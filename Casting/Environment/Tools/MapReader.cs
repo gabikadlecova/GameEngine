@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Casting.Environment.Interfaces;
+using System;
 using System.Diagnostics;
-using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Casting.Environment.Interfaces;
+using Microsoft.Xna.Framework;
 
 namespace Casting.Environment.Tools
 {
@@ -55,12 +52,13 @@ namespace Casting.Environment.Tools
                             int altY = Int32.Parse(wallData[4], NumberStyles.HexNumber);
                             
                             int maxHeight = Int32.Parse(wallData[5]);
-                            IWall wall = new Wall(textureX, textureY, Color.FromArgb(altX), Color.FromArgb(altY), maxHeight );
+                            //todo color!!
+                            IWall wall = new Wall(textureX, textureY, Color.AliceBlue, Color.Aquamarine,maxHeight );
 
                             container[id] = wall;
 
-                            wall.TextureX.LoadBitmap();
-                            wall.TextureY.LoadBitmap();
+                            /*wall.TextureX.LoadBitmap();
+                            wall.TextureY.LoadBitmap();*/
                         }
                         catch (InvalidCastException e)
                         {

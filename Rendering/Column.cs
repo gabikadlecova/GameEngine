@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Drawing;
 using Casting.Environment.Interfaces;
 using Casting.RayCasting;
 using Casting.RayCasting.Interfaces;
+using Microsoft.Xna.Framework;
 using Rendering.Interfaces;
 
 namespace Rendering
 {
     public class Column : IColumn
     {
-        public int[] Pixels { get; set; }
+        public Color[] Pixels { get; set; }
         public int ColumnNr { get; }
 
         public Column(int columnNr, int height)
         {
-            Pixels = new int[height];
+            Pixels = new Color[height];
             ColumnNr = columnNr;
         }
         public void SetPixels(IRay rayFrom)
@@ -32,7 +32,7 @@ namespace Rendering
                 begin = begin < 0 ? 0 : begin;
 
                 int altColor = 0;
-                ITexture texture = null;
+                ITextureWrapper texture = null;
                 double heightRatio = 1;
                 bool useTexture = false;
                 
@@ -43,19 +43,19 @@ namespace Rendering
                     switch (item.Side)
                     {
                         case Side.SideX:
-                            altColor = item.Element.TextureX.AltColor.ToArgb();
+                           // altColor = item.Element.TextureX.AltColor.ToArgb();
                             texture = item.Element.TextureX;
                             
                             break;
 
                         case Side.SideY:
-                            altColor = item.Element.TextureY.AltColor.ToArgb();
+                          //  altColor = item.Element.TextureY.AltColor.ToArgb();
                             texture = item.Element.TextureY;
                             
                             break;
 
                         default:
-                            altColor = item.Element.TextureX.AltColor.ToArgb();
+                           // altColor = item.Element.TextureX.AltColor.ToArgb();
                             break;
                     }
                 }
@@ -79,11 +79,11 @@ namespace Rendering
                     {
                         int bitmapPixelNo = (int) (heightRatio * pixelNo);
                         int bitmapXCoor = (int)(item.TextureXRatio * texture.Width);
-                        Pixels[begin + pixelNo] = texture[bitmapXCoor, bitmapPixelNo];
+                        Pixels[begin + pixelNo] = texture[bitmapPixelNo, bitmapXCoor];
                     }
                     else
                     {
-                        Pixels[begin + pixelNo] = altColor;
+                        //Pixels[begin + pixelNo] = altColor;
                     }
                     pixelNo++;
                 }

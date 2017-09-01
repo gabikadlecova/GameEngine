@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Casting.Environment.Interfaces
 {
@@ -6,8 +7,8 @@ namespace Casting.Environment.Interfaces
     {
         int HeightTotal { get; }
 
-        ITexture TextureX { get; }
+        ITextureWrapper TextureX { get; }
 
-        ITexture TextureY { get; }
+        ITextureWrapper TextureY { get; }
     }
 }

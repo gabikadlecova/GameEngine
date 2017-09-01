@@ -41,6 +41,15 @@ namespace Casting.RayCasting
             Y *= multiplier;
         }
 
+        public void Rotate(double alpha)
+        {
+            double cos = Math.Cos(alpha);
+            double sin = Math.Sin(alpha);
+
+            X = X * cos + Y * sin;
+            Y = -X * sin + Y * cos;
+        }
+
         public static IVector Add(IVector left, IVector right)
         {
             return new Vector(left.X + right.X, left.Y + right.Y);

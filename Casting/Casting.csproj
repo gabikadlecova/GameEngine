@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -45,11 +46,11 @@
     <Compile Include="Environment\Exceptions\WallAssignmentException.cs" />
     <Compile Include="Environment\Interfaces\IMap.cs" />
     <Compile Include="Environment\Interfaces\IMapReader.cs" />
-    <Compile Include="Environment\Interfaces\ITexture.cs" />
+    <Compile Include="Environment\Interfaces\ITextureWrapper.cs" />
     <Compile Include="Environment\Interfaces\IWall.cs" />
     <Compile Include="Environment\Interfaces\IWallContainer.cs" />
     <Compile Include="Environment\Map.cs" />
-    <Compile Include="Environment\Texture.cs" />
+    <Compile Include="Environment\TextureWrapper.cs" />
     <Compile Include="Environment\Tools\MapReader.cs" />
     <Compile Include="Environment\Wall.cs" />
     <Compile Include="Environment\WallContainer.cs" />
