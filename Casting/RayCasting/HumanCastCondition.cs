@@ -12,6 +12,8 @@ namespace Casting.RayCasting
         {
         }
 
+        //todo specify how the condition has been met!!
+
         public static HumanCastCondition Default()
         {
             return new HumanCastCondition(1, double.MaxValue);
