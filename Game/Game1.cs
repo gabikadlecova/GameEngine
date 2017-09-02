@@ -24,6 +24,7 @@ namespace Game
     {
         private const double RotationTreshold = 30;
 
+        private double movementSpeed = 0.02;
         private double rotationSpeed = 0.03;
 
         private GraphicsDeviceManager graphics;
@@ -35,6 +36,8 @@ namespace Game
 
         private IWallContainer _walls;
         private IRayCaster _caster;
+        private IRayCaster _humanCaster;
+
         private EngineSettings _settings;
         private BackgroundPainter _painter;
 
@@ -56,10 +59,11 @@ namespace Game
             _settings = new EngineSettings()
             {
                 Condition = CastCondition.LimitWalls(1),
-                MapFilePath = @"C:\Users\Gabi\Documents\Visual Studio 2017\Projects\Engine\Casting\map.txt",
-                WallFilePath = @"C:\Users\Gabi\Documents\Visual Studio 2017\Projects\Engine\Casting\wall.txt",
+                MapFilePath = @"..\..\..\..\Text\map.txt",
+                WallFilePath = @"..\..\..\..\Text\wall.txt",
                 ScreenPlane = new Vector(0.707, -0.707),
-                Player = new Player() { Direction = new Vector(0.707, 0.707), HitPoints = 100, Weapon = null, Name = "Korela", Position = new Vector(0.1, 0.1) }
+                Player = new Player() { Direction = new Vector(0.707, 0.707), HitPoints = 100, Weapon = null, Name = "Korela", Position = new Vector(0.1, 0.1),
+                                      MovementCondition = HumanCastCondition.Default()  }
             };
 
             // TODO: Add your initialization logic here
@@ -69,6 +73,7 @@ namespace Game
             _walls = reader.ReadWalls(_settings.WallFilePath);
 
             _caster = new RayCaster(map, _walls);
+            _humanCaster = new RayCaster(map, _walls);
 
             _painter = new BackgroundPainter(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
             _wallCanvas = new Texture2D(GraphicsDevice, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
@@ -86,6 +91,28 @@ namespace Game
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+
+            int width = GraphicsDevice.Viewport.Width;
+            int height = GraphicsDevice.Viewport.Height;
+
+            _sky = new Texture2D(GraphicsDevice, width, (int)Math.Floor(height / 2.0));
+
+            _floor = new Texture2D(GraphicsDevice, width, (int)Math.Ceiling(height / 2.0));
+
+            Color[] buff = new Color[_sky.Height * _sky.Width];
+            for (int i = 0; i < buff.Length; i++)
+            {
+                buff[i] = Color.LightSkyBlue;
+            }
+            _sky.SetData(buff);
+
+            buff = new Color[_floor.Height * _floor.Width];
+            for (int i = 0; i < buff.Length; i++)
+            {
+                buff[i] = Color.LimeGreen;
+            }
+            _floor.SetData(buff);
 
 
             foreach (var wall in _walls)
@@ -116,9 +143,9 @@ namespace Game
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
-
-            _floor.Dispose();
+            
             _wallCanvas.Dispose();
+            _floor.Dispose();
             _sky.Dispose();
 
         }
@@ -134,23 +161,25 @@ namespace Game
                 Exit();
 
             var keys = Keyboard.GetState().GetPressedKeys();
+
+            IVector nextPosition = _settings.Player.Position;
             foreach (Keys keyse in keys)
             {
                 switch (keyse)
                 {
                     case Keys.W:
-                        _settings.Player.Position = Vector.Add(_settings.Player.Position, Vector.Multiply(0.02, _settings.Player.Direction));
+                        nextPosition = Vector.Add(_settings.Player.Position, Vector.Multiply(movementSpeed, _settings.Player.Direction));
                         break;
                     case Keys.S:
-                        _settings.Player.Position = Vector.Add(_settings.Player.Position, Vector.Multiply(-0.02, _settings.Player.Direction));
+                        nextPosition = Vector.Add(_settings.Player.Position, Vector.Multiply(-movementSpeed, _settings.Player.Direction));
                         break;
 
                     case Keys.A:
-                        _settings.Player.Position = Vector.Add(_settings.Player.Position, Vector.Multiply(-0.02, _settings.ScreenPlane));
+                        nextPosition = Vector.Add(_settings.Player.Position, Vector.Multiply(-movementSpeed, _settings.ScreenPlane));
                         break;
 
                     case Keys.D:
-                        _settings.Player.Position = Vector.Add(_settings.Player.Position, Vector.Multiply(0.02, _settings.ScreenPlane));
+                        nextPosition = Vector.Add(_settings.Player.Position, Vector.Multiply(movementSpeed, _settings.ScreenPlane));
                         break;
 
                     default:
@@ -159,6 +188,8 @@ namespace Game
                 }
             }
 
+
+            _settings.Player.Position = nextPosition;
 
             Point currMouse = Mouse.GetState().Position;
             Debug.WriteLine($"{currMouse.ToString()}");
@@ -227,6 +258,8 @@ namespace Game
             //Debug.WriteLine("First" + 1 / gameTime.ElapsedGameTime.TotalSeconds);
             spriteBatch.Begin();
 
+            spriteBatch.Draw(_sky, new Rectangle(0,0, _sky.Width, _sky.Height), Color.White);
+            spriteBatch.Draw(_floor, new Rectangle(0, _sky.Height, _floor.Width, _floor.Height), Color.White);
             spriteBatch.Draw(_wallCanvas, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
 
             spriteBatch.End();

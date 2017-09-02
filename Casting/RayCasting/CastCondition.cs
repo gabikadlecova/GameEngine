@@ -8,17 +8,17 @@ namespace Casting.RayCasting
 
         public bool IsMet { get; set; }
 
-        public int? MaxWalls { get; }
+        public int? MaxWalls { get; protected set; }
 
-        public double? MaxDistance { get; }
+        public double? MaxDistance { get; protected set; }
 
-        private int _wallCount;
+        protected int _obstacleCount;
 
-        private double _currentDistance;
+        protected double _currentDistance;
 
-        public void WallCrossed(double distance)
+        public virtual void ObstacleCrossed(double distance)
         {
-            _wallCount++;
+            _obstacleCount++;
             _currentDistance = distance;
 
             if (MaxDistance != null)
@@ -26,7 +26,7 @@ namespace Casting.RayCasting
 
             if (MaxWalls != null)
             {
-                IsMet = _wallCount >= MaxWalls;
+                IsMet = _obstacleCount >= MaxWalls;
             }
         }
 
@@ -35,16 +35,16 @@ namespace Casting.RayCasting
         public void Reset()
         {
             IsMet = false;
-            _wallCount = 0;
+            _obstacleCount = 0;
             _currentDistance = 0;
         }
 
-        protected CastCondition(int? wallNumber, double? maxMaxDistance)
+        protected CastCondition(int? wallNumber, double? maxDistance)
         {
             MaxWalls = wallNumber;
-            MaxDistance = maxMaxDistance;
+            MaxDistance = maxDistance;
             IsMet = false;
-            _wallCount = 0;
+            _obstacleCount = 0;
             _currentDistance = 0;
         }
 

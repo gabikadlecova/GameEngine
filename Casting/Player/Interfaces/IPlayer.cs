@@ -1,4 +1,5 @@
-﻿using Casting.RayCasting.Interfaces;
+﻿using Casting.RayCasting;
+using Casting.RayCasting.Interfaces;
 
 namespace Casting.Player.Interfaces
 {
@@ -13,6 +14,8 @@ namespace Casting.Player.Interfaces
         IWeapon Weapon { get; set; }
 
         string Name { get; set; }
+
+        HumanCastCondition MovementCondition { get; set; }
 
     }
 }
