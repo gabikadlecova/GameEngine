@@ -165,6 +165,7 @@ namespace Game
             IVector nextPosition = _settings.Player.Position;
             foreach (Keys keyse in keys)
             {
+                //todo should be in fact checked in each branch (function?)
                 switch (keyse)
                 {
                     case Keys.W:
