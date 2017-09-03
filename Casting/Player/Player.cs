@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Casting.Player.Interfaces;
+using Casting.RayCasting;
 using Casting.RayCasting.Interfaces;
 
 namespace Casting.Player
@@ -18,5 +19,6 @@ namespace Casting.Player
         public int HitPoints { get; set; }
         public IWeapon Weapon { get; set; }
         public string Name { get; set; }
+        public HumanCastCondition MovementCondition { get; set; }
     }
 }

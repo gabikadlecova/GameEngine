@@ -94,7 +94,7 @@ namespace Casting.RayCasting
 
             if(gridPoint && _map[mapX, mapY] > 0)
             {
-                stopCondition.WallCrossed(0);
+                stopCondition.ObstacleCrossed(0);
             }
             
             while (!stopCondition.IsMet)
@@ -170,7 +170,7 @@ namespace Casting.RayCasting
                             throw new ArgumentException("Wall hit on undefined wall side");
                     }
 
-                    stopCondition.WallCrossed(wallDistance);
+                    stopCondition.ObstacleCrossed(wallDistance);
 
                     xWallPoint -= Math.Floor(xWallPoint);
                     resultRay.WallsCrossed.Add(new DistanceWrapper<IWall>(wallDistance, xWallPoint, side, crossedWall));

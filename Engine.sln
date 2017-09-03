@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Casting", "Casting\Casting.csproj", "{0425DC0B-8E55-4646-8D7D-F639B82C62CB}"
 EndProject
@@ -44,6 +44,7 @@ Global
 		{E4315180-3BFC-43D2-99B9-8C353F66FA75}.Release|x86.ActiveCfg = Release|Any CPU
 		{E4315180-3BFC-43D2-99B9-8C353F66FA75}.Release|x86.Build.0 = Release|Any CPU
 		{94D979B3-4D57-4E5F-A7A6-01406859BED2}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{94D979B3-4D57-4E5F-A7A6-01406859BED2}.Debug|Any CPU.Build.0 = Debug|x86
 		{94D979B3-4D57-4E5F-A7A6-01406859BED2}.Debug|x86.ActiveCfg = Debug|x86
 		{94D979B3-4D57-4E5F-A7A6-01406859BED2}.Debug|x86.Build.0 = Debug|x86
 		{94D979B3-4D57-4E5F-A7A6-01406859BED2}.Release|Any CPU.ActiveCfg = Release|x86
@@ -52,5 +53,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {126D615B-6DC6-4204-B14F-B93548BE5E3E}
 	EndGlobalSection
 EndGlobal

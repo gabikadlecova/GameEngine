@@ -3,7 +3,7 @@
     public interface ICastCondition
     {
         bool IsMet { get; }
-        void WallCrossed(double distance);
+        void ObstacleCrossed(double distance);
 
         void Reset();
     }

@@ -10,6 +10,7 @@ namespace Input
         public IPlayer Player;
         public string WallFilePath;
         public ICastCondition Condition;
+        public ICastCondition HumanCondition;
         public string MapFilePath;
         public IVector ScreenPlane;
         

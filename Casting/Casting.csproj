@@ -59,6 +59,7 @@
     <Compile Include="Player\Player.cs" />
     <Compile Include="RayCasting\CastCondition.cs" />
     <Compile Include="RayCasting\DistanceWrapper.cs" />
+    <Compile Include="RayCasting\HumanCastCondition.cs" />
     <Compile Include="RayCasting\Interfaces\ICastCondition.cs" />
     <Compile Include="RayCasting\Interfaces\IRay.cs" />
     <Compile Include="RayCasting\Interfaces\IRayCaster.cs" />
