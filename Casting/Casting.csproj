@@ -48,12 +48,15 @@
     <Compile Include="Environment\Interfaces\IMapReader.cs" />
     <Compile Include="Environment\Interfaces\ITextureWrapper.cs" />
     <Compile Include="Environment\Interfaces\IWall.cs" />
-    <Compile Include="Environment\Interfaces\IWallContainer.cs" />
+    <Compile Include="Environment\Interfaces\IContainer.cs" />
     <Compile Include="Environment\Map.cs" />
     <Compile Include="Environment\TextureWrapper.cs" />
     <Compile Include="Environment\Tools\MapReader.cs" />
     <Compile Include="Environment\Wall.cs" />
-    <Compile Include="Environment\WallContainer.cs" />
+    <Compile Include="Environment\Container.cs" />
+    <Compile Include="Player\Enemy.cs" />
+    <Compile Include="Player\Interfaces\IEnemy.cs" />
+    <Compile Include="Player\Interfaces\IPerson.cs" />
     <Compile Include="Player\Interfaces\IPlayer.cs" />
     <Compile Include="Player\Interfaces\IWeapon.cs" />
     <Compile Include="Player\Player.cs" />
@@ -61,6 +64,7 @@
     <Compile Include="RayCasting\DistanceWrapper.cs" />
     <Compile Include="RayCasting\HumanCastCondition.cs" />
     <Compile Include="RayCasting\Interfaces\ICastCondition.cs" />
+    <Compile Include="RayCasting\Interfaces\ICrossable.cs" />
     <Compile Include="RayCasting\Interfaces\IRay.cs" />
     <Compile Include="RayCasting\Interfaces\IRayCaster.cs" />
     <Compile Include="RayCasting\Interfaces\IVector.cs" />

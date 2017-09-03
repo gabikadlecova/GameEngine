@@ -1,7 +1,6 @@
-﻿using Casting.Environment;
-using Casting.Environment.Interfaces;
-using Casting.Player.Interfaces;
+﻿using Casting.Player.Interfaces;
 using Casting.RayCasting.Interfaces;
+using Microsoft.Xna.Framework;
 
 namespace Input
 {
@@ -12,7 +11,7 @@ namespace Input
         public ICastCondition Condition;
         public ICastCondition HumanCondition;
         public string MapFilePath;
-        public IVector ScreenPlane;
+        public Vector2 ScreenPlane;
         
     }
 }

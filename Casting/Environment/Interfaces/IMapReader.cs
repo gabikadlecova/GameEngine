@@ -10,6 +10,6 @@ namespace Casting.Environment.Interfaces
     {
         IMap ReadMap(string filePath);
 
-        IWallContainer ReadWalls(string filePath);
+        IContainer<IWall> ReadWalls(string filePath);
     }
 }

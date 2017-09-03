@@ -18,46 +18,29 @@ namespace Rendering
             Pixels = new Color[height];
             ColumnNr = columnNr;
         }
-        public void SetPixels(IRay rayFrom)
+        public void SetPixels(IRay rayFrom, int maxHeight)
         {
-            for (int i = rayFrom.WallsCrossed.Count - 1; i >= 0; i--)
+            for (int i = rayFrom.ObjectsCrossed.Count - 1; i >= 0; i--)
             {
                 //todo check beginnings
-                var item = rayFrom.WallsCrossed[i];
+                var item = rayFrom.ObjectsCrossed[i];
 
-                int line = (int)(item.Element.HeightTotal / item.Distance);
+                int line = (int)(item.Element.Height / item.Distance);
+                int maxLine = (int) (maxHeight / item.Distance);
 
-                int begin = Pixels.Length / 2 - line / 2;
+                int begin = Pixels.Length / 2 + maxLine / 2 - line;
 
                 begin = begin < 0 ? 0 : begin;
 
-                int altColor = 0;
+                Color altColor = Color.DarkRed;
                 ITextureWrapper texture = null;
                 double heightRatio = 1;
                 bool useTexture = false;
                 
                 try
                 {
-                    //todo major code cleanup
-                    //todo do a texture bool and set it elsewhere for readability
-                    switch (item.Side)
-                    {
-                        case Side.SideX:
-                           // altColor = item.Element.TextureX.AltColor.ToArgb();
-                            texture = item.Element.TextureX;
-                            
-                            break;
-
-                        case Side.SideY:
-                          //  altColor = item.Element.TextureY.AltColor.ToArgb();
-                            texture = item.Element.TextureY;
-                            
-                            break;
-
-                        default:
-                           // altColor = item.Element.TextureX.AltColor.ToArgb();
-                            break;
-                    }
+                    texture = item.Element.GetTexture(item.Side);
+                    altColor = texture.AltColor;
                 }
                 catch (Exception e)
                 {
@@ -83,7 +66,7 @@ namespace Rendering
                     }
                     else
                     {
-                        //Pixels[begin + pixelNo] = altColor;
+                        Pixels[begin + pixelNo] = altColor;
                     }
                     pixelNo++;
                 }

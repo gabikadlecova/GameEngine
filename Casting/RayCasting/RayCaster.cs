@@ -1,6 +1,7 @@
 ﻿using System;
 using Casting.Environment.Interfaces;
 using Casting.RayCasting.Interfaces;
+using Microsoft.Xna.Framework;
 
 namespace Casting.RayCasting
 {
@@ -10,12 +11,12 @@ namespace Casting.RayCasting
         private const double Treshold = 2E-12;
 
         private IMap _map;
-        private IWallContainer _wallContainer;
+        private IContainer<IWall> _container;
 
-        public RayCaster(IMap map, IWallContainer container)
+        public RayCaster(IMap map, IContainer<IWall> container)
         {
             _map = map;
-            _wallContainer = container;
+            _container = container;
         }
 
         public IMap Map
@@ -24,17 +25,17 @@ namespace Casting.RayCasting
             set { _map = value ?? _map; }
         }
 
-        public IWallContainer Walls
+        public IContainer<IWall> Walls
         {
-            get { return _wallContainer; }
-            set { _wallContainer = value ?? _wallContainer; }
+            get { return _container; }
+            set { _container = value ?? _container; }
         }
 
-        public IRay Cast(IVector startPosition, IVector direction, ICastCondition stopCondition)
+        public IRay Cast(Vector2 startPosition, Vector2 direction, ICastCondition stopCondition)
         {
             Ray resultRay = new Ray();
 
-
+            //todo floats vs doubles
             double rayPositionX = startPosition.X;
             double rayPositionY = startPosition.Y;
             int mapX = (int)Math.Floor(rayPositionX);
@@ -139,7 +140,7 @@ namespace Casting.RayCasting
                 {
 
                     
-                    IWall crossedWall = _wallContainer[index];
+                    IWall crossedWall = _container[index];
                     
                     double wallDistance;
                     double xWallPoint;
@@ -173,7 +174,7 @@ namespace Casting.RayCasting
                     stopCondition.ObstacleCrossed(wallDistance);
 
                     xWallPoint -= Math.Floor(xWallPoint);
-                    resultRay.WallsCrossed.Add(new DistanceWrapper<IWall>(wallDistance, xWallPoint, side, crossedWall));
+                    resultRay.ObjectsCrossed.Add(new DistanceWrapper<ICrossable>(wallDistance, xWallPoint, side, crossedWall));
                 }
                 
 

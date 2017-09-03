@@ -26,13 +26,13 @@ namespace Rendering
             Buffer = new BitmapBuffer(width, height);
         }
 
-        public void UpdateBuffer(IRay ray, int columnNr)
+        public void UpdateBuffer(IRay ray, int columnNr, int wallMaxHeight)
         {
             
                 Stopwatch watch = Stopwatch.StartNew();
                 //todo copy column data
                 IColumn column = new Column(columnNr, Buffer.Height);
-                column.SetPixels(ray);
+                column.SetPixels(ray, wallMaxHeight);
 
                 for (int i = 0; i < Buffer.Height; i++)
                 {

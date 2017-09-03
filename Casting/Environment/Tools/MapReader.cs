@@ -31,9 +31,9 @@ namespace Casting.Environment.Tools
             return new Map(board);
         }
 
-        public IWallContainer ReadWalls(string filePath)
+        public IContainer<IWall> ReadWalls(string filePath)
         {
-            IWallContainer container = new WallContainer();
+            IContainer<IWall> container = new Container<IWall>();
 
             using (StreamReader reader = new StreamReader(filePath))
             {
@@ -48,12 +48,12 @@ namespace Casting.Environment.Tools
                             int id = Int32.Parse(wallData[0]);
                             string textureX = wallData[1];
                             string textureY = wallData[2];
-                            int altX = Int32.Parse(wallData[3], NumberStyles.HexNumber);
-                            int altY = Int32.Parse(wallData[4], NumberStyles.HexNumber);
+                            uint altX = uint.Parse(wallData[3], NumberStyles.HexNumber);
+                            uint altY = uint.Parse(wallData[4], NumberStyles.HexNumber);
                             
                             int maxHeight = Int32.Parse(wallData[5]);
                             //todo color!!
-                            IWall wall = new Wall(textureX, textureY, Color.AliceBlue, Color.Aquamarine,maxHeight );
+                            IWall wall = new Wall(textureX, textureY, new Color(){PackedValue = altX}, new Color() {PackedValue = altY}, maxHeight  );
 
                             container[id] = wall;
 

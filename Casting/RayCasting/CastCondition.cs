@@ -12,6 +12,8 @@ namespace Casting.RayCasting
 
         public double? MaxDistance { get; protected set; }
 
+        public int? MinWalls { get; }
+
         protected int _obstacleCount;
 
         protected double _currentDistance;
@@ -28,6 +30,11 @@ namespace Casting.RayCasting
             {
                 IsMet = _obstacleCount >= MaxWalls;
             }
+
+            if (MaxWalls != null)
+            {
+                IsMet = _obstacleCount < MinWalls;
+            }
         }
 
         //ToDo distance sets off only if a wall had been crossed
@@ -39,7 +46,15 @@ namespace Casting.RayCasting
             _currentDistance = 0;
         }
 
-        protected CastCondition(int? wallNumber, double? maxDistance)
+        public void UpdateDistance(double distance)
+        {
+            _currentDistance = distance;
+
+            if (MaxDistance != null)
+                IsMet = _currentDistance >= MaxDistance;
+        }
+
+        protected CastCondition(int? wallNumber, double? maxDistance, int? minWalls)
         {
             MaxWalls = wallNumber;
             MaxDistance = maxDistance;
@@ -50,12 +65,17 @@ namespace Casting.RayCasting
 
         public static CastCondition LimitWalls(int wallNumber)
         {
-            return new CastCondition(wallNumber, null);
+            return new CastCondition(wallNumber, null, null);
         }
 
         public static CastCondition CastDistance(double distance, int minWallCount)
         {
-            return new CastCondition(minWallCount, distance);
+            return new CastCondition(null, distance, minWallCount);
+        }
+
+        public static CastCondition WallCountInterval(int maxWalls, int minWalls)
+        {
+            return new CastCondition(maxWalls, null, minWalls);
         }
         
 }

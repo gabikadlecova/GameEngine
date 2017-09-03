@@ -1,21 +1,15 @@
 ﻿using Casting.RayCasting;
 using Casting.RayCasting.Interfaces;
+using Microsoft.Xna.Framework;
 
 namespace Casting.Player.Interfaces
 {
-    public interface IPlayer
+    public interface IPlayer : IPerson
     {
-        IVector Position { get; set; }
-
-        IVector Direction { get; set; }
-
-        int HitPoints { get; set; }
 
         IWeapon Weapon { get; set; }
 
         string Name { get; set; }
-
-        HumanCastCondition MovementCondition { get; set; }
 
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace Casting.RayCasting
+﻿using Casting.RayCasting.Interfaces;
+
+namespace Casting.RayCasting
 {
-    public class DistanceWrapper<TObj>
+    public class DistanceWrapper<TObj> where TObj : ICrossable
     {
         public double Distance { get; }
 
@@ -13,7 +15,7 @@
         /// Indicates on which side did the ray hit
         /// </summary>
         public Side Side { get; }
-        public TObj Element { get; set; }
+        public TObj Element { get; }
 
         public DistanceWrapper(double distance, double textureXRatio, Side side, TObj element)
         {

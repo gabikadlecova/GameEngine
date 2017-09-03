@@ -6,12 +6,12 @@ namespace Casting.RayCasting
 {
     class Ray : IRay
     {
-        public List<DistanceWrapper<IWall>> WallsCrossed { get; }
+        public List<DistanceWrapper<ICrossable>> ObjectsCrossed { get; }
 
 
         public Ray()
         {
-            WallsCrossed = new List<DistanceWrapper<IWall>>();
+            ObjectsCrossed = new List<DistanceWrapper<ICrossable>>();
         }
     }
 }

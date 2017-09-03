@@ -1,1 +1,2 @@
-1,..\..\..\..\Textures\thewall.jpeg,..\..\..\..\Textures\korela.jpg,FFF0F8FF,FFDC143C, 400
+1,..\..\..\..\Textures\thewall.jpeg,..\..\..\..\Textures\firstwall.jpg,FFF0F8FF,FFDC143C,550
+2,..\..\..\..\Textures\thewall.jpeg,..\..\..\..\Textures\korela.jpg,FFF0F8FF,FFDC143C,300

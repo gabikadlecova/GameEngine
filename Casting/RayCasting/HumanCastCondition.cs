@@ -8,7 +8,8 @@ namespace Casting.RayCasting
 {
     public class HumanCastCondition : CastCondition
     {
-        protected HumanCastCondition(int? wallNumber, double? maxDistance) : base(wallNumber, maxDistance)
+        //todo minwalls?
+        protected HumanCastCondition(int? wallNumber, double? maxDistance) : base(wallNumber, maxDistance, null)
         {
         }
 
@@ -19,9 +20,9 @@ namespace Casting.RayCasting
             return new HumanCastCondition(1, double.MaxValue);
         }
 
-        public void ResetDistance(double distance)
+        public void ResetDistance(double maxDistance)
         {
-            MaxDistance = distance;
+            MaxDistance = maxDistance;
         }
 
         public override void ObstacleCrossed(double distance)

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net.Mime;
+using System.Runtime.InteropServices;
 using Casting.Environment;
 using Casting.Environment.Interfaces;
 using Casting.Environment.Tools;
@@ -22,10 +24,10 @@ namespace Game
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-        private const double RotationTreshold = 30;
+        private const float RotationTreshold = 30;
 
-        private double movementSpeed = 0.02;
-        private double rotationSpeed = 0.03;
+        private float movementSpeed = 0.02F;
+        private float rotationSpeed = 0.03F;
 
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
@@ -34,7 +36,7 @@ namespace Game
         private Texture2D _sky;
         private Texture2D _floor;
 
-        private IWallContainer _walls;
+        private IContainer<IWall> _walls;
         private IRayCaster _caster;
         private IRayCaster _humanCaster;
 
@@ -43,7 +45,11 @@ namespace Game
 
         public Game1()
         {
-            graphics = new GraphicsDeviceManager(this);
+            graphics = new GraphicsDeviceManager(this)
+            {
+                PreferredBackBufferHeight = 800,
+                PreferredBackBufferWidth = 1024
+            };
             Content.RootDirectory = "Content";
         }
 
@@ -58,12 +64,19 @@ namespace Game
 
             _settings = new EngineSettings()
             {
-                Condition = CastCondition.LimitWalls(1),
+                Condition = CastCondition.CastDistance(Double.MaxValue, 1),
                 MapFilePath = @"..\..\..\..\Text\map.txt",
                 WallFilePath = @"..\..\..\..\Text\wall.txt",
-                ScreenPlane = new Vector(0.707, -0.707),
-                Player = new Player() { Direction = new Vector(0.707, 0.707), HitPoints = 100, Weapon = null, Name = "Korela", Position = new Vector(0.1, 0.1),
-                                      MovementCondition = HumanCastCondition.Default()  }
+                ScreenPlane = new Vector2(0.707F, -0.707F),
+                Player = new Player()
+                {
+                    Direction = new Vector2(0.707F, 0.707F),
+                    HitPoints = 100,
+                    Weapon = null,
+                    Name = "Korela",
+                    Position = new Vector2(0.1F, 0.1F),
+                    MovementCondition = HumanCastCondition.Default()
+                }
             };
 
             // TODO: Add your initialization logic here
@@ -71,6 +84,7 @@ namespace Game
 
             IMap map = reader.ReadMap(_settings.MapFilePath);
             _walls = reader.ReadWalls(_settings.WallFilePath);
+            _settings.Condition = CastCondition.WallCountInterval(3, 1);
 
             _caster = new RayCaster(map, _walls);
             _humanCaster = new RayCaster(map, _walls);
@@ -143,7 +157,7 @@ namespace Game
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
-            
+
             _wallCanvas.Dispose();
             _floor.Dispose();
             _sky.Dispose();
@@ -162,41 +176,59 @@ namespace Game
 
             var keys = Keyboard.GetState().GetPressedKeys();
 
-            IVector nextPosition = _settings.Player.Position;
+            Vector2 nextPosition = _settings.Player.Position;
+            Vector2 currPosition = nextPosition;
             foreach (Keys keyse in keys)
             {
                 //todo should be in fact checked in each branch (function?)
                 switch (keyse)
                 {
                     case Keys.W:
-                        nextPosition = Vector.Add(_settings.Player.Position, Vector.Multiply(movementSpeed, _settings.Player.Direction));
+                        nextPosition = Vector2.Add(_settings.Player.Position, movementSpeed * _settings.Player.Direction);
                         break;
                     case Keys.S:
-                        nextPosition = Vector.Add(_settings.Player.Position, Vector.Multiply(-movementSpeed, _settings.Player.Direction));
+                        nextPosition = Vector2.Add(_settings.Player.Position, -movementSpeed * _settings.Player.Direction);
                         break;
 
                     case Keys.A:
-                        nextPosition = Vector.Add(_settings.Player.Position, Vector.Multiply(-movementSpeed, _settings.ScreenPlane));
+                        nextPosition = Vector2.Add(_settings.Player.Position, -movementSpeed * _settings.ScreenPlane);
                         break;
 
                     case Keys.D:
-                        nextPosition = Vector.Add(_settings.Player.Position, Vector.Multiply(movementSpeed, _settings.ScreenPlane));
+                        nextPosition = Vector2.Add(_settings.Player.Position, movementSpeed * _settings.ScreenPlane);
                         break;
-
                     default:
 
                         break;
                 }
+                
+                Vector2 dir = nextPosition - currPosition;
+                float distance = dir.Length();
+                if (distance > Double.Epsilon)
+                {
+                    _settings.Player.MovementCondition.ResetDistance(distance);
+                    dir.Normalize();
+                    var resultRay = _humanCaster.Cast(_settings.Player.Position, dir, _settings.Player.MovementCondition);
+
+                    bool canMove = true;
+                    if (resultRay.ObjectsCrossed.Count > 0)
+                    {
+                        if (resultRay.ObjectsCrossed[0].Distance < distance)
+                            canMove = false;
+                    }
+                    
+
+                    if(canMove)
+                        _settings.Player.Position = nextPosition;
+                }
             }
 
 
-            _settings.Player.Position = nextPosition;
-
             Point currMouse = Mouse.GetState().Position;
             Debug.WriteLine($"{currMouse.ToString()}");
-            double width = GraphicsDevice.Viewport.Width;
-            double difference = width / 2;
-            difference = currMouse.X - difference;
+            float width = GraphicsDevice.Viewport.Width;
+            float difference = width / 2F;
+            difference = difference - currMouse.X;
             if (Math.Abs(difference) > RotationTreshold)
             {
                 difference = 2 * difference / width * rotationSpeed;
@@ -204,18 +236,9 @@ namespace Game
                 Debug.WriteLine($"{difference}");
 
 
-                //left
-                if (difference > 0)
-                {
-                    _settings.Player.Direction.Rotate(difference);
-                    _settings.ScreenPlane.Rotate(difference);
-                }
-                else //right
-                {
-
-                    _settings.Player.Direction.Rotate(difference);
-                    _settings.ScreenPlane.Rotate(difference);
-                }
+                Matrix rotation = Matrix.CreateRotationZ(difference);
+                _settings.Player.Direction = Vector2.Transform(_settings.Player.Direction, rotation );
+                _settings.ScreenPlane = Vector2.Transform(_settings.ScreenPlane, rotation);
             }
 
             // TODO: Add your update logic here
@@ -240,26 +263,26 @@ namespace Game
             {
                 //todo check direction
 
-                double planeMultiplier = 2.0 * x / width - 1;
-                IVector planePart = Vector.Multiply(planeMultiplier, _settings.ScreenPlane);
-                IVector direction = Vector.Add(_settings.Player.Direction, planePart);
+                float planeMultiplier = 2F * x / width - 1;
+                Vector2 planePart = planeMultiplier * _settings.ScreenPlane;
+                Vector2 direction = Vector2.Add(_settings.Player.Direction, planePart);
                 IRay ray = _caster.Cast(_settings.Player.Position, direction, _settings.Condition);
 
 
                 Stopwatch watch = Stopwatch.StartNew();
-                _painter.UpdateBuffer(ray, x);
+                _painter.UpdateBuffer(ray, x, _walls.MaxHeight);
 
                 watch.Stop();
 
                 // Debug.WriteLine("Watch: " + watch.ElapsedMilliseconds);
             }
-            
+
             _wallCanvas.SetData<Color>(_painter.Buffer.BufferData);
 
             //Debug.WriteLine("First" + 1 / gameTime.ElapsedGameTime.TotalSeconds);
             spriteBatch.Begin();
 
-            spriteBatch.Draw(_sky, new Rectangle(0,0, _sky.Width, _sky.Height), Color.White);
+            spriteBatch.Draw(_sky, new Rectangle(0, 0, _sky.Width, _sky.Height), Color.White);
             spriteBatch.Draw(_floor, new Rectangle(0, _sky.Height, _floor.Width, _floor.Height), Color.White);
             spriteBatch.Draw(_wallCanvas, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
 

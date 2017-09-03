@@ -9,6 +9,6 @@ namespace Rendering.Interfaces
 
         int ColumnNr { get; }
 
-        void SetPixels(IRay rayFrom);
+        void SetPixels(IRay rayFrom, int maxHeight);
     }
 }

@@ -5,6 +5,6 @@ namespace Casting.RayCasting.Interfaces
 {
     public interface IRay
     {
-        List<DistanceWrapper<IWall>> WallsCrossed { get; }
+        List<DistanceWrapper<ICrossable>> ObjectsCrossed { get; }
     }
 }
