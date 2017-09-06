@@ -49,6 +49,7 @@ namespace Game
             {
                 PreferredBackBufferHeight = 800,
                 PreferredBackBufferWidth = 1024
+                //IsFullScreen = true
             };
             Content.RootDirectory = "Content";
         }
