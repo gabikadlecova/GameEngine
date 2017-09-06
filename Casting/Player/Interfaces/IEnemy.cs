@@ -10,7 +10,6 @@ namespace Casting.Player.Interfaces
 {
     public interface IEnemy : IPerson, ICrossable
     {
-        int EnemyId { get; }
         int TypeId { get; }
 
         ITextureWrapper Texture { get; }

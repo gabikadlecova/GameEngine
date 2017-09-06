@@ -8,6 +8,7 @@ using Casting.Environment;
 using Casting.Environment.Interfaces;
 using Casting.Environment.Tools;
 using Casting.Player;
+using Casting.Player.Interfaces;
 using Casting.RayCasting;
 using Casting.RayCasting.Interfaces;
 using Input;
@@ -37,6 +38,7 @@ namespace Game
         private Texture2D _floor;
 
         private IContainer<IWall> _walls;
+        private IContainer<IEnemy> _enemies;
         private IRayCaster _caster;
         private IRayCaster _humanCaster;
 
@@ -92,6 +94,8 @@ namespace Game
 
             _painter = new BackgroundPainter(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
             _wallCanvas = new Texture2D(GraphicsDevice, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
+
+
 
 
 
@@ -226,7 +230,7 @@ namespace Game
 
 
             Point currMouse = Mouse.GetState().Position;
-            Debug.WriteLine($"{currMouse.ToString()}");
+            Debug.WriteLine($"{currMouse}");
             float width = GraphicsDevice.Viewport.Width;
             float difference = width / 2F;
             difference = difference - currMouse.X;
@@ -277,6 +281,19 @@ namespace Game
 
                 // Debug.WriteLine("Watch: " + watch.ElapsedMilliseconds);
             }
+
+            foreach (IEnemy enemy in _enemies)
+            {
+                Vector2 playerDist = _settings.Player.Position - enemy.Position;
+                Matrix posMatrix = new Matrix(_settings.Player.Direction.Y, -_settings.Player.Direction.X,0,0, - _settings.ScreenPlane.Y, _settings.ScreenPlane.X,0,0,0,0,0,0,0,0,0,0);
+                posMatrix = Matrix.Invert(posMatrix);
+                posMatrix *= 1/(_settings.ScreenPlane.X* _settings.Player.Direction.Y - _settings.Player.Direction.X * _settings.ScreenPlane.Y);
+                Vector2 result = new Vector2(playerDist.X * posMatrix.M11 + playerDist.Y * posMatrix.M21, playerDist.X * posMatrix.M12 + playerDist.Y * posMatrix.M22);
+
+
+
+            }
+
 
             _wallCanvas.SetData<Color>(_painter.Buffer.BufferData);
 

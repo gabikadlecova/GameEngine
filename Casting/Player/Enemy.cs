@@ -24,7 +24,6 @@ namespace Casting.Player
             return Texture;
         }
 
-        public int EnemyId { get; }
         public int TypeId { get; }
         public ITextureWrapper Texture { get; }
 
