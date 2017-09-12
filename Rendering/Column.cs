@@ -62,7 +62,9 @@ namespace Rendering
                     {
                         int bitmapPixelNo = (int) (heightRatio * pixelNo);
                         int bitmapXCoor = (int)(item.TextureXRatio * texture.Width);
-                        Pixels[begin + pixelNo] = texture[bitmapPixelNo, bitmapXCoor];
+                        Color nextPix = texture[bitmapPixelNo, bitmapXCoor];
+                        if(nextPix.A != 0)
+                            Pixels[begin + pixelNo] = nextPix;
                     }
                     else
                     {

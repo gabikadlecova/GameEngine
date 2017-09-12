@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -17,6 +18,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 using Rendering;
+using Ray = Casting.RayCasting.Ray;
 
 namespace Game
 {
@@ -45,6 +47,8 @@ namespace Game
         private EngineSettings _settings;
         private BackgroundPainter _painter;
 
+        private List<IRay> _currentRays;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this)
@@ -70,6 +74,7 @@ namespace Game
                 Condition = CastCondition.CastDistance(Double.MaxValue, 1),
                 MapFilePath = @"..\..\..\..\Text\map.txt",
                 WallFilePath = @"..\..\..\..\Text\wall.txt",
+                EnemyFilePath = @"..\..\..\..\Text\enemies.txt",
                 ScreenPlane = new Vector2(0.707F, -0.707F),
                 Player = new Player()
                 {
@@ -88,6 +93,7 @@ namespace Game
             IMap map = reader.ReadMap(_settings.MapFilePath);
             _walls = reader.ReadWalls(_settings.WallFilePath);
             _settings.Condition = CastCondition.WallCountInterval(3, 1);
+            _enemies = reader.ReadEnemies(_settings.EnemyFilePath);
 
             _caster = new RayCaster(map, _walls);
             _humanCaster = new RayCaster(map, _walls);
@@ -96,7 +102,7 @@ namespace Game
             _wallCanvas = new Texture2D(GraphicsDevice, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
 
 
-
+            _currentRays = new List<IRay>();
 
 
             base.Initialize();
@@ -152,6 +158,19 @@ namespace Game
                     }
                 }
             }
+
+            foreach (IEnemy enemy in _enemies)
+            {
+                using (FileStream stream = new FileStream(enemy.Texture.PicAddress, FileMode.Open))
+                {
+                    using (Texture2D tex = Texture2D.FromStream(GraphicsDevice, stream))
+                    {
+                        enemy.Texture.LoadTexture(tex);
+                    }
+                }
+            }
+
+
             // TODO: use this.Content to load your game content here
         }
 
@@ -206,7 +225,7 @@ namespace Game
 
                         break;
                 }
-                
+
                 Vector2 dir = nextPosition - currPosition;
                 float distance = dir.Length();
                 if (distance > Double.Epsilon)
@@ -221,9 +240,9 @@ namespace Game
                         if (resultRay.ObjectsCrossed[0].Distance < distance)
                             canMove = false;
                     }
-                    
 
-                    if(canMove)
+
+                    if (canMove)
                         _settings.Player.Position = nextPosition;
                 }
             }
@@ -242,7 +261,7 @@ namespace Game
 
 
                 Matrix rotation = Matrix.CreateRotationZ(difference);
-                _settings.Player.Direction = Vector2.Transform(_settings.Player.Direction, rotation );
+                _settings.Player.Direction = Vector2.Transform(_settings.Player.Direction, rotation);
                 _settings.ScreenPlane = Vector2.Transform(_settings.ScreenPlane, rotation);
             }
 
@@ -259,7 +278,7 @@ namespace Game
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            _currentRays.Clear();
             // TODO: Add your drawing code here
 
 
@@ -273,9 +292,9 @@ namespace Game
                 Vector2 direction = Vector2.Add(_settings.Player.Direction, planePart);
                 IRay ray = _caster.Cast(_settings.Player.Position, direction, _settings.Condition);
 
+                _currentRays.Add(ray);
 
                 Stopwatch watch = Stopwatch.StartNew();
-                _painter.UpdateBuffer(ray, x, _walls.MaxHeight);
 
                 watch.Stop();
 
@@ -284,14 +303,35 @@ namespace Game
 
             foreach (IEnemy enemy in _enemies)
             {
-                Vector2 playerDist = _settings.Player.Position - enemy.Position;
-                Matrix posMatrix = new Matrix(_settings.Player.Direction.Y, -_settings.Player.Direction.X,0,0, - _settings.ScreenPlane.Y, _settings.ScreenPlane.X,0,0,0,0,0,0,0,0,0,0);
-                posMatrix = Matrix.Invert(posMatrix);
-                posMatrix *= 1/(_settings.ScreenPlane.X* _settings.Player.Direction.Y - _settings.Player.Direction.X * _settings.ScreenPlane.Y);
-                Vector2 result = new Vector2(playerDist.X * posMatrix.M11 + playerDist.Y * posMatrix.M21, playerDist.X * posMatrix.M12 + playerDist.Y * posMatrix.M22);
+                Vector2 playerDist = enemy.Position - _settings.Player.Position;
+                Matrix posMatrix = new Matrix(_settings.Player.Direction.Y, -_settings.Player.Direction.X, 0, 0, -_settings.ScreenPlane.Y, _settings.ScreenPlane.X, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+                posMatrix *= 1 / (_settings.ScreenPlane.X * _settings.Player.Direction.Y - _settings.Player.Direction.X * _settings.ScreenPlane.Y);
+                Vector2 result = new Vector2(playerDist.X * posMatrix.M11 + playerDist.Y * posMatrix.M12, playerDist.X * posMatrix.M21 + playerDist.Y * posMatrix.M22);
+
+                int spriteXPos = (int)((width / 2) * (1 + result.X / result.Y));
+
+                if (result.Y > 0)
+                {
+
+                    int spriteWidth = (int)(enemy.Width / result.Y);
+
+                    for (int i = -spriteWidth / 2; i <= spriteWidth / 2; i++)
+                    {
+                        if (i + spriteXPos >= 0 && i + spriteXPos < _currentRays.Count)
+                        {
+                            double xPixel = (i + spriteWidth / 2 )/ (double)spriteWidth;
+                            xPixel = xPixel == 1 ? 0 : xPixel;
+                            //(int)((i + spriteWidth / 2) * (double)enemy.Width)
+                            ((Ray)_currentRays[i + spriteXPos]).Add(new DistanceWrapper<ICrossable>(result.Y, xPixel, Side.SideX, enemy));
+                        }
+                    }
+                }
+            }
 
 
-
+            for (int columnNr = 0; columnNr < _currentRays.Count; columnNr++)
+            {
+                _painter.UpdateBuffer(_currentRays[columnNr], columnNr, _walls.MaxHeight);
             }
 
 

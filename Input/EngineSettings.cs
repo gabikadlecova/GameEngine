@@ -8,9 +8,11 @@ namespace Input
     {
         public IPlayer Player;
         public string WallFilePath;
+        public string MapFilePath;
+        public string EnemyFilePath;
+
         public ICastCondition Condition;
         public ICastCondition HumanCondition;
-        public string MapFilePath;
         public Vector2 ScreenPlane;
         
     }

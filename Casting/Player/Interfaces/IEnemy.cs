@@ -12,6 +12,8 @@ namespace Casting.Player.Interfaces
     {
         int TypeId { get; }
 
+        int Width { get; }
+
         ITextureWrapper Texture { get; }
     }
 }

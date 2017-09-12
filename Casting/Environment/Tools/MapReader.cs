@@ -4,6 +4,9 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using Casting.Player;
+using Casting.Player.Interfaces;
+using Casting.RayCasting;
 using Microsoft.Xna.Framework;
 
 namespace Casting.Environment.Tools
@@ -50,10 +53,11 @@ namespace Casting.Environment.Tools
                             string textureY = wallData[2];
                             uint altX = uint.Parse(wallData[3], NumberStyles.HexNumber);
                             uint altY = uint.Parse(wallData[4], NumberStyles.HexNumber);
-                            
+
                             int maxHeight = Int32.Parse(wallData[5]);
                             //todo color!!
-                            IWall wall = new Wall(textureX, textureY, new Color(){PackedValue = altX}, new Color() {PackedValue = altY}, maxHeight  );
+                            IWall wall = new Wall(textureX, textureY, new Color() {PackedValue = altX},
+                                new Color() {PackedValue = altY}, maxHeight);
 
                             container[id] = wall;
 
@@ -66,12 +70,51 @@ namespace Casting.Environment.Tools
                             //todo
                             //throw;
                         }
- 
+
                     }
                 }
 
                 return container;
             }
+        }
+
+        public IContainer<IEnemy> ReadEnemies(string filePath)
+        {
+            IContainer<IEnemy> container = new Container<IEnemy>();
+
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                while (!reader.EndOfStream)
+                {
+                    string[] data = reader.ReadLine()?.Split(',');
+
+                    if (data != null)
+                    {
+                        try
+                        {
+                            IEnemy enemy = new Enemy(data[4], 319, 261)
+                            {
+                                Direction = new Vector2(0.707F),
+                                HitPoints = Int32.Parse(data[1]),
+                                MovementCondition = HumanCastCondition.Default(),
+                                Position = new Vector2(float.Parse(data[2], CultureInfo.InvariantCulture), float.Parse(data[3], CultureInfo.InvariantCulture))
+                            };
+                            container[Int32.Parse(data[0])] = enemy;
+                        }
+                        catch (InvalidCastException e)
+                        {
+                            Debug.WriteLine(e);
+                            //todo what error
+                            //throw;
+                        }
+
+                    }
+
+                }
+
+            }
+
+            return container;
         }
     }
 }

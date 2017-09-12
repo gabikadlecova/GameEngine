@@ -1,8 +1,9 @@
-﻿using Casting.RayCasting.Interfaces;
+﻿using System;
+using Casting.RayCasting.Interfaces;
 
 namespace Casting.RayCasting
 {
-    public class DistanceWrapper<TObj> where TObj : ICrossable
+    public class DistanceWrapper<TObj> : IComparable<DistanceWrapper<TObj>> where TObj : ICrossable
     {
         public double Distance { get; }
 
@@ -25,5 +26,13 @@ namespace Casting.RayCasting
             Side = side;
         }
 
+        public int CompareTo(DistanceWrapper<TObj> other)
+        {
+            if (Math.Abs(Distance - other.Distance) < 2E-12)
+                return 0;
+            if (Distance > other.Distance)
+                return -1;
+            return 1;
+        }
     }
 }
