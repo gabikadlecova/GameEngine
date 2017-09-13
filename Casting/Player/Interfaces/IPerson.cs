@@ -12,10 +12,14 @@ namespace Casting.Player.Interfaces
     {
         Vector2 Position { get; set; }
 
-        Vector2 Direction { get; set; }
+        Vector2 Direction { get; }
 
         int HitPoints { get; set; }
 
         HumanCastCondition MovementCondition { get; set; }
+
+        void Rotate(float angle);
+        bool IsKilled { get; }
+
     }
 }

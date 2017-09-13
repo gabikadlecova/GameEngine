@@ -55,10 +55,9 @@
     <Compile Include="Environment\Wall.cs" />
     <Compile Include="Environment\Container.cs" />
     <Compile Include="Player\Enemy.cs" />
-    <Compile Include="Player\Interfaces\IEnemy.cs" />
     <Compile Include="Player\Interfaces\IPerson.cs" />
-    <Compile Include="Player\Interfaces\IPlayer.cs" />
     <Compile Include="Player\Interfaces\IWeapon.cs" />
+    <Compile Include="Player\Person.cs" />
     <Compile Include="Player\Player.cs" />
     <Compile Include="RayCasting\CastCondition.cs" />
     <Compile Include="RayCasting\DistanceWrapper.cs" />

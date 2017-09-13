@@ -63,7 +63,7 @@ namespace Rendering
 
             Stopwatch secWatch = Stopwatch.StartNew();
 
-            //todo should be done differently
+            //todo should be done in a different way
             g.DrawImage(_bitmap, new Point(0,0));
             secWatch.Stop();
         }*/

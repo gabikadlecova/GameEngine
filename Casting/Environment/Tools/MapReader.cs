@@ -78,9 +78,9 @@ namespace Casting.Environment.Tools
             }
         }
 
-        public IContainer<IEnemy> ReadEnemies(string filePath)
+        public IContainer<Enemy> ReadEnemies(string filePath)
         {
-            IContainer<IEnemy> container = new Container<IEnemy>();
+            IContainer<Enemy> container = new Container<Enemy>();
 
             using (StreamReader reader = new StreamReader(filePath))
             {
@@ -92,14 +92,18 @@ namespace Casting.Environment.Tools
                     {
                         try
                         {
-                            IEnemy enemy = new Enemy(data[4], 319, 261)
-                            {
-                                Direction = new Vector2(0.707F),
-                                HitPoints = Int32.Parse(data[1]),
-                                MovementCondition = HumanCastCondition.Default(),
-                                Position = new Vector2(float.Parse(data[2], CultureInfo.InvariantCulture), float.Parse(data[3], CultureInfo.InvariantCulture))
-                            };
-                            container[Int32.Parse(data[0])] = enemy;
+                            int typeId = Int32.Parse(data[0]);
+                            int hitPoints = Int32.Parse(data[1]);
+                            float positionX = float.Parse(data[2], CultureInfo.InvariantCulture);
+                            float positionY = float.Parse(data[3], CultureInfo.InvariantCulture);
+                            string texturePath = data[4];
+                            int height = Int32.Parse(data[5]);
+                            int width = Int32.Parse(data[6]);
+
+                            Enemy enemy = new Enemy(positionX, positionY, 0.707F, 0.707F, hitPoints,
+                                HumanCastCondition.Default(), height, width, typeId, texturePath);
+
+                            container[typeId] = enemy;
                         }
                         catch (InvalidCastException e)
                         {
