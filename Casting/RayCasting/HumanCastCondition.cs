@@ -27,17 +27,17 @@ namespace Casting.RayCasting
 
         public override void ObstacleCrossed(double distance)
         {
-            _obstacleCount++;
-            _currentDistance = distance;
+            ObstacleCount++;
+            CurrentDistance = distance;
 
             //todo make raycaster intersection check methode in order to enable walldistance update (which will not be called in the wall raycaster methode)
             if (MaxDistance != null)
-                IsMet = _currentDistance >= MaxDistance;
+                IsMet = CurrentDistance >= MaxDistance;
 
             if (MaxWalls != null)
             {
                 if(!IsMet)
-                    IsMet = _obstacleCount >= MaxWalls;
+                    IsMet = ObstacleCount >= MaxWalls;
             }
         }
     }

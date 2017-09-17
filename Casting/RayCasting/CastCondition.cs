@@ -8,59 +8,57 @@ namespace Casting.RayCasting
 
         public bool IsMet { get; set; }
 
-        public int? MaxWalls { get; protected set; }
+        protected int? MaxWalls { get; set; }
 
-        public double? MaxDistance { get; protected set; }
+        protected double? MaxDistance { get; set; }
 
         public int? MinWalls { get; }
 
-        protected int _obstacleCount;
+        protected int ObstacleCount;
 
-        protected double _currentDistance;
+        protected double CurrentDistance;
 
         public virtual void ObstacleCrossed(double distance)
         {
-            _obstacleCount++;
-            _currentDistance = distance;
+            ObstacleCount++;
+            CurrentDistance = distance;
 
             if (MaxDistance != null)
-                IsMet = _currentDistance >= MaxDistance;
+                IsMet = CurrentDistance >= MaxDistance;
 
             if (MaxWalls != null)
             {
-                IsMet = _obstacleCount >= MaxWalls;
+                IsMet = ObstacleCount >= MaxWalls;
             }
 
-            if (MaxWalls != null)
+            if (MinWalls != null)
             {
-                IsMet = _obstacleCount < MinWalls;
+                IsMet = ObstacleCount < MinWalls;
             }
         }
-
-        //ToDo distance sets off only if a wall had been crossed
-
         public void Reset()
         {
             IsMet = false;
-            _obstacleCount = 0;
-            _currentDistance = 0;
+            ObstacleCount = 0;
+            CurrentDistance = 0;
         }
 
         public void UpdateDistance(double distance)
         {
-            _currentDistance = distance;
+            CurrentDistance = distance;
 
             if (MaxDistance != null)
-                IsMet = _currentDistance >= MaxDistance;
+                IsMet = CurrentDistance >= MaxDistance;
         }
 
         protected CastCondition(int? wallNumber, double? maxDistance, int? minWalls)
         {
             MaxWalls = wallNumber;
             MaxDistance = maxDistance;
+            MinWalls = minWalls;
             IsMet = false;
-            _obstacleCount = 0;
-            _currentDistance = 0;
+            ObstacleCount = 0;
+            CurrentDistance = 0;
         }
 
         public static CastCondition LimitWalls(int wallNumber)

@@ -64,7 +64,6 @@
     <Compile Include="RayCasting\HumanCastCondition.cs" />
     <Compile Include="RayCasting\Interfaces\ICastCondition.cs" />
     <Compile Include="RayCasting\Interfaces\ICrossable.cs" />
-    <Compile Include="RayCasting\Interfaces\IRay.cs" />
     <Compile Include="RayCasting\Interfaces\IRayCaster.cs" />
     <Compile Include="RayCasting\Interfaces\IVector.cs" />
     <Compile Include="RayCasting\Ray.cs" />

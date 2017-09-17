@@ -10,9 +10,11 @@ namespace Casting.Environment
     {
         public Wall(string textureX, string textureY, Color altX, Color altY, int height)
         {
-            Textures = new List<ITextureWrapper>();
-            Textures.Add(new TextureWrapper(textureX, altX));
-            Textures.Add(new TextureWrapper(textureY, altY));
+            Textures = new List<ITextureWrapper>
+            {
+                new TextureWrapper(textureX, altX),
+                new TextureWrapper(textureY, altY)
+            };
             Height = height;
         }
 

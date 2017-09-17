@@ -4,7 +4,7 @@ using Casting.RayCasting.Interfaces;
 
 namespace Casting.RayCasting
 {
-    public class Ray : IRay
+    public class Ray
     {
         public List<DistanceWrapper<ICrossable>> ObjectsCrossed { get; }
 

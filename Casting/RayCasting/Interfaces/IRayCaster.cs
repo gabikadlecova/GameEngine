@@ -8,6 +8,6 @@ namespace Casting.RayCasting.Interfaces
     {
         IMap Map { get; set; }
         IContainer<IWall> Walls { get; set; }
-        IRay Cast(Vector2 startPosition, Vector2 direction, ICastCondition condition);
+        Ray Cast(Vector2 startPosition, Vector2 direction, ICastCondition condition);
     }
 }

@@ -33,22 +33,20 @@ namespace Game
         private Texture2D _wallCanvas;
         private Texture2D _sky;
         private Texture2D _floor;
+        private List<Ray> _currentRays;
 
         private IMap _map;
         private IContainer<IWall> _walls;
         private IContainer<Enemy> _enemies;
-        private IRayCaster _caster;
+        private RayCaster _caster;
 
         private EngineSettings _settings;
         private Player _player;
 
         private BackgroundPainter _painter;
-
-        private List<IRay> _currentRays;
-
+        
         private SpriteFont _arialFont;
-
-        private double frameRate;
+        private double _frameRate;
 
         public Game1()
         {
@@ -70,7 +68,7 @@ namespace Game
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            
             _settings = new EngineSettings()
             {
                 Condition = CastCondition.CastDistance(Double.MaxValue, 1),
@@ -86,15 +84,21 @@ namespace Game
 
             _map = reader.ReadMap(_settings.MapFilePath);
             _walls = reader.ReadWalls(_settings.WallFilePath);
-            _settings.Condition = CastCondition.WallCountInterval(3, 1);
+            _settings.Condition = CastCondition.WallCountInterval(2, 1);
             _enemies = reader.ReadEnemies(_settings.EnemyFilePath);
 
             _caster = new RayCaster(_map, _walls);
 
+            _player.Caster = _caster;
+            foreach (Enemy enemy in _enemies)
+            {
+                enemy.Caster = _caster;
+            }
+
             _painter = new BackgroundPainter(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
             _wallCanvas = new Texture2D(GraphicsDevice, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
 
-            _currentRays = new List<IRay>();
+            _currentRays = new List<Ray>();
 
 
             base.Initialize();
@@ -108,8 +112,7 @@ namespace Game
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
-
+            
             int initialWidth = GraphicsDevice.Viewport.Width;
             int initialHeight = GraphicsDevice.Viewport.Height;
 
@@ -196,58 +199,44 @@ namespace Game
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+
+            #region Key state
+
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
             var keys = Keyboard.GetState().GetPressedKeys();
-            
-            Vector2 nextPosition = _player.Position;
-            Vector2 currPosition = nextPosition;
+
+            Vector2 stepVector = Vector2.Zero;
+
             foreach (Keys keyse in keys)
             {
                 //todo should be in fact checked in each branch (function?)
                 switch (keyse)
                 {
                     case Keys.W:
-                        nextPosition = Vector2.Add(_player.Position, movementSpeed * _player.Direction);
+                        stepVector = _player.Direction;
                         break;
                     case Keys.S:
-                        nextPosition = Vector2.Add(_player.Position, -movementSpeed * _player.Direction);
+                        stepVector = - _player.Direction;
                         break;
 
                     case Keys.A:
-                        nextPosition = Vector2.Add(_player.Position, -movementSpeed * _player.ScreenPlane);
+                        stepVector = - _player.ScreenPlane;
                         break;
 
                     case Keys.D:
-                        nextPosition = Vector2.Add(_player.Position, movementSpeed * _player.ScreenPlane);
-                        break;
-                    default:
-
+                        stepVector = _player.ScreenPlane;
                         break;
                 }
-
-                Vector2 dir = nextPosition - currPosition;
-                float distance = dir.Length();
-                if (distance > Double.Epsilon)
-                {
-                    _player.MovementCondition.ResetDistance(distance);
-                    dir.Normalize();
-                    var resultRay = _caster.Cast(_player.Position, dir, _player.MovementCondition);
-
-                    bool canMove = true;
-                    if (resultRay.ObjectsCrossed.Count > 0)
-                    {
-                        if (resultRay.ObjectsCrossed[0].Distance < distance)
-                            canMove = false;
-                    }
-
-
-                    if (canMove)
-                        _player.Position = nextPosition;
-                }
+               
+                _player.Move(stepVector);
+                
             }
 
+            #endregion
+
+            #region Mouse state
 
             Point currMouse = Mouse.GetState().Position;
             //Debug.WriteLine($"{currMouse}");
@@ -264,8 +253,17 @@ namespace Game
                 //Debug.WriteLine($"{difference}");
             }
 
-            // TODO: Add your update logic here
+            #endregion
 
+
+            #region Enemy state
+
+            foreach (var enemy in _enemies)
+            {
+                
+            }
+
+            #endregion
 
             base.Update(gameTime);
         }
@@ -277,82 +275,69 @@ namespace Game
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            _currentRays.Clear();
             // TODO: Add your drawing code here
 
 
             int width = GraphicsDevice.Viewport.Width;
-            for (int x = 0; x < width; x++)
-            {
-                //todo check direction
 
-                float planeMultiplier = 2F * x / width - 1;
-                Vector2 planePart = planeMultiplier * _player.ScreenPlane;
-                Vector2 direction = Vector2.Add(_player.Direction, planePart);
-                IRay ray = _caster.Cast(_player.Position, direction, _settings.Condition);
+            //raycasting
+            _currentRays = _caster.FieldOfView(width, _player.Position ,_player.Direction, _player.ScreenPlane, _settings.Condition);
 
-                _currentRays.Add(ray);
-
-                Stopwatch watch = Stopwatch.StartNew();
-
-                watch.Stop();
-
-                // Debug.WriteLine("Watch: " + watch.ElapsedMilliseconds);
-            }
-
+            #region Enemies
             foreach (Enemy enemy in _enemies)
             {
                 Vector2 playerDist = enemy.Position - _player.Position;
-                Matrix posMatrix = new Matrix(_player.Direction.Y, -_player.Direction.X, 0, 0, -_player.ScreenPlane.Y, _player.ScreenPlane.X, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-                posMatrix *= 1 / (_player.ScreenPlane.X * _player.Direction.Y - _player.Direction.X * _player.ScreenPlane.Y);
-                Vector2 result = new Vector2(playerDist.X * posMatrix.M11 + playerDist.Y * posMatrix.M12, playerDist.X * posMatrix.M21 + playerDist.Y * posMatrix.M22);
 
-                int spriteXPos = (int)((width / 2) * (1 + result.X / result.Y));
+                /***********************/
+                /*                     */
+                /* (dir Y   ,  -dir X) */
+                /* (-plane Y, plane X) */
+                /*                     */
+                /***********************/
 
+                Matrix invMatrix = new Matrix(_player.Direction.Y, -_player.Direction.X, 0, 0, -_player.ScreenPlane.Y, _player.ScreenPlane.X, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+                invMatrix *= 1 / (_player.ScreenPlane.X * _player.Direction.Y - _player.Direction.X * _player.ScreenPlane.Y);
+
+                Vector2 result = new Vector2(playerDist.X * invMatrix.M11 + playerDist.Y * invMatrix.M12,
+                                             playerDist.X * invMatrix.M21 + playerDist.Y * invMatrix.M22);
+
+                int spriteXPos = (int)(width / 2F * (1 + result.X / result.Y));
+
+                //is enemy in front of the player?
                 if (result.Y > 0)
                 {
-
                     int spriteWidth = (int)(enemy.Width / result.Y);
 
-                    for (int i = -spriteWidth / 2; i <= spriteWidth / 2; i++)
+                    for (int i = -spriteWidth / 2; i < spriteWidth / 2; i++)
                     {
-                        if (i + spriteXPos >= 0 && i + spriteXPos < _currentRays.Count)
+                        int currIndex = i + spriteXPos;
+
+                        if (currIndex >= 0 && currIndex < width)
                         {
                             double xPixel = (i + spriteWidth / 2) / (double)spriteWidth;
-                            xPixel = xPixel == 1 ? 0 : xPixel;
-                            //(int)((i + spriteWidth / 2) * (double)enemy.Width)
-                            ((Ray)_currentRays[i + spriteXPos]).Add(new DistanceWrapper<ICrossable>(result.Y, xPixel, Side.SideX, enemy));
+                            _currentRays[currIndex].Add(new DistanceWrapper<ICrossable>(result.Y, xPixel, Side.SideX, enemy));
                         }
                     }
                 }
             }
+            #endregion
 
-
-            for (int columnNr = 0; columnNr < _currentRays.Count; columnNr++)
-            {
-                _painter.UpdateBuffer(_currentRays[columnNr], columnNr, _walls.MaxHeight);
-            }
-
-
-            frameRate = 1 / gameTime.ElapsedGameTime.TotalSeconds;
-
-
+            _painter.UpdateBuffer(_currentRays, _walls.MaxHeight);
             _wallCanvas.SetData<Color>(_painter.Buffer.BufferData);
 
-            //Debug.WriteLine("First" + 1 / gameTime.ElapsedGameTime.TotalSeconds);
-            spriteBatch.Begin();
+            _frameRate = 1 / gameTime.ElapsedGameTime.TotalSeconds;
 
+            spriteBatch.Begin();
 
             spriteBatch.Draw(_sky, new Rectangle(0, 0, _sky.Width, _sky.Height), Color.White);
             spriteBatch.Draw(_floor, new Rectangle(0, _sky.Height, _floor.Width, _floor.Height), Color.White);
             spriteBatch.Draw(_wallCanvas, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
-            if(gameTime.IsRunningSlowly)
-                spriteBatch.DrawString(_arialFont, $"FPS: {frameRate}", new Vector2(0, 0), Color.Black);
+            spriteBatch.DrawString(_arialFont, $"FPS: {_frameRate}", new Vector2(0, 0),
+                gameTime.IsRunningSlowly ? Color.Red : Color.Black);
             spriteBatch.End();
-
-            // Debug.WriteLine(1 / gameTime.ElapsedGameTime.TotalSeconds);
+            
             base.Draw(gameTime);
-
+            
         }
     }
 }

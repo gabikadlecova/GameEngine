@@ -13,8 +13,6 @@ namespace Casting.Player
 {
     public class Player : Person
     {
-        //todo constructor
-
         public Player(float positionX, float positionY, float directionX, float directionY, int hitPoints, HumanCastCondition condition, string name) : base(positionX, positionY, directionX, directionY, hitPoints, condition)
         {
             Name = name;
@@ -41,7 +39,6 @@ namespace Casting.Player
 
         public IWeapon Weapon { get; set; }
         public string Name { get; set; }
-        //todo
         public Vector2 ScreenPlane { get; private set; }
 
         public override void Rotate(float angle)

@@ -14,7 +14,6 @@ namespace Casting.Player
 {
     public class Enemy : Person, ICrossable
     {
-        //todo constructor
 
         public Enemy(float positionX, float positionY, float directionX, float directionY, int hitPoints, HumanCastCondition condition, int height, int width, int typeId, string texturePath) : base(positionX, positionY, directionX, directionY, hitPoints, condition)
         {

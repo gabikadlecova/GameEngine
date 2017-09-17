@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using Casting.RayCasting;
 using Casting.RayCasting.Interfaces;
-using Rendering.Interfaces;
 using System.Windows.Media.Imaging;
+using Casting.Environment.Interfaces;
+using Microsoft.Xna.Framework;
+using Ray = Casting.RayCasting.Ray;
 
 namespace Rendering
 {
@@ -19,67 +18,91 @@ namespace Rendering
     {
 
         public BitmapBuffer Buffer { get; }
-
+        
 
         public BackgroundPainter(int width, int height)
         {
             Buffer = new BitmapBuffer(width, height);
         }
 
-        public void UpdateBuffer(IRay ray, int columnNr, int wallMaxHeight)
-        {
-            
-                Stopwatch watch = Stopwatch.StartNew();
-                //todo copy column data
-                IColumn column = new Column(columnNr, Buffer.Height);
-                column.SetPixels(ray, wallMaxHeight);
-
-                for (int i = 0; i < Buffer.Height; i++)
-                {
-                    Buffer[columnNr, i] = column.Pixels[i];
-                }
-
-                watch.Stop();
-                
-        }
-
-        /*public void RenderBitmap(Graphics g)
-        {
-            //todo which pixel format
-            //todo think of what is quicker
-
-            int width = Buffer.Width;
-            int height = Buffer.Height;
-
-            var rectangle = new Rectangle(0,0,width, height);
-            BitmapData data = _bitmap.LockBits(rectangle, ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
-
-            IntPtr ptr = data.Scan0;
-            
-
-            
-            //Marshal.Copy(Buffer.BufferData, 0, ptr, Buffer.BufferData.Length);
-            _bitmap.UnlockBits(data);
-
-            Stopwatch secWatch = Stopwatch.StartNew();
-
-            //todo should be done in a different way
-            g.DrawImage(_bitmap, new Point(0,0));
-            secWatch.Stop();
-        }*/
-
         //ToDo check which side is x and which y (bitmap context)
         public void ChangeResolution(int width, int height)
         {
             Buffer.Resize(width, height);
-            //_bitmap = new Bitmap(_bitmap, new Size(width, height));
         }
 
 
-
-       /* public void Dispose()
+        public void UpdateBuffer(List<Ray> rays, int wallMaxHeight)
         {
-            _bitmap.Dispose();
-        }*/
+            for (int i = 0; i < rays.Count; i++)
+            {
+                SetPixels(rays[i], i, wallMaxHeight);
+            }
+        }
+
+        public void UpdateBuffer(Ray ray, int columnNr, int wallMaxHeight)
+        {
+            SetPixels(ray, columnNr, wallMaxHeight);
+        }
+
+        private void SetPixels(Ray rayFrom, int columnNr, int maxHeight)
+        {
+            //clearing the previous data
+            for (int i = 0; i < Buffer.Height; i++)
+            {
+                Buffer[columnNr, i] = Color.Transparent;
+            }
+
+            //filling the column with pixels of crossed objects
+            for (int i = rayFrom.ObjectsCrossed.Count - 1; i >= 0; i--)
+            {
+                //todo check beginnings
+                var item = rayFrom.ObjectsCrossed[i];
+
+                int line = (int)(item.Element.Height / item.Distance);
+                int maxLine = (int)(maxHeight / item.Distance);
+
+                int begin = Buffer.Height / 2 + maxLine / 2 - line;
+
+                begin = begin < 0 ? 0 : begin;
+
+                double heightRatio = 1;
+                bool useTexture = false;
+
+
+                ITextureWrapper texture = item.Element.GetTexture(item.Side);
+                Color altColor = texture.AltColor;
+
+                if (texture.IsOk)
+                {
+                    heightRatio = (double)texture.Height / line;
+                    useTexture = true;
+                }
+
+
+                int pixelNo = 0;
+                int bitmapXCoor = (int)(item.TextureXRatio * texture.Width);
+
+                while (pixelNo < line && begin + pixelNo < Buffer.Height)
+                {
+                    if (useTexture)
+                    {
+                        int bitmapPixelNo = (int)(heightRatio * pixelNo);
+                        Color nextPix = texture[bitmapPixelNo, bitmapXCoor];
+                        if (nextPix != Color.Transparent)
+                            Buffer[columnNr, begin + pixelNo] = nextPix;
+                    }
+                    else
+                    {
+                        Buffer[columnNr, begin + pixelNo] = altColor;
+                    }
+                    pixelNo++;
+                }
+
+
+            }
+
+        }
+
     }
 }

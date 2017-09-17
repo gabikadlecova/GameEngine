@@ -13,11 +13,13 @@ namespace Casting.RayCasting
 
         private IMap _map;
         private IContainer<IWall> _container;
+        private List<Ray> _rayBuffer;
 
         public RayCaster(IMap map, IContainer<IWall> container)
         {
             _map = map;
             _container = container;
+            _rayBuffer = new List<Ray>();
         }
 
         public IMap Map
@@ -31,8 +33,29 @@ namespace Casting.RayCasting
             get { return _container; }
             set { _container = value ?? _container; }
         }
+        
+        public List<Ray> FieldOfView(int width, Vector2 position, Vector2 startDirection, Vector2 screenPlane, ICastCondition condition)
+        {
+            _rayBuffer.Clear();
 
-        public IRay Cast(Vector2 startPosition, Vector2 direction, ICastCondition stopCondition)
+            for (int x = 0; x < width; x++)
+            {
+                //todo check direction
+
+                float planeMultiplier = 2F * x / width - 1;
+                Vector2 planePart = planeMultiplier * screenPlane;
+                Vector2 direction = Vector2.Add(startDirection, planePart);
+                Ray ray = Cast(position, direction, condition);
+
+                _rayBuffer.Add(ray);
+
+            }
+
+            return _rayBuffer;
+        }
+            
+
+        public Ray Cast(Vector2 startPosition, Vector2 direction, ICastCondition stopCondition)
         {
             Ray resultRay = new Ray();
 
