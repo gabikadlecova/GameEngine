@@ -11,26 +11,28 @@ using Microsoft.Xna.Framework;
 
 namespace Casting.Player
 {
-    public class Player : Person
+    public class Player : MovingObject, IPerson
     {
-        public Player(float positionX, float positionY, float directionX, float directionY, int hitPoints, HumanCastCondition condition, string name) : base(positionX, positionY, directionX, directionY, hitPoints, condition)
+
+        public Player(float positionX, float positionY, float directionX, float directionY, int hitPoints, HumanCastCondition condition, string name, float movementSpeed) : base(positionX, positionY, directionX, directionY, condition, movementSpeed)
         {
             Name = name;
 
             float planeX = directionY;
             float planeY = -directionX;
+            HitPoints = hitPoints;
             Vector2 screenPlane = new Vector2(planeX, planeY);
             screenPlane.Normalize();
             ScreenPlane = screenPlane;
         }
 
-        public Player(Vector2 positon, Vector2 direction, int hitpoints, HumanCastCondition condition, string name) : base(positon, direction, hitpoints, condition)
+        public Player(Vector2 positon, Vector2 direction, int hitpoints, HumanCastCondition condition, string name, float movementSpeed) : base(positon, direction, condition, movementSpeed)
         {
-           Name = name;
-
+            Name = name;
 
             float planeX = direction.Y;
             float planeY = -direction.X;
+            HitPoints = hitpoints;
             Vector2 screenPlane = new Vector2(planeX, planeY);
             screenPlane.Normalize();
             ScreenPlane = screenPlane;
@@ -47,5 +49,13 @@ namespace Casting.Player
             ScreenPlane = Vector2.Transform(ScreenPlane, rotation);
             base.Rotate(angle);
         }
+
+        public void Shoot()
+        {
+            Weapon.Shoot(Position, Direction);
+        }
+
+        public int HitPoints { get; set; }
+        public bool IsKilled { get { return HitPoints <= 0; } }
     }
 }

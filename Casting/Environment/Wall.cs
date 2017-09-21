@@ -19,6 +19,8 @@ namespace Casting.Environment
         }
 
         public int Height { get; }
+        public int Width { get { return 0; } }
+
         public ITextureWrapper GetTexture(Side side)
         {
             switch (side)

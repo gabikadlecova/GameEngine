@@ -20,9 +20,10 @@ namespace Casting.RayCasting
             return new HumanCastCondition(1, double.MaxValue);
         }
 
-        public void ResetDistance(double maxDistance)
+        public void Reset(double maxDistance)
         {
             MaxDistance = maxDistance;
+            Reset();
         }
 
         public override void ObstacleCrossed(double distance)

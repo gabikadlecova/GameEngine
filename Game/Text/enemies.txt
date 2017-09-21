@@ -1,1 +1,1 @@
-0,1,1.5,2.5,..\..\..\..\Textures\cockateilsmall.gif,261,319
+0, 1, 1.5, 2.5,..\..\..\..\Textures\cockatielsmall.png,..\..\..\..\Textures\roast-chicken.png, 176, 125, 0.009, 0.4

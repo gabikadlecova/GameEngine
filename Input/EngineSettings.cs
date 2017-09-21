@@ -9,6 +9,7 @@ namespace Input
         public string WallFilePath;
         public string MapFilePath;
         public string EnemyFilePath;
+        public string WeaponFilePath;
 
         public ICastCondition Condition;
         

@@ -1,0 +1,1 @@
+3,..\..\..\..\Textures\shotgun.png,0.09,..\..\..\..\Textures\rainbowbullet.png,..\..\..\..\Textures\explosion0.png,100

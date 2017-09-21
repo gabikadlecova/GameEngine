@@ -11,7 +11,7 @@ namespace Casting.RayCasting.Interfaces
     public interface ICrossable
     {
         int Height { get; }
-
+        int Width { get; }
         ITextureWrapper GetTexture(Side side);
 
     }

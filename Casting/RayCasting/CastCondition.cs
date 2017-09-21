@@ -33,9 +33,16 @@ namespace Casting.RayCasting
 
             if (MinWalls != null)
             {
-                IsMet = ObstacleCount < MinWalls;
+                IsMet = ObstacleCount > MinWalls && IsMet;
             }
         }
+
+        public void MapRangeCrossed()
+        {
+            ObstacleCount++;
+            IsMet = true;
+        }
+
         public void Reset()
         {
             IsMet = false;

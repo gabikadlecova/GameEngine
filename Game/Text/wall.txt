@@ -1,2 +1,3 @@
+-1,..\..\..\..\Textures\fence.png,..\..\..\..\Textures\fence.png,FFF0F8FF,FFDC143C,340
 1,..\..\..\..\Textures\thewall.jpeg,..\..\..\..\Textures\firstwall.jpg,FFF0F8FF,FFDC143C,550
 2,..\..\..\..\Textures\thewall.jpeg,..\..\..\..\Textures\korela.jpg,FFF0F8FF,FFDC143C,300

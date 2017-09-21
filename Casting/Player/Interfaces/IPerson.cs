@@ -10,21 +10,8 @@ namespace Casting.Player.Interfaces
 {
     public interface IPerson
     {
-        Vector2 Position { get; set; }
-
-        Vector2 Direction { get; }
-
-        int HitPoints { get; set; }
-
-        float MovementSpeed { get; set; }
-
-        HumanCastCondition MovementCondition { get; set; }
-
-        void Rotate(float angle);
-
-        void Move(Vector2 direction);
-
-        bool IsKilled { get; }
+       int HitPoints { get; set; }
+       bool IsKilled { get; }
 
     }
 }

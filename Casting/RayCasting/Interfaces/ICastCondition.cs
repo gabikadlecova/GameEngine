@@ -4,6 +4,7 @@
     {
         bool IsMet { get; }
         void ObstacleCrossed(double distance);
+        
 
         void UpdateDistance(double distance);
 

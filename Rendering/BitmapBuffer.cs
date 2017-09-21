@@ -18,7 +18,7 @@ namespace Rendering
         public Color this[int x, int y]
         {
             get { return BufferData[y * Width + x]; }
-            set { BufferData[y * Width + x] = value; }
+            set { BufferData[y * Width + x] = value;}
         }
 
         public BitmapBuffer(int width, int height)

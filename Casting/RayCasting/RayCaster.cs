@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace Casting.RayCasting
 {
-    public partial class RayCaster : IRayCaster
+    public class RayCaster : IRayCaster
     {
         //ToDo Debug this (or write some nice unit tests)
         private const double Treshold = 2E-12;
@@ -53,7 +53,6 @@ namespace Casting.RayCasting
 
             return _rayBuffer;
         }
-            
 
         public Ray Cast(Vector2 startPosition, Vector2 direction, ICastCondition stopCondition)
         {
@@ -155,24 +154,27 @@ namespace Casting.RayCasting
                     }
                 }
 
+
+
                 //todo check mapX and mapY
-                if (!_map.IsInRange(mapX, mapY))
-                    return resultRay;
+                
 
-                int index = _map[mapX, mapY];
-                if (index > 0)
+
+                int index = _map.IsInRange(mapX, mapY) ? _map[mapX, mapY] : -1;
+                if (index > 0 || index == -1)
                 {
-
-                    
                     IWall crossedWall = _container[index];
                     
                     double wallDistance;
                     double xWallPoint;
+                    double obliqueDist;
 
                     switch(side)
                     {
                         //crossed on x
                         case Side.SideX:
+                            obliqueDist = rayDistX;
+
                             wallDistance = mapX - rayPositionX;
                             wallDistance = !gridPoint ? wallDistance + (1 - sideX) / 2 : wallDistance;
                             
@@ -183,6 +185,8 @@ namespace Casting.RayCasting
                         //crossed on y or diagonal
                         case Side.Corner:
                         case Side.SideY:
+                            obliqueDist = rayPositionY;
+
                             wallDistance = mapY - rayPositionY;     
                             wallDistance = !gridPoint ? wallDistance + (1 - sideY) / 2 : wallDistance;
                             
@@ -198,7 +202,13 @@ namespace Casting.RayCasting
                     stopCondition.ObstacleCrossed(wallDistance);
 
                     xWallPoint -= Math.Floor(xWallPoint);
-                    resultRay.ObjectsCrossed.Add(new DistanceWrapper<ICrossable>(wallDistance, xWallPoint, side, crossedWall));
+                    resultRay.ObjectsCrossed.Add(new DistanceWrapper<ICrossable>(wallDistance, xWallPoint, side, crossedWall, obliqueDist));
+
+                    if (index == -1)
+                    {
+                        stopCondition.Reset();
+                        return resultRay;
+                    }
                 }
                 
 
