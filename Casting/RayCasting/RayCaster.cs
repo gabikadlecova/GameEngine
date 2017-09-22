@@ -162,7 +162,7 @@ namespace Casting.RayCasting
                             obliqueDist = rayPositionY;
 
                             wallDistance = mapY - rayPositionY;
-                            wallDistance =  wallDistance + (1 - sideY) / 2;
+                            wallDistance = wallDistance + (1 - sideY) / 2;
 
                             wallDistance /= direction.Y;
 
@@ -175,13 +175,36 @@ namespace Casting.RayCasting
                     stopCondition.ObstacleCrossed(wallDistance);
 
                     xWallPoint -= Math.Floor(xWallPoint);
-                    resultRay.ObjectsCrossed.Add(new DistanceWrapper<ICrossable>(wallDistance, xWallPoint, side, crossedWall, obliqueDist));
+
+                    float wallPosX = 0;
+                    float wallPosY = 0;
+
+                    if (side == Side.SideX)
+                    {
+                        wallPosX = direction.X > 0 ? mapX : mapX + 1;
+                        wallPosY = (float) (mapY + xWallPoint);
+                    }
+
+                    if (side == Side.SideY)
+                    {
+                        wallPosX = (float) (mapX + xWallPoint);
+                        wallPosY = direction.Y > 0 ? mapY : mapY + 1;
+                    }
+
+                    Vector2 wallPos = new Vector2(wallPosX, wallPosY);
+                    
+                    resultRay.ObjectsCrossed.Add(new DistanceWrapper<ICrossable>(wallDistance, xWallPoint, side, crossedWall, wallPos, true));
+
 
                     if (index == -1)
                     {
                         stopCondition.Reset();
                         return resultRay;
                     }
+
+                    
+
+
                 }
 
 

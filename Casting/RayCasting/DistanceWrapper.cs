@@ -1,5 +1,6 @@
 ﻿using System;
 using Casting.RayCasting.Interfaces;
+using Microsoft.Xna.Framework;
 
 namespace Casting.RayCasting
 {
@@ -7,7 +8,9 @@ namespace Casting.RayCasting
     {
         public double Distance { get; }
 
-        public double? ObliqueDistance { get; }
+        public bool IsNotTransparent { get; }
+
+        public Vector2 ElementPos { get; }
 
         /// <summary>
         /// Defines the x coordinate of the texture, or precisely the exact location of the ray hit
@@ -20,13 +23,14 @@ namespace Casting.RayCasting
         public Side Side { get; }
         public TObj Element { get; }
 
-        public DistanceWrapper(double distance, double textureXRatio, Side side, TObj element, double? obliqueDistance = null)
+        public DistanceWrapper(double distance, double textureXRatio, Side side, TObj element, Vector2 elementPos, bool isNotTransparent)
         {
             Distance = distance;
             Element = element;
             TextureXRatio = textureXRatio;
             Side = side;
-            ObliqueDistance = obliqueDistance;
+            ElementPos = elementPos;
+            IsNotTransparent = isNotTransparent;
         }
     }
 }

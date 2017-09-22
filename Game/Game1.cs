@@ -90,7 +90,10 @@ namespace Game
                 MapFilePath = @"..\..\..\..\Text\map.txt",
                 WallFilePath = @"..\..\..\..\Text\wall.txt",
                 EnemyFilePath = @"..\..\..\..\Text\enemies.txt",
-                WeaponFilePath = @"..\..\..\..\Text\weapons.txt"
+                WeaponFilePath = @"..\..\..\..\Text\weapons.txt",
+
+                SkyFilePath = @"..\..\..\..\Textures\sky.jpg",
+                FloorFilePath = @"..\..\..\..\Textures\floor.jpg"
             };
 
             _player = new Player(new Vector2(0.1F, 0.1F), Vector2.One, 1,
@@ -123,7 +126,7 @@ namespace Game
                 enemy.Caster = _caster;
             }
 
-            _painter = new BackgroundPainter(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
+            _painter = new BackgroundPainter(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, _settings.SkyFilePath, _settings.FloorFilePath);
             _wallCanvas = new Texture2D(GraphicsDevice, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
 
 
@@ -143,28 +146,9 @@ namespace Game
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            int initialWidth = GraphicsDevice.Viewport.Width;
-            int initialHeight = GraphicsDevice.Viewport.Height;
-
-            _sky = new Texture2D(GraphicsDevice, initialWidth, (int)Math.Floor(initialHeight / 2.0));
-            _floor = new Texture2D(GraphicsDevice, initialWidth, (int)Math.Ceiling(initialHeight / 2.0));
-
 
             #region Texture loading
 
-            Color[] buff = new Color[_sky.Height * _sky.Width];
-            for (int i = 0; i < buff.Length; i++)
-            {
-                buff[i] = Color.LightSkyBlue;
-            }
-            _sky.SetData(buff);
-
-            buff = new Color[_floor.Height * _floor.Width];
-            for (int i = 0; i < buff.Length; i++)
-            {
-                buff[i] = Color.LimeGreen;
-            }
-            _floor.SetData(buff);
 
 
             foreach (var wall in _walls)
@@ -224,6 +208,26 @@ namespace Game
                 }
             }
 
+
+            using (FileStream stream = new FileStream(_painter.Sky.PicAddress, FileMode.Open))
+            {
+                using (Texture2D tex = Texture2D.FromStream(GraphicsDevice, stream))
+                {
+                    _painter.Sky.LoadTexture(tex);
+                }
+            }
+
+            using (FileStream stream = new FileStream(_painter.Floor.PicAddress, FileMode.Open))
+            {
+                using (Texture2D tex = Texture2D.FromStream(GraphicsDevice, stream))
+                {
+                    _painter.Floor.LoadTexture(tex);
+                }
+            }
+
+
+
+
             #endregion
 
 
@@ -231,9 +235,10 @@ namespace Game
 
             // TODO: use this.Content to load your game content here
 
-
-
+            
             _arialFont = Content.Load<SpriteFont>("font");
+            _floor = Content.Load<Texture2D>("floor");
+            _sky = Content.Load<Texture2D>("sky");
 
         }
 
@@ -246,8 +251,6 @@ namespace Game
             // TODO: Unload any non ContentManager content here
 
             _wallCanvas.Dispose();
-            _floor.Dispose();
-            _sky.Dispose();
 
         }
 
@@ -496,6 +499,7 @@ namespace Game
 
 
             int width = GraphicsDevice.Viewport.Width;
+            int height = GraphicsDevice.Viewport.Height;
 
             //raycasting
             _currentRays = _caster.FieldOfView(width, _player.Position, _player.Direction, _player.ScreenPlane, _settings.Condition);
@@ -542,23 +546,26 @@ namespace Game
                         if (currIndex >= 0 && currIndex < width)
                         {
                             double xPixel = (i + spriteWidth / 2) / (double)spriteWidth;
-                            _currentRays[currIndex].Add(new DistanceWrapper<ICrossable>(result.Y, xPixel, Side.SideX, crossableSprite));
+                            _currentRays[currIndex].Add(new DistanceWrapper<ICrossable>(result.Y, xPixel, Side.SideX, crossableSprite, objectSprite.Position, false));
                         }
                     }
                 }
             }
             #endregion
 
-            _painter.UpdateBuffer(_currentRays, _walls.MaxHeight);
+
+            _painter.UpdateBuffer(_currentRays, _walls.MaxHeight, _player.Position, _player.Direction);
+
             _wallCanvas.SetData<Color>(_painter.Buffer.BufferData);
 
             _frameRate = 1 / gameTime.ElapsedGameTime.TotalSeconds;
 
+            
             spriteBatch.Begin();
 
-            spriteBatch.Draw(_sky, new Rectangle(0, 0, _sky.Width, _sky.Height), Color.White);
-            spriteBatch.Draw(_floor, new Rectangle(0, _sky.Height, _floor.Width, _floor.Height), Color.White);
-            spriteBatch.Draw(_wallCanvas, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
+            spriteBatch.Draw(_sky, new Rectangle(0, 0, width, height /2), Color.White);
+            spriteBatch.Draw(_floor, new Rectangle(0, height / 2, width, height / 2), Color.White);
+            spriteBatch.Draw(_wallCanvas, new Rectangle(0, 0, width, height), Color.White);
             spriteBatch.DrawString(_arialFont, $"FPS: {_frameRate}", new Vector2(0, 0),
                 gameTime.IsRunningSlowly ? Color.Red : Color.Black);
 

@@ -11,6 +11,9 @@ namespace Input
         public string EnemyFilePath;
         public string WeaponFilePath;
 
+        public string SkyFilePath;
+        public string FloorFilePath;
+
         public ICastCondition Condition;
         
     }
