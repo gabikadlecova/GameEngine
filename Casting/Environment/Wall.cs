@@ -28,7 +28,6 @@ namespace Casting.Environment
                 case Side.SideX:
                     return TextureX;
                 case Side.SideY:
-                case Side.Corner:
                     return TextureY;
                 default:
 

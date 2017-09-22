@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Casting.RayCasting.Interfaces;
 using System.Windows.Media.Imaging;
+using Casting.Environment;
 using Casting.Environment.Interfaces;
+using Casting.RayCasting;
 using Microsoft.Xna.Framework;
 using Ray = Casting.RayCasting.Ray;
 
@@ -17,12 +19,18 @@ namespace Rendering
     public class BackgroundPainter
     {
 
+        private double[] Distances;
+
         public BitmapBuffer Buffer { get; }
 
+        public ITextureWrapper Sky { get; }
+        public ITextureWrapper Floor { get; }
 
-        public BackgroundPainter(int width, int height)
+        public BackgroundPainter(int width, int height, string skyPath, string floorPath)
         {
             Buffer = new BitmapBuffer(width, height);
+            Sky = new TextureWrapper(skyPath, Color.Azure);
+            Floor = new TextureWrapper(floorPath, Color.DarkGreen);
         }
 
         //ToDo check which side is x and which y (bitmap context)
@@ -47,11 +55,17 @@ namespace Rendering
 
         private void SetPixels(Ray rayFrom, int columnNr, int maxHeight)
         {
+            /*
             //clearing the previous data
             for (int i = 0; i < Buffer.Height; i++)
             {
                 Buffer[columnNr, i] = Color.Transparent;
             }
+            */
+
+
+
+            
 
             //filling the column with pixels of crossed objects
             for (int i = rayFrom.ObjectsCrossed.Count - 1; i >= 0; i--)
@@ -63,6 +77,7 @@ namespace Rendering
                 int maxLine = (int)(maxHeight / item.Distance);
 
                 int begin = Buffer.Height / 2 + maxLine / 2 - line;
+                
 
                 //begin = begin < 0 ? 0 : begin;
 
@@ -78,6 +93,9 @@ namespace Rendering
                     heightRatio = (double)texture.Height / line;
                     useTexture = true;
                 }
+
+                
+
 
 
                 int pixelNo = begin < 0 ? -begin : 0;
@@ -101,9 +119,10 @@ namespace Rendering
 
                     pixelNo++;
                 }
-
-
+                
             }
+
+            
 
         }
 

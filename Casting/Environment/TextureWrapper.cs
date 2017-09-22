@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Casting.Environment
 {
-    class TextureWrapper : ITextureWrapper
+    public class TextureWrapper : ITextureWrapper
     {
         private Color[,] _buffer;
 

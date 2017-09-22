@@ -33,7 +33,7 @@ namespace Casting.RayCasting
             get { return _container; }
             set { _container = value ?? _container; }
         }
-        
+
         public List<Ray> FieldOfView(int width, Vector2 position, Vector2 startDirection, Vector2 screenPlane, ICastCondition condition)
         {
             _rayBuffer.Clear();
@@ -71,22 +71,15 @@ namespace Casting.RayCasting
             int sideY;
             double rayDistX;
             double rayDistY;
-            bool gridPoint = false;
 
             //Todo try to make this more clear
             if (direction.X > 0)
             {
                 sideX = 1;
                 double nearestSideX = mapX - rayPositionX;
-                if (Math.Abs(nearestSideX) < Treshold)
-                {
-                    rayDistX = 0;
-                    gridPoint = true;
-                }
-                else
-                {
-                    rayDistX = (nearestSideX + 1) * deltaX;
-                }
+
+                rayDistX = (nearestSideX + 1) * deltaX;
+
             }
             else
             {
@@ -98,102 +91,82 @@ namespace Casting.RayCasting
             {
                 sideY = 1;
                 double nearestSideY = mapY - rayPositionY;
-                if (Math.Abs(nearestSideY) < Treshold)
-                {
-                    rayDistY = 0;
-                    gridPoint = true;
-                }
-                else
-                {
-                    rayDistY = (nearestSideY + 1) * deltaY;
-                }
+
+                rayDistY = (nearestSideY + 1) * deltaY;
+
             }
             else
             {
                 sideY = -1;
                 rayDistY = (rayPositionY - mapY) * deltaY;
             }
-            
 
 
-            if(gridPoint && _map[mapX, mapY] > 0)
+
+            if (_map[mapX, mapY] > 0)
             {
                 stopCondition.ObstacleCrossed(0);
             }
-            
+
             while (!stopCondition.IsMet)
             {
                 Side side;
-                double smallVal = Math.Abs(rayDistX - rayDistY);
-                if (smallVal < Treshold)
+
+                if (rayDistX < rayDistY)
                 {
-                    //ToDo check diagonal movement
                     mapX += sideX;
-                    mapY += sideY;
-
                     rayDistX += deltaX;
-                    rayDistY += deltaY;
 
-                    side = Side.Corner;
+                    //north or south side?
+                    side = Side.SideX;
                 }
                 else
                 {
-                    if (rayDistX < rayDistY)
-                    {
-                        mapX += sideX;
-                        rayDistX += deltaX;
+                    mapY += sideY;
+                    rayDistY += deltaY;
 
-                        side = Side.SideX;
-                    }
-                    else
-                    {
-                        mapY += sideY;
-                        rayDistY += deltaY;
-
-                        side = Side.SideY;
-                    }
+                    side = Side.SideY;
                 }
+
 
 
 
                 //todo check mapX and mapY
-                
+
 
 
                 int index = _map.IsInRange(mapX, mapY) ? _map[mapX, mapY] : -1;
                 if (index > 0 || index == -1)
                 {
                     IWall crossedWall = _container[index];
-                    
+
                     double wallDistance;
                     double xWallPoint;
                     double obliqueDist;
 
-                    switch(side)
+                    switch (side)
                     {
                         //crossed on x
                         case Side.SideX:
                             obliqueDist = rayDistX;
 
                             wallDistance = mapX - rayPositionX;
-                            wallDistance = !gridPoint ? wallDistance + (1 - sideX) / 2 : wallDistance;
-                            
+                            wallDistance = wallDistance + (1 - sideX) / 2;
+
                             wallDistance /= direction.X;
                             xWallPoint = rayPositionY + wallDistance * direction.Y;
 
                             break;
-                        //crossed on y or diagonal
-                        case Side.Corner:
+                        //crossed on y
                         case Side.SideY:
                             obliqueDist = rayPositionY;
 
-                            wallDistance = mapY - rayPositionY;     
-                            wallDistance = !gridPoint ? wallDistance + (1 - sideY) / 2 : wallDistance;
-                            
+                            wallDistance = mapY - rayPositionY;
+                            wallDistance =  wallDistance + (1 - sideY) / 2;
+
                             wallDistance /= direction.Y;
 
                             xWallPoint = rayPositionX + wallDistance * direction.X;
-                            xWallPoint = side == Side.Corner ? 0 : xWallPoint;
                             break;
                         default:
                             throw new ArgumentException("Wall hit on undefined wall side");
@@ -210,7 +183,7 @@ namespace Casting.RayCasting
                         return resultRay;
                     }
                 }
-                
+
 
             }
 
