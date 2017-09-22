@@ -26,9 +26,9 @@ namespace Game
     {
         private const float RotationTreshold = 30;
         private const float MinEnemyDistance = 0.2F;
-        private const float MinBulletDistance = 3;
+        private const float MinBulletDistance = 1;
 
-        private const int AnimationSecs = 1;
+        private const int AnimationMils = 300;
 
         private float rotationSpeed = 0.03F;
 
@@ -60,6 +60,8 @@ namespace Game
         private SpriteFont _arialFont;
         private double _frameRate;
 
+        private bool resetedBefore;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this)
@@ -84,7 +86,7 @@ namespace Game
 
             _settings = new EngineSettings()
             {
-                Condition = CastCondition.WallCountInterval(3, 1),
+                Condition = CastCondition.WallCountInterval(4, 1),
                 MapFilePath = @"..\..\..\..\Text\map.txt",
                 WallFilePath = @"..\..\..\..\Text\wall.txt",
                 EnemyFilePath = @"..\..\..\..\Text\enemies.txt",
@@ -109,7 +111,12 @@ namespace Game
             _caster = new RayCaster(_map, _walls);
 
             _player.Caster = _caster;
-            _player.Weapon.Caster = _caster;
+            
+
+            foreach (IWeapon weapon in _weapons)
+            {
+                weapon.Caster = _caster;
+            }
 
             foreach (Enemy enemy in _enemies)
             {
@@ -255,10 +262,43 @@ namespace Game
 
             bool shooting = false;
 
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            KeyboardState state = Keyboard.GetState();
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || state.IsKeyDown(Keys.Escape))
                 Exit();
 
-            var keys = Keyboard.GetState().GetPressedKeys();
+            if (state.IsKeyDown(Keys.F3))
+            {
+                if (!resetedBefore)
+                {
+                    resetedBefore = true;
+                    Initialize();
+
+                    LoadContent();
+                    GC.Collect();
+                }
+
+                  
+            }
+            else
+            {
+                resetedBefore = false;
+            }
+
+            if (state.IsKeyDown(Keys.F12))
+            {
+                Program.RestartGame = true;
+                Exit(); 
+            }
+
+
+
+            if (_player.IsKilled)
+            {
+                return;
+            }
+
+            var keys = state.GetPressedKeys();
 
             Vector2 stepVector = Vector2.Zero;
 
@@ -289,11 +329,34 @@ namespace Game
                         graphics.IsFullScreen = !graphics.IsFullScreen;
                         graphics.ApplyChanges();
                         break;
+
+                   
+                    default:
+
+                        string keyValue = keyse.ToString();
+
+                        char lastChar = keyValue[keyValue.Length - 1];
+
+                        byte weaponNo;
+                        if (byte.TryParse(lastChar.ToString(), out weaponNo))
+                        {
+                            weaponNo = (byte) (weaponNo == 0 ? 9 : weaponNo - 1);
+                            if (weaponNo < _weapons.Count && _player.Weapon.Bullets.Count == 0)
+                            {
+                                _player.Weapon = _weapons[weaponNo];
+                            }
+                        }
+
+                        break;
                 }
+
+
 
                 _player.Move(stepVector);
 
             }
+            
+            
 
             #endregion
 
@@ -327,11 +390,14 @@ namespace Game
 
                     foreach (var bullet in _player.Weapon.Bullets)
                     {
-                        Vector2 dist = bullet.Position - enemy.Position;
-                        if (Math.Abs(dist.Length()) < enemy.HitBox)
+                        if (!bullet.HasHit)
                         {
-                            enemy.HitPoints--;
-                            bullet.Hit(gameTime.TotalGameTime);
+                            Vector2 dist = bullet.Position - enemy.Position;
+                            if (Math.Abs(dist.Length()) < enemy.HitBox)
+                            {
+                                enemy.HitPoints--;
+                                bullet.Hit(gameTime.TotalGameTime);
+                            }
                         }
                     }
 
@@ -385,7 +451,7 @@ namespace Game
                 }
             }
             
-
+            
             _currentHits.Clear();
 
             for (int index = 0; index < currentWeapon.Bullets.Count; index++)
@@ -394,7 +460,7 @@ namespace Game
                 if (bullet.HasHit)
                 {
                     TimeSpan shotDiff = gameTime.TotalGameTime - bullet.AnimationTime;
-                    if (shotDiff.Seconds >= AnimationSecs)
+                    if (shotDiff.Milliseconds >= AnimationMils)
                     {
                         _currentHits.Add(index);
                         _currentSprites.Remove(bullet);

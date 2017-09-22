@@ -1,1 +1,2 @@
-3,..\..\..\..\Textures\shotgun.png,0.09,..\..\..\..\Textures\rainbowbullet.png,..\..\..\..\Textures\explosion0.png,100
+3,..\..\..\..\Textures\shotgun.png,0.09,..\..\..\..\Textures\rainbowbullet.png,..\..\..\..\Textures\bang.png,100
+3,..\..\..\..\Textures\shotgun.png,0.09,..\..\..\..\Textures\intel.png,..\..\..\..\Textures\ouch.png,100

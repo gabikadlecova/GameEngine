@@ -18,7 +18,7 @@ namespace Rendering
     {
 
         public BitmapBuffer Buffer { get; }
-        
+
 
         public BackgroundPainter(int width, int height)
         {
@@ -64,7 +64,7 @@ namespace Rendering
 
                 int begin = Buffer.Height / 2 + maxLine / 2 - line;
 
-                begin = begin < 0 ? 0 : begin;
+                //begin = begin < 0 ? 0 : begin;
 
                 double heightRatio = 1;
                 bool useTexture = false;
@@ -80,11 +80,12 @@ namespace Rendering
                 }
 
 
-                int pixelNo = 0;
+                int pixelNo = begin < 0 ? -begin : 0;
                 int bitmapXCoor = (int)(item.TextureXRatio * texture.Width);
 
                 while (pixelNo < line && begin + pixelNo < Buffer.Height)
                 {
+
                     if (useTexture)
                     {
                         int bitmapPixelNo = (int)(heightRatio * pixelNo);
@@ -96,6 +97,8 @@ namespace Rendering
                     {
                         Buffer[columnNr, begin + pixelNo] = altColor;
                     }
+
+
                     pixelNo++;
                 }
 

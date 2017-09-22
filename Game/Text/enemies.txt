@@ -1,1 +1,2 @@
-0, 1, 1.5, 2.5,..\..\..\..\Textures\cockatielsmall.png,..\..\..\..\Textures\roast-chicken.png, 176, 125, 0.009, 0.4
+0, 1, 1.5, 3.5,..\..\..\..\Textures\cockatielsmall.png,..\..\..\..\Textures\roast-chicken.png, 176, 125, 0.009, 0.1
+1, 3, 5.5, 16.5,..\..\..\..\Textures\unicorn.png,..\..\..\..\Textures\rainbowshit.png,366,350,0.013,0.18
