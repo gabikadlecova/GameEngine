@@ -1,0 +1,7 @@
+..\..\..\..\Text\wall.txt
+..\..\..\..\Text\map.txt
+..\..\..\..\Text\enemies.txt
+..\..\..\..\Text\weapons.txt
+..\..\..\..\Text\player.txt
+..\..\..\..\Textures\sky.jpg
+..\..\..\..\Textures\floor.jpg

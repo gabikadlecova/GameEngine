@@ -22,23 +22,25 @@ namespace Casting.Player
         public float MovementSpeed { get; set; }
         public HumanCastCondition MovementCondition { get; set; }
 
-        public IRayCaster Caster;
+        private IRayCaster Caster { get; }
 
         protected MovingObject(float positionX, float positionY, float directionX, float directionY,
-             HumanCastCondition condition, float movementSpeed)
+             HumanCastCondition condition, float movementSpeed, IRayCaster caster)
         {
             Position = new Vector2(positionX, positionY);
             Direction = new Vector2(directionX, directionY);
             MovementCondition = condition;
             MovementSpeed = movementSpeed;
+            Caster = caster;
         }
 
-        protected MovingObject(Vector2 positon, Vector2 direction, HumanCastCondition condition, float movementSpeed)
+        protected MovingObject(Vector2 positon, Vector2 direction, HumanCastCondition condition, float movementSpeed, IRayCaster caster)
         {
             Position = positon;
             Direction = direction;
             MovementCondition = condition;
             MovementSpeed = movementSpeed;
+            Caster = caster;
         }
 
 
@@ -47,6 +49,7 @@ namespace Casting.Player
             Matrix rotation = Matrix.CreateRotationZ(angle);
             Direction = Vector2.Transform(Direction, rotation);
         }
+        
 
         public virtual bool Move(Vector2 direction)
         {

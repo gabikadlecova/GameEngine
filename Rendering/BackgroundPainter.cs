@@ -19,16 +19,24 @@ namespace Rendering
     public class BackgroundPainter
     {
         private const float SightDistance = 100;
-        private double[] Distances;
+        private double[] _distances;
 
-        public BitmapBuffer Buffer { get; }
+        public Color[] Buffer { get; private set; }
+
 
         public ITextureWrapper Sky { get; }
         public ITextureWrapper Floor { get; }
 
+        private readonly List<ElementDrawData> elementData = new List<ElementDrawData>();
+        public int Width { get; private set; }
+        public int Height { get; private set; }
+
         public BackgroundPainter(int width, int height, string skyPath, string floorPath)
         {
-            Buffer = new BitmapBuffer(width, height);
+            Buffer = new Color[width * height];
+            Width = width;
+            Height = height;
+
             Sky = new TextureWrapper(skyPath, Color.Azure);
             Floor = new TextureWrapper(floorPath, Color.DarkGreen);
         }
@@ -36,11 +44,11 @@ namespace Rendering
         //ToDo check which side is x and which y (bitmap context)
         public void ChangeResolution(int width, int height)
         {
-            Buffer.Resize(width, height);
-            InitializeDistances();
+            Buffer = new Color[height * width];
+            Width = width;
+            Height = height;
+            //InitializeDistances();
         }
-
-        
 
         public void UpdateBuffer(List<Ray> rays, int wallMaxHeight, Vector2 position, Vector2 direction)
         {
@@ -55,109 +63,122 @@ namespace Rendering
             SetPixels(ray, columnNr, wallMaxHeight, position, direction);
         }
 
-        private void InitializeDistances()
+        private void InitializeDistances(int maxHeight)
         {
-            int height = Buffer.Height;
-            Distances = new double[height / 2];
-            for (int i = 0; i < height / 2; i++)
+            _distances = new double[Height / 2];
+
+            for (int i = 0; i < Height / 2; i++)
             {
-                int y = height / 2 + 1 + i;
-                Distances[i] = height / (2.0 * y - height);
+                int y = Height / 2 + i;
+                _distances[i] = Height / (2.0 * y - Height);
             }
         }
 
         private void SetPixels(Ray rayFrom, int columnNr, int maxHeight, Vector2 playerPos, Vector2 direction)
         {
-            if (Distances == null)
+            if (_distances == null)
             {
-                InitializeDistances();
+                InitializeDistances(maxHeight);
             }
 
-            
+
             //clearing the previous data (needed for transparent WALLS)
-            for (int i = 0; i < Buffer.Height; i++)
+            for (int i = 0; i < Height; i++)
             {
-                Buffer[columnNr, i] = Color.Transparent;
+                Buffer[columnNr + Width * i] = Color.Transparent;
             }
-            
+            elementData.Clear();
 
-            int lastWallNo = -1;
+            bool firstWall = true;
+            int maxWallPoint = Height;
+            int highestPoint = Height;
+            int lastIndex = -1;
 
-            for (int i = 0; i < rayFrom.ObjectsCrossed.Count; i++)
+            var elements = rayFrom.ObjectsCrossed;
+            for (int i = 0; i < elements.Count; i++)
             {
-                if (rayFrom.ObjectsCrossed[i].IsNotTransparent)
-                {
-                    lastWallNo = i;
-                    break;
-                }
-            }
-
-            int height = Buffer.Height;
-
-            int highestPoint = height;
-
-            //filling the column with pixels of crossed objects
-            for (int i = rayFrom.ObjectsCrossed.Count - 1; i >= 0; i--)
-            {
-                var item = rayFrom.ObjectsCrossed[i];
-
+                var item = elements[i];
                 int line = (int)(item.Element.Height / item.Distance);
                 int maxLine = (int)(maxHeight / item.Distance);
 
-                int begin = height / 2 + maxLine / 2 - line;
-                highestPoint = begin < highestPoint ? begin : highestPoint;
+                int begin = Height / 2 + maxLine / 2 - line;
+                int end = begin + line;
+                end = end < highestPoint ? end : highestPoint;
+
+                if (item.IsNotTransparent)
+                {
+                    highestPoint = begin < highestPoint ? begin : highestPoint;
+                    begin = begin == highestPoint ? begin : Height;
+                }
+
+
+                maxWallPoint = begin < maxWallPoint ? begin : maxWallPoint;
+
+                if (begin < Height)
+                {
+                    if (item.IsNotTransparent && firstWall)
+                    {
+                        lastIndex = i;
+                        firstWall = false;
+                    }
+                    
+                    elementData.Add(new ElementDrawData(begin, end,line, i));
+                }
+            }
+            lastIndex = lastIndex < 0 ? elements.Count - 1 : lastIndex;
+
+
+            //filling the column with pixels of crossed objects
+            for (int index = elementData.Count - 1; index >= 0; index--)
+            {
+                var itemData = elementData[index];
+                var item = elements[itemData.Index];
+
+                int line = itemData.FullLine;
+                int begin = itemData.HighestPoint;
+                int end = itemData.LowestPoint;
+
 
                 double heightRatio = 1;
-                bool useTexture = false;
-
-
+                
                 ITextureWrapper texture = item.Element.GetTexture(item.Side);
                 Color altColor = texture.AltColor;
 
                 if (texture.IsOk)
                 {
                     heightRatio = (double)texture.Height / line;
-                    useTexture = true;
                 }
 
                 int pixelNo = begin < 0 ? -begin : 0;
                 int bitmapXCoor = (int)(item.TextureXRatio * texture.Width);
 
-                while (pixelNo < line && begin + pixelNo < height)
+
+
+                while (/*pixelNo < line &&*/ begin + pixelNo < end)
                 {
 
-                    if (useTexture)
+                    if (texture.IsOk)
                     {
                         int bitmapPixelNo = (int)(heightRatio * pixelNo);
                         Color nextPix = texture[bitmapPixelNo, bitmapXCoor];
                         if (nextPix != Color.Transparent)
-                            Buffer[columnNr, begin + pixelNo] = nextPix;
+                            Buffer[columnNr + Width * (begin + pixelNo)] = nextPix;
                     }
                     else
                     {
-                        Buffer[columnNr, begin + pixelNo] = altColor;
+                        Buffer[columnNr + Width * (begin + pixelNo)] = altColor;
                     }
 
 
                     pixelNo++;
                 }
 
-
-
-
-
-
-
-
-
-
-
-                if (i == lastWallNo)
+                if (itemData.Index == lastIndex)
                 {
 
-                    for (int j = height / 2; j < height; j++)
+                    for (int j = Height / 2; j < Height; j++)
                     {
-                        double currentDist = Distances[j - height / 2];
+                        double currentDist = _distances[j - Height / 2];
                         double weight = currentDist / item.Distance;
 
                         double floorX = weight * item.ElementPos.X + (1 - weight) * playerPos.X;
@@ -172,10 +193,10 @@ namespace Rendering
                             texX = texX >= 0 ? texX : texX + Floor.Height;
                             texY = texY >= 0 ? texY : texY + Floor.Width;
 
-                            Buffer[columnNr, j] = Floor[texX, texY];
+                            Buffer[columnNr + j * Width] = Floor[texX, texY];
                         }
 
-                        if (height - j < highestPoint)
+                        if (Height - j < maxWallPoint)
                         {
 
                             int texX = (int)(floorY * Sky.Height) % Sky.Height;
@@ -184,16 +205,33 @@ namespace Rendering
                             texX = texX >= 0 ? texX : texX + Sky.Height;
                             texY = texY >= 0 ? texY : texY + Sky.Width;
 
-                            Buffer[columnNr, height - j] = Sky[texX, texY];
+                            Buffer[columnNr + Width * (Height - j)] = Sky[texX, texY];
                         }
                     }
 
                 }
-                
+
             }
 
-            
 
+
+
+        }
+
+        private struct ElementDrawData
+        {
+            public ElementDrawData(int highestPoint, int lowestPoint, int fullLine, int index)
+            {
+                HighestPoint = highestPoint;
+                LowestPoint = lowestPoint;
+                Index = index;
+                FullLine = fullLine;
+            }
+
+            public int HighestPoint;
+            public int LowestPoint;
+            public int FullLine;
+            public int Index;
         }
 
     }

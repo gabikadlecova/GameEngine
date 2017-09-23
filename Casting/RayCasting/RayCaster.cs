@@ -142,13 +142,11 @@ namespace Casting.RayCasting
 
                     double wallDistance;
                     double xWallPoint;
-                    double obliqueDist;
 
                     switch (side)
                     {
                         //crossed on x
                         case Side.SideX:
-                            obliqueDist = rayDistX;
 
                             wallDistance = mapX - rayPositionX;
                             wallDistance = wallDistance + (1 - sideX) / 2;
@@ -159,7 +157,6 @@ namespace Casting.RayCasting
                             break;
                         //crossed on y
                         case Side.SideY:
-                            obliqueDist = rayPositionY;
 
                             wallDistance = mapY - rayPositionY;
                             wallDistance = wallDistance + (1 - sideY) / 2;

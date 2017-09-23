@@ -16,34 +16,31 @@ namespace Casting.Player
     public class Enemy : MovingObject, ICrossable, IPerson
     {
 
-        private readonly Random _random = new Random();
-        private CastCondition _wallCondition = CastCondition.CastDistance(MinWallDist, 1);
-
-        public Enemy(float positionX, float positionY, float directionX, float directionY, int hitPoints,
-            HumanCastCondition condition, int height, int width, int typeId,
-            string texturePath, string killedTexture, float movementSpeed, float hitBox) : base(positionX, positionY, directionX, directionY, condition, movementSpeed)
+        public Enemy(float positionX, float positionY, float directionX, float directionY, 
+            HumanCastCondition condition, EnemyData enemyData, IRayCaster caster) : base(positionX, positionY, directionX, directionY, condition, enemyData.MovementSpeed, caster)
         {
-            Height = height;
-            Width = width;
-            TypeId = typeId;
+            SpriteData spriteData = enemyData.SpriteData;
+            Height = spriteData.Height;
+            Width = spriteData.Width;
+            Texture = spriteData.LivingPic;
+            KilledTexture = spriteData.DeadPic;
 
-            HitPoints = hitPoints;
-            HitBox = hitBox;
-            Texture = new TextureWrapper(texturePath, Color.Transparent);
-            KilledTexture = new TextureWrapper(killedTexture, Color.Transparent);
+            TypeId = enemyData.TypeId;
+            HitPoints = enemyData.HitPoints;
+            HitBox = enemyData.HitBox;
         }
 
-        public Enemy(Vector2 positon, Vector2 direction, int hitpoints, HumanCastCondition condition, int height, int width, int typeId, 
-            string texturePath, string killedTexture, float movementSpeed, float hitBox) : base(positon, direction, condition, movementSpeed)
+        public Enemy(Vector2 positon, Vector2 direction, HumanCastCondition condition, EnemyData enemyData, IRayCaster caster) : base(positon, direction, condition, enemyData.MovementSpeed, caster)
         {
-            Height = height;
-            Width = width;
-            TypeId = typeId;
+            SpriteData spriteData = enemyData.SpriteData;
+            Height = spriteData.Height;
+            Width = spriteData.Width;
+            Texture = spriteData.LivingPic;
+            KilledTexture = spriteData.DeadPic;
 
-            HitPoints = hitpoints;
-            HitBox = hitBox;
-            Texture = new TextureWrapper(texturePath, Color.Transparent);
-            KilledTexture = new TextureWrapper(killedTexture, Color.Transparent);
+            TypeId = enemyData.TypeId;
+            HitPoints = enemyData.HitPoints;
+            HitBox = enemyData.HitBox;
         }
 
         public float HitBox { get; }
@@ -63,5 +60,6 @@ namespace Casting.Player
 
         public int HitPoints { get; set; }
         public bool IsKilled { get { return HitPoints <= 0; } }
+        public int DeathSecs;
     }
 }

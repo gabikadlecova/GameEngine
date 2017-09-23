@@ -28,11 +28,6 @@ namespace Rendering
             Height = height;
         }
 
-        public void Resize(int width, int height)
-        {
-            BufferData = new Color[height * width];
-            Width = width;
-            Height = height;
-        }
+        
     }
 }

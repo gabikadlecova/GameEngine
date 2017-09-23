@@ -15,6 +15,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using Microsoft.Xna.Framework.Graphics.PackedVector;
 using Ray = Casting.RayCasting.Ray;
 
 namespace Game
@@ -24,43 +25,52 @@ namespace Game
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+        private int _height = 800;
+        private int _width = 600;
+
         private const float RotationTreshold = 30;
         private const float MinEnemyDistance = 0.2F;
         private const float MinBulletDistance = 1;
-
+        private const float PlayerProtectDist = 2;
+        private const float RotationSpeed = 0.03F;
         private const int AnimationMils = 300;
 
-        private float rotationSpeed = 0.03F;
 
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+        private readonly Random _random = new Random();
 
         private Texture2D _wallCanvas;
         private Texture2D _sky;
         private Texture2D _floor;
         private List<Ray> _currentRays;
-        private readonly List<int> _currentHits = new List<int>();
+        private List<MovingObject> _currentSprites;
+        private List<Enemy> _enemies;
 
         private IMap _map;
         private IContainer<IWall> _walls;
-        private List<Enemy> _enemies;
+        private Dictionary<int, EnemyData> _enemyData;
         private List<IWeapon> _weapons;
 
-        private List<MovingObject> _currentSprites;
 
         private RayCaster _caster;
+        private ICastCondition _condition;
+        private readonly HumanCastCondition _default = HumanCastCondition.Default();
 
-        private EngineSettings _settings;
         private Player _player;
 
-        private readonly Random _random = new Random();
 
         private BackgroundPainter _painter;
 
-        private SpriteFont _arialFont;
-        private double _frameRate;
+        private SpriteFont arialFont;
+        private double frameRate;
 
         private bool resetedBefore;
+        private TimeSpan enemySpawnChange; // = new TimeSpan(0,0,0,10);
+        private TimeSpan LastSpawnChange; // = TimeSpan.Zero;
+
+
+        private int kills; // = 0;
 
         public Game1()
         {
@@ -84,36 +94,26 @@ namespace Game
         {
             // TODO: Add your initialization logic here
 
-            _settings = new EngineSettings()
-            {
-                Condition = CastCondition.WallCountInterval(4, 1),
-                MapFilePath = @"..\..\..\..\Text\map.txt",
-                WallFilePath = @"..\..\..\..\Text\wall.txt",
-                EnemyFilePath = @"..\..\..\..\Text\enemies.txt",
-                WeaponFilePath = @"..\..\..\..\Text\weapons.txt",
-
-                SkyFilePath = @"..\..\..\..\Textures\sky.jpg",
-                FloorFilePath = @"..\..\..\..\Textures\floor.jpg"
-            };
-
-            _player = new Player(new Vector2(0.1F, 0.1F), Vector2.One, 1,
-                    HumanCastCondition.Default(), "Korela", 0.015F);
-
-
             GameReader reader = new GameReader();
 
-            _map = reader.ReadMap(_settings.MapFilePath);
-            _walls = reader.ReadWalls(_settings.WallFilePath);
-            _enemies = reader.ReadEnemies(_settings.EnemyFilePath);
-            _weapons = reader.ReadWeapons(_settings.WeaponFilePath);
+            EngineSettings settings = reader.LoadSettings("settings.txt");
 
-            _currentSprites = _enemies.Cast<MovingObject>().ToList();
+            _player = new Player(new Vector2(0.1F, 0.1F), Vector2.One, 10,
+                    _default, "Korela", 0.020F, _caster);
 
+
+
+            _map = reader.ReadMap(settings.MapFilePath);
+            _walls = reader.ReadWalls(settings.WallFilePath);
+            _enemyData = reader.ReadEnemies(settings.EnemyFilePath);
+            _weapons = reader.ReadWeapons(settings.WeaponFilePath);
+
+            
             _player.Weapon = _weapons[0];
 
+            _condition = settings.Condition;
             _caster = new RayCaster(_map, _walls);
-
-            _player.Caster = _caster;
+            
             
 
             foreach (IWeapon weapon in _weapons)
@@ -121,18 +121,19 @@ namespace Game
                 weapon.Caster = _caster;
             }
 
-            foreach (Enemy enemy in _enemies)
+            foreach (EnemyData enemyData in _enemyData.Values)
             {
-                enemy.Caster = _caster;
+                enemyData.Caster = _caster;
             }
 
-            _painter = new BackgroundPainter(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, _settings.SkyFilePath, _settings.FloorFilePath);
-            _wallCanvas = new Texture2D(GraphicsDevice, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
+            _painter = new BackgroundPainter(_width, _height, settings.SkyFilePath, settings.FloorFilePath);
+            _wallCanvas = new Texture2D(GraphicsDevice, _width, _height);
 
 
 
             _currentRays = new List<Ray>();
-
+            _enemies = new List<Enemy>();
+            _currentSprites = new List<MovingObject>();
 
             base.Initialize();
         }
@@ -170,40 +171,40 @@ namespace Game
                 }
             }
 
-            foreach (Enemy enemy in _enemies)
+            foreach (EnemyData data in _enemyData.Values)
             {
-                using (FileStream stream = new FileStream(enemy.Texture.PicAddress, FileMode.Open))
+                using (FileStream stream = new FileStream(data.SpriteData.LivingPic.PicAddress, FileMode.Open))
                 {
                     using (Texture2D tex = Texture2D.FromStream(GraphicsDevice, stream))
                     {
-                        enemy.Texture.LoadTexture(tex);
+                        data.SpriteData.LivingPic.LoadTexture(tex);
                     }
                 }
 
-                using (FileStream stream = new FileStream(enemy.KilledTexture.PicAddress, FileMode.Open))
+                using (FileStream stream = new FileStream(data.SpriteData.DeadPic.PicAddress, FileMode.Open))
                 {
                     using (Texture2D tex = Texture2D.FromStream(GraphicsDevice, stream))
                     {
-                        enemy.KilledTexture.LoadTexture(tex);
+                        data.SpriteData.DeadPic.LoadTexture(tex);
                     }
                 }
             }
 
             foreach (var weapon in _weapons)
             {
-                using (FileStream stream = new FileStream(weapon.BulletData.FlyPic.PicAddress, FileMode.Open))
+                using (FileStream stream = new FileStream(weapon.BulletData.LivingPic.PicAddress, FileMode.Open))
                 {
                     using (Texture2D tex = Texture2D.FromStream(GraphicsDevice, stream))
                     {
-                        weapon.BulletData.FlyPic.LoadTexture(tex);
+                        weapon.BulletData.LivingPic.LoadTexture(tex);
                     }
                 }
 
-                using (FileStream stream = new FileStream(weapon.BulletData.HitPic.PicAddress, FileMode.Open))
+                using (FileStream stream = new FileStream(weapon.BulletData.DeadPic.PicAddress, FileMode.Open))
                 {
                     using (Texture2D tex = Texture2D.FromStream(GraphicsDevice, stream))
                     {
-                        weapon.BulletData.HitPic.LoadTexture(tex);
+                        weapon.BulletData.DeadPic.LoadTexture(tex);
                     }
                 }
             }
@@ -236,7 +237,7 @@ namespace Game
             // TODO: use this.Content to load your game content here
 
             
-            _arialFont = Content.Load<SpriteFont>("font");
+            arialFont = Content.Load<SpriteFont>("font");
             _floor = Content.Load<Texture2D>("floor");
             _sky = Content.Load<Texture2D>("sky");
 
@@ -300,6 +301,9 @@ namespace Game
             {
                 return;
             }
+
+            
+
 
             var keys = state.GetPressedKeys();
 
@@ -374,7 +378,7 @@ namespace Game
 
             if (Math.Abs(difference) > RotationTreshold)
             {
-                difference = 2 * difference / width * rotationSpeed;
+                difference = 2 * difference / width * RotationSpeed;
                 _player.Rotate(difference);
 
                 //Debug.WriteLine($"{difference}");
@@ -386,11 +390,47 @@ namespace Game
 
             #region Enemy state
 
-            foreach (var enemy in _enemies)
+            foreach (var enemyData in _enemyData.Values)
             {
+                TimeSpan currTime = gameTime.TotalGameTime;
+
+                float time = enemyData.SpawnTime;
+                TimeSpan offSet = new TimeSpan(0,0,0,(int)time, (int) ((time - (int) time) * 1000));
+                if (currTime  > enemyData.LastSpawn + offSet)
+                {
+                    Vector2 enemyPos;
+                    do
+                    {
+                        float posX = _random.Next(0, _map.Width);
+                        float posY = _random.Next(0, _map.Height);
+                        enemyPos = new Vector2(posX, posY);
+                    }
+                    while ((_player.Position - enemyPos).Length() < PlayerProtectDist);
+                    
+                    Enemy nextEnemy = new Enemy(enemyPos, new Vector2(0.707F, 0.707F), _default, enemyData, _caster);
+
+                    _enemies.Add(nextEnemy);
+                    _currentSprites.Add(nextEnemy);
+
+                    enemyData.LastSpawn = currTime;
+                }
+                if (currTime > LastSpawnChange + enemySpawnChange)
+                {
+                    enemyData.SpawnTime =  enemyData.SpawnTime > 8 ? enemyData.SpawnTime / 2.0F : 8;
+                    LastSpawnChange = currTime;
+                }
+            }
+
+
+
+            int offset = 0;
+            for (int i = 0; i < _enemies.Count; i ++)
+            {
+
+                var enemy = _enemies[i - offset];
+                Vector2 toPlayer = _player.Position - enemy.Position;
                 if (!enemy.IsKilled)
                 {
-
                     foreach (var bullet in _player.Weapon.Bullets)
                     {
                         if (!bullet.HasHit)
@@ -399,13 +439,17 @@ namespace Game
                             if (Math.Abs(dist.Length()) < enemy.HitBox)
                             {
                                 enemy.HitPoints--;
+                                if (enemy.IsKilled)
+                                {
+                                    kills++;
+                                    enemy.DeathSecs = gameTime.TotalGameTime.Seconds;
+                                }
+
                                 bullet.Hit(gameTime.TotalGameTime);
                             }
                         }
                     }
-
-                    Vector2 enemyBefore = enemy.Position;
-                    Vector2 toPlayer = _player.Position - enemyBefore;
+                    
 
                     if (toPlayer.Length() < MinEnemyDistance)
                     {
@@ -416,12 +460,37 @@ namespace Game
 
                     enemy.Move(toPlayer);
 
-                    int random = _random.Next(1, 100);
-                    if (random % 3 == 0)
-                        enemy.Move(new Vector2(_random.Next(), _random.Next()));
-
+                    int random = _random.Next();
+                    if (random % 1000 == 0)
+                    {
+                        bool possible = false;
+                        while (!possible)
+                        {
+                            enemy.Position = new Vector2(_random.Next(0, _map.Width - 1), _random.Next(0, _map.Height - 1));
+                            toPlayer = enemy.Position - _player.Position;
+                            if (toPlayer.Length() >= PlayerProtectDist * 1.5 && _map[(int)enemy.Position.X, (int)enemy.Position.Y] == 0)
+                            {
+                                possible = true;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    bool close = toPlayer.Length() < MinEnemyDistance;
+                    if (close || enemy.DeathSecs + 6 < gameTime.TotalGameTime.Seconds)
+                    {
+                        if (close)
+                        {
+                            _player.HitPoints++;
+                        }
+                        _currentSprites.Remove(enemy);
+                        _enemies.Remove(enemy);
+                        offset++;
+                    }
                 }
             }
+            
 
             #endregion
 
@@ -453,20 +522,20 @@ namespace Game
                     _currentSprites.Add(bullet);
                 }
             }
-            
-            
-            _currentHits.Clear();
 
+            
+            offset = 0;
             for (int index = 0; index < currentWeapon.Bullets.Count; index++)
-            {
-                var bullet = currentWeapon.Bullets[index];
+            { 
+                var bullet = currentWeapon.Bullets[index - offset];
                 if (bullet.HasHit)
                 {
                     TimeSpan shotDiff = gameTime.TotalGameTime - bullet.AnimationTime;
                     if (shotDiff.Milliseconds >= AnimationMils)
                     {
-                        _currentHits.Add(index);
+                        currentWeapon.Bullets.Remove(bullet);
                         _currentSprites.Remove(bullet);
+                        offset++;
                     }
                 }
                 else
@@ -475,13 +544,10 @@ namespace Game
                     {
                         bullet.Hit(gameTime.TotalGameTime);
                     }
+                    
                 }
             }
-
-            foreach (int i in _currentHits)
-            {
-                currentWeapon.Bullets.RemoveAt(i);
-            }
+            
 
             #endregion
 
@@ -497,12 +563,10 @@ namespace Game
             GraphicsDevice.Clear(Color.CornflowerBlue);
             // TODO: Add your drawing code here
 
-
-            int width = GraphicsDevice.Viewport.Width;
-            int height = GraphicsDevice.Viewport.Height;
+            
 
             //raycasting
-            _currentRays = _caster.FieldOfView(width, _player.Position, _player.Direction, _player.ScreenPlane, _settings.Condition);
+            _currentRays = _caster.FieldOfView(_width, _player.Position, _player.Direction, _player.ScreenPlane, _condition);
 
             #region Enemies
 
@@ -525,7 +589,7 @@ namespace Game
                 Vector2 result = new Vector2(playerDist.X * invMatrix.M11 + playerDist.Y * invMatrix.M12,
                                              playerDist.X * invMatrix.M21 + playerDist.Y * invMatrix.M22);
 
-                int spriteXPos = (int)(width / 2F * (1 + result.X / result.Y));
+                int spriteXPos = (int)(_width / 2F * (1 + result.X / result.Y));
 
                 //is sprite in front of the player?
                 if (result.Y > 0)
@@ -543,7 +607,7 @@ namespace Game
                     {
                         int currIndex = i + spriteXPos;
 
-                        if (currIndex >= 0 && currIndex < width)
+                        if (currIndex >= 0 && currIndex < _width)
                         {
                             double xPixel = (i + spriteWidth / 2) / (double)spriteWidth;
                             _currentRays[currIndex].Add(new DistanceWrapper<ICrossable>(result.Y, xPixel, Side.SideX, crossableSprite, objectSprite.Position, false));
@@ -556,24 +620,26 @@ namespace Game
 
             _painter.UpdateBuffer(_currentRays, _walls.MaxHeight, _player.Position, _player.Direction);
 
-            _wallCanvas.SetData<Color>(_painter.Buffer.BufferData);
+            _wallCanvas.SetData<Color>(_painter.Buffer);
 
-            _frameRate = 1 / gameTime.ElapsedGameTime.TotalSeconds;
+            frameRate = 1 / gameTime.ElapsedGameTime.TotalSeconds;
 
             
             spriteBatch.Begin();
 
-            spriteBatch.Draw(_sky, new Rectangle(0, 0, width, height /2), Color.White);
-            spriteBatch.Draw(_floor, new Rectangle(0, height / 2, width, height / 2), Color.White);
-            spriteBatch.Draw(_wallCanvas, new Rectangle(0, 0, width, height), Color.White);
-            spriteBatch.DrawString(_arialFont, $"FPS: {_frameRate}", new Vector2(0, 0),
+            spriteBatch.Draw(_sky, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height / 2), Color.White);
+            spriteBatch.Draw(_floor, new Rectangle(0, GraphicsDevice.Viewport.Height / 2, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height / 2), Color.White);
+            spriteBatch.Draw(_wallCanvas, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
+            spriteBatch.DrawString(arialFont, $"FPS: {frameRate}", new Vector2(0, 0),
                 gameTime.IsRunningSlowly ? Color.Red : Color.Black);
 
             if (_player.IsKilled)
             {
-                spriteBatch.DrawString(_arialFont, $"YOU DIED!", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), Color.Red);
+                spriteBatch.DrawString(arialFont, $"YOU DIED!", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), Color.Red);
             }
 
+            spriteBatch.DrawString(arialFont, $"HP: {_player.HitPoints}", new Vector2(GraphicsDevice.Viewport.Width - 100, 0), Color.Black );
+            spriteBatch.DrawString(arialFont, $"Kills: {kills}", new Vector2(GraphicsDevice.Viewport.Width - 100, 25), Color.Black);
 
             spriteBatch.End();
 

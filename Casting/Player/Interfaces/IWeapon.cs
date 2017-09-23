@@ -11,7 +11,7 @@ namespace Casting.Player.Interfaces
 
         List<Bullet> Bullets { get; }
 
-        BulletWrapper BulletData { get; }
+        SpriteData BulletData { get; }
 
         IRayCaster Caster { get; set; }
 

@@ -14,7 +14,8 @@ namespace Casting.Player
     public class Player : MovingObject, IPerson
     {
 
-        public Player(float positionX, float positionY, float directionX, float directionY, int hitPoints, HumanCastCondition condition, string name, float movementSpeed) : base(positionX, positionY, directionX, directionY, condition, movementSpeed)
+        public Player(float positionX, float positionY, float directionX, float directionY, int hitPoints, HumanCastCondition condition, string name, float movementSpeed, IRayCaster caster) 
+            : base(positionX, positionY, directionX, directionY, condition, movementSpeed, caster)
         {
             Name = name;
 
@@ -26,7 +27,8 @@ namespace Casting.Player
             ScreenPlane = screenPlane;
         }
 
-        public Player(Vector2 positon, Vector2 direction, int hitpoints, HumanCastCondition condition, string name, float movementSpeed) : base(positon, direction, condition, movementSpeed)
+        public Player(Vector2 positon, Vector2 direction, int hitpoints, HumanCastCondition condition, string name, float movementSpeed, IRayCaster caster) 
+            : base(positon, direction, condition, movementSpeed, caster)
         {
             Name = name;
 

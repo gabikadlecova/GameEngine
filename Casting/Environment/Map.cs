@@ -5,7 +5,7 @@ using Casting.Environment.Interfaces;
 
 namespace Casting.Environment
 {
-    class Map : IMap
+    public class Map : IMap
     {
         private readonly int[,] _board;
         

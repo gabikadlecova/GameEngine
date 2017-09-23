@@ -7,8 +7,8 @@ namespace Casting.Player.Interfaces
     public interface IBullet
     {
         //Texture2D GetTexture();
-        
 
+            
         void Hit(TimeSpan explosionTime);
 
         TimeSpan AnimationTime { get; }

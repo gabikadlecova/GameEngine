@@ -13,16 +13,18 @@ namespace Casting.Player
 {
     public class BasicWeapon : IWeapon
     {
-        public BasicWeapon(int maxAmmo, string picAddress, BulletWrapper bulletGraphics)
+        public BasicWeapon(int maxAmmo, string picAddress, SpriteData bulletGraphics, float movementSpeed)
         {
             MaxAmmo = maxAmmo;
             Bullets = new List<Bullet>();
             PicAddress = picAddress;
             BulletData = bulletGraphics;
+            MovementSpeed = movementSpeed;
 
         }
 
-        public BulletWrapper BulletData { get; }
+        public float MovementSpeed { get; }
+        public SpriteData BulletData { get; }
         public IRayCaster Caster { get; set; }
         public Texture2D Texture { get; set; }
         
@@ -34,8 +36,8 @@ namespace Casting.Player
         public Bullet Shoot(Vector2 from, Vector2 direction)
         {
             if (Bullets.Count < MaxAmmo)
-            {
-                Bullet bullet = new Bullet(from, direction, HumanCastCondition.Default(), BulletData) { Caster = Caster };
+            { 
+                Bullet bullet = new Bullet(from, direction, HumanCastCondition.Default(), MovementSpeed, BulletData) { Caster = Caster };
                 Bullets.Add(bullet);
                 return bullet;
             }

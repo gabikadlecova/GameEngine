@@ -51,11 +51,11 @@
     <Compile Include="Environment\Interfaces\IContainer.cs" />
     <Compile Include="Environment\Map.cs" />
     <Compile Include="Environment\TextureWrapper.cs" />
-    <Compile Include="Environment\Tools\GameReader.cs" />
     <Compile Include="Environment\Wall.cs" />
     <Compile Include="Environment\Container.cs" />
     <Compile Include="Player\Bullet.cs" />
-    <Compile Include="Player\BulletWrapper.cs" />
+    <Compile Include="Player\EnemyData.cs" />
+    <Compile Include="Player\SpriteData.cs" />
     <Compile Include="Player\Enemy.cs" />
     <Compile Include="Player\Interfaces\IBullet.cs" />
     <Compile Include="Player\Interfaces\IPerson.cs" />
@@ -75,6 +75,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RayCasting\Side.cs" />
     <Compile Include="RayCasting\Vector.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Environment\Tools\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

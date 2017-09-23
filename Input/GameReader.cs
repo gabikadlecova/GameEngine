@@ -9,6 +9,8 @@ using System.Net;
 using Casting.Player;
 using Casting.Player.Interfaces;
 using Casting.RayCasting;
+using Casting.RayCasting.Interfaces;
+using Input;
 using Microsoft.Xna.Framework;
 
 namespace Casting.Environment.Tools
@@ -58,8 +60,8 @@ namespace Casting.Environment.Tools
 
                             int maxHeight = Int32.Parse(wallData[5]);
                             //todo color!!
-                            IWall wall = new Wall(textureX, textureY, new Color() {PackedValue = altX},
-                                new Color() {PackedValue = altY}, maxHeight);
+                            IWall wall = new Wall(textureX, textureY, new Color() { PackedValue = altX },
+                                new Color() { PackedValue = altY }, maxHeight);
 
                             container[id] = wall;
 
@@ -80,9 +82,9 @@ namespace Casting.Environment.Tools
             }
         }
 
-        public List<Enemy> ReadEnemies(string filePath)
+        public Dictionary<int, EnemyData> ReadEnemies(string filePath)
         {
-            List<Enemy> enemies = new List<Enemy>();
+            Dictionary<int, EnemyData> enemies = new Dictionary<int, EnemyData>();
 
             using (StreamReader reader = new StreamReader(filePath))
             {
@@ -104,13 +106,12 @@ namespace Casting.Environment.Tools
                             int width = Int32.Parse(data[7]);
                             float speed = float.Parse(data[8], CultureInfo.InvariantCulture);
                             float hitBox = float.Parse(data[9], CultureInfo.InvariantCulture);
+                            float spawnTime = float.Parse(data[10], CultureInfo.InvariantCulture);
 
+                            SpriteData spriteData = new SpriteData(texturePath, killedTexture, height, width);
+                            EnemyData enemyData = new EnemyData(typeId, spriteData, hitPoints, hitBox, speed, spawnTime);
 
-                            Enemy enemy = new Enemy(positionX, positionY, 0.707F, 0.707F, hitPoints,
-                                HumanCastCondition.Default(), height, width, typeId, texturePath.Trim(),
-                                killedTexture.Trim(), speed, hitBox);
-
-                            enemies.Add(enemy);
+                            enemies.Add(typeId, enemyData);
                         }
                         catch (InvalidCastException e)
                         {
@@ -148,8 +149,8 @@ namespace Casting.Environment.Tools
                             string hitPicAdd = line[4];
                             int bulletSize = Int32.Parse(line[5]);
 
-                            BulletWrapper bullet = new BulletWrapper(flyPicAdd, hitPicAdd, bulletSize, shootingSpeed);
-                            IWeapon weapon = new BasicWeapon(maxAmmo, picAddress, bullet);
+                            SpriteData bullet = new SpriteData(flyPicAdd, hitPicAdd, bulletSize, bulletSize);
+                            IWeapon weapon = new BasicWeapon(maxAmmo, picAddress, bullet, shootingSpeed);
                             weapons.Add(weapon);
                         }
                         catch (Exception e)
@@ -158,11 +159,36 @@ namespace Casting.Environment.Tools
                             throw;
                         }
                     }
-                    
+
                 }
             }
 
             return weapons;
+        }
+
+        public EngineSettings LoadSettings(string path)
+        {
+            try
+            {
+                string[] lines = File.ReadAllLines(path);
+                string wall = lines[0];
+                string map = lines[1];
+                string enemies = lines[2];
+                string weapons = lines[3];
+                string player = lines[4];
+                string sky = lines[5];
+                string floor = lines[6];
+                ICastCondition condition = CastCondition.WallCountInterval(4, 1);
+
+                return new EngineSettings(wall, map, enemies, weapons, player, sky, floor, condition);
+
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }

@@ -15,13 +15,13 @@ namespace Casting.Player
 {
     public class Bullet : MovingObject, IBullet, ICrossable
     {
-        public Bullet(Vector2 position, Vector2 direction, HumanCastCondition condition, BulletWrapper bulletData) : base(position, direction, condition, bulletData.MovementSpeed)
+        public Bullet(Vector2 position, Vector2 direction, HumanCastCondition condition, float movementSpeed, SpriteData bulletData) : base(position, direction, condition, movementSpeed)
         {
             HasHit = false;
-            Height = bulletData.Size;
-            Width = bulletData.Size;
-            FlyPic = bulletData.FlyPic;
-            HitPic = bulletData.HitPic;
+            Height = bulletData.Height;
+            Width = bulletData.Width;
+            FlyPic = bulletData.LivingPic;
+            HitPic = bulletData.DeadPic;
 
         }
 
@@ -34,6 +34,7 @@ namespace Casting.Player
             HasHit = true;
         }
 
+        
         public TimeSpan AnimationTime { get; private set; }
         public bool HasHit { get; private set; }
 

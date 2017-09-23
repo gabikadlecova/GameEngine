@@ -6,15 +6,27 @@ namespace Input
 {
     public class EngineSettings
     {
-        public string WallFilePath;
-        public string MapFilePath;
-        public string EnemyFilePath;
-        public string WeaponFilePath;
+        public string WallFilePath { get; }
+        public string MapFilePath { get; }
+        public string EnemyFilePath { get; }
+        public string WeaponFilePath { get; }
+        public string PlayerFilePath { get; }
 
-        public string SkyFilePath;
-        public string FloorFilePath;
+        public string SkyFilePath { get; }
+        public string FloorFilePath { get; }
 
-        public ICastCondition Condition;
-        
+        public ICastCondition Condition { get; }
+
+        public EngineSettings(string wallFilePath, string mapFilePath, string enemyFilePath, string weaponFilePath, string playerFilePath, string skyFilePath, string floorFilePath, ICastCondition condition)
+        {
+            WallFilePath = wallFilePath;
+            MapFilePath = mapFilePath;
+            EnemyFilePath = enemyFilePath;
+            WeaponFilePath = weaponFilePath;
+            PlayerFilePath = playerFilePath;
+            SkyFilePath = skyFilePath;
+            FloorFilePath = floorFilePath;
+            Condition = condition;
+        }
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace Casting.Environment
 {
-    class Wall : IWall
+    public class Wall : IWall
     {
         public Wall(string textureX, string textureY, Color altX, Color altY, int height)
         {
