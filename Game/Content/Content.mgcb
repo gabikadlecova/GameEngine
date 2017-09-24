@@ -44,3 +44,10 @@
 /processorParam:TextureFormat=Color
 /build:sky.jpg
 
+#begin bigfont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:bigfont.spritefont
+

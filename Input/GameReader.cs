@@ -14,7 +14,7 @@ using Microsoft.Xna.Framework;
 
 namespace Input
 {
-    public class GameReader : IMapReader
+    public class GameReader
     {
 
         public IMap ReadMap(string filePath)

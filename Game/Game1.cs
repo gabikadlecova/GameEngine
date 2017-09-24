@@ -81,7 +81,9 @@ namespace Game
 
         //game related string drawing
         private SpriteFont arialFont;
+        private SpriteFont bigFont;
         private double frameRate;
+        private int frameCount;
 
         //in-game changing values
         private bool paused;
@@ -116,7 +118,7 @@ namespace Game
             GameReader reader = new GameReader();
 
             EngineSettings settings = reader.LoadSettings(@"..\..\..\..\settings.txt");
-            
+
             _condition = settings.Condition;
             _width = settings.Width;
             _height = settings.Height;
@@ -132,7 +134,7 @@ namespace Game
             _player = reader.ReadPlayer(settings.PlayerFilePath, _caster);
             _player.Weapon = _weapons[0];
 
-            
+
             _painter = new BackgroundPainter(_width, _height, settings.SkyFilePath, settings.FloorFilePath);
             _wallCanvas = new Texture2D(GraphicsDevice, _width, _height);
 
@@ -152,7 +154,7 @@ namespace Game
 
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
+        /// all content.
         /// </summary>
         protected override void LoadContent()
         {
@@ -244,6 +246,8 @@ namespace Game
 
 
             arialFont = Content.Load<SpriteFont>("font");
+            bigFont = Content.Load<SpriteFont>("bigfont");
+
             _floor = Content.Load<Texture2D>("floor");
             _sky = Content.Load<Texture2D>("sky");
 
@@ -270,13 +274,13 @@ namespace Game
         {
             #region Key state
 
-
             KeyboardState state = Keyboard.GetState();
 
+            /***** close the game *****/
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || state.IsKeyDown(Keys.Escape))
                 Exit();
 
-            //soft reset
+            /***** soft reset *****/
             if (state.IsKeyDown(Keys.F3))
             {
                 if (!resetedBefore)
@@ -294,7 +298,7 @@ namespace Game
                 resetedBefore = false;
             }
 
-            //pause
+            /***** pause *****/
             if (state.IsKeyDown(Keys.P))
             {
                 if (!pausedBefore)
@@ -308,7 +312,7 @@ namespace Game
                 pausedBefore = false;
             }
 
-            //hard reset
+            /***** hard reset *****/
             if (state.IsKeyDown(Keys.F12))
             {
                 Program.RestartGame = true;
@@ -324,7 +328,7 @@ namespace Game
 
 
 
-
+            //movement input
             var keys = state.GetPressedKeys();
 
             Vector2 stepVector = Vector2.Zero;
@@ -359,6 +363,7 @@ namespace Game
                         break;
 
 
+                    //weapons can be changed using numbered keys (all without other function)
                     default:
 
                         string keyValue = keyse.ToString();
@@ -379,30 +384,27 @@ namespace Game
                 }
 
 
-
+                //player will 
                 _player.Move(stepVector);
 
             }
 
-
-
             #endregion
+
 
             #region Mouse state
 
             Point currMouse = Mouse.GetState().Position;
-            //Debug.WriteLine($"{currMouse}");
 
-            float width = GraphicsDevice.Viewport.Width;
-            float difference = width / 2F;
-            difference = difference - currMouse.X;
+            float screenWidth = GraphicsDevice.Viewport.Width;
+            float difference = screenWidth / 2F - currMouse.X;
 
+            //if the mouse position is close to the middle of the screen, the view is no rotated
             if (Math.Abs(difference) > RotationTreshold)
             {
-                difference = 2 * difference / width * RotationSpeed;
+                difference = 2 * difference / screenWidth * RotationSpeed;
                 _player.Rotate(difference);
 
-                //Debug.WriteLine($"{difference}");
             }
 
             #endregion
@@ -411,6 +413,7 @@ namespace Game
 
             #region Enemy state
 
+            //different enemy types have different spawn times
             foreach (var enemyData in _enemyData.Values)
             {
                 TimeSpan currTime = gameTime.TotalGameTime;
@@ -435,6 +438,8 @@ namespace Game
 
                     enemyData.LastSpawn = currTime;
                 }
+
+                //spawns are periodically changed
                 if (currTime > lastSpawnChange + enemySpawnChange)
                 {
                     enemyData.SpawnTime = enemyData.SpawnTime > 8 ? enemyData.SpawnTime / 2.0F : 8;
@@ -443,24 +448,32 @@ namespace Game
             }
 
 
-
+            //in order to remove objects from a list inside a for loop, we need to calculate new indices of object following
+            //with each enemy removal, offset must be incremented
             int offset = 0;
             for (int i = 0; i < _enemies.Count; i++)
             {
-
                 var enemy = _enemies[i - offset];
+
                 Vector2 toPlayer = _player.Position - enemy.Position;
+
+                //hits, movement and player damaging is exclusive to living enemies
                 if (!enemy.IsKilled)
                 {
+                    //we check if the enemy is hit by bullets
                     foreach (var bullet in _player.Weapon.Bullets)
                     {
+
+                        //exploded bullets are excluded
                         if (!bullet.HasHit)
                         {
                             Vector2 dist = bullet.Position - enemy.Position;
                             if (Math.Abs(dist.Length()) < enemy.HitBox)
                             {
                                 enemy.HitPoints--;
-                                if (enemy.IsKilled)
+
+                                //HitPoints must be 0, enemy could be killed by multiple bullets at one time, but kills should be increased once
+                                if (enemy.IsKilled && enemy.HitPoints == 0)
                                 {
                                     kills++;
                                     enemy.DeathSecs = gameTime.TotalGameTime.Seconds;
@@ -471,32 +484,37 @@ namespace Game
                         }
                     }
 
-
+                    //if the enemy touches the player, they damage each other
                     if (toPlayer.Length() < MinEnemyDistance)
                     {
                         _player.HitPoints--;
                         enemy.HitPoints--;
                     }
 
-
+                    //all enemies move towards the player
                     enemy.Move(toPlayer);
 
+                    /***** random enemy teleportation *****/
+                    //Enemies tend to make clusters while moving alongside the walls. This can result into easy HP gains, so the enemies are randomly teleported
                     int random = _random.Next();
-                    if (random % 1000 == 0)
+                    if (random % 2000 == 0)
                     {
                         bool possible = false;
                         while (!possible)
                         {
                             enemy.Position = new Vector2(_random.Next(0, _map.Width - 1), _random.Next(0, _map.Height - 1));
                             toPlayer = enemy.Position - _player.Position;
-                            if (toPlayer.Length() >= PlayerProtectDist * 1.5 && _map[(int)enemy.Position.X, (int)enemy.Position.Y] == 0)
+
+                            //the enemy should not teleport on the player (instant damage)
+                            //also, we need to avoid wall ports 
+                            if (toPlayer.Length() >= PlayerProtectDist && _map[(int)enemy.Position.X, (int)enemy.Position.Y] == 0)
                             {
                                 possible = true;
                             }
                         }
                     }
                 }
-                else
+                else //dead enemies can be collected or they disappear some time (better performance)
                 {
                     bool close = toPlayer.Length() < MinEnemyDistance;
                     if (close || enemy.DeathSecs + 6 < gameTime.TotalGameTime.Seconds)
@@ -511,20 +529,19 @@ namespace Game
                     }
                 }
             }
-
-
             #endregion
 
 
             #region Shooting
 
-
-            var currentWeapon = _player.Weapon;
-
+            IWeapon currentWeapon = _player.Weapon;
             int count = currentWeapon.Bullets.Count;
 
-
+            //shooting has been set above in Key state region
+            //after a bullet hits, it can be shot again (so the ammo is actually infinite)
             shooting = currentWeapon.MaxAmmo > count && shooting;
+
+            //next bullet cannot be shot immediately after the first one
             if (currentWeapon.Bullets.Count > 0)
             {
                 Vector2 lastBullet = currentWeapon.Bullets[count - 1].Position;
@@ -535,6 +552,7 @@ namespace Game
                 }
             }
 
+            //after all conditions are met, the bullet is shot straight forward
             if (shooting)
             {
                 Bullet bullet = currentWeapon.Shoot(_player.Position, _player.Direction);
@@ -549,8 +567,11 @@ namespace Game
             for (int index = 0; index < currentWeapon.Bullets.Count; index++)
             {
                 var bullet = currentWeapon.Bullets[index - offset];
+
+                //after the bullets hits an obstacle or an enemy, it explodes
                 if (bullet.HasHit)
                 {
+                    //the bullet explosion can be seen for a small period of a time (so the bullet should not be removed immediately)
                     TimeSpan shotDiff = gameTime.TotalGameTime - bullet.AnimationTime;
                     if (shotDiff.Milliseconds >= AnimationMils)
                     {
@@ -561,6 +582,7 @@ namespace Game
                 }
                 else
                 {
+                    //the bullet hasn't hit an enemy and hits a wall
                     if (!bullet.Move(bullet.Direction))
                     {
                         bullet.Hit(gameTime.TotalGameTime);
@@ -568,7 +590,6 @@ namespace Game
 
                 }
             }
-
 
             #endregion
 
@@ -582,34 +603,32 @@ namespace Game
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            // TODO: Add your drawing code here
 
+            GC.Collect();
 
+            #region Walls
 
-            //raycasting
+            //raycasting – gathering info for wall drawing
             _currentRays = _caster.FieldOfView(_width, _player.Position, _player.Direction, _player.ScreenPlane, _condition);
 
-            #region Enemies
+            #endregion
 
+            #region Sprites
+
+            //using a formula for calculating inverse matrix of rank 2
             Matrix invMatrix = new Matrix(_player.Direction.Y, -_player.Direction.X, 0, 0, -_player.ScreenPlane.Y, _player.ScreenPlane.X, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
             invMatrix *= 1 / (_player.ScreenPlane.X * _player.Direction.Y - _player.Direction.X * _player.ScreenPlane.Y);
 
+            //each sprite is projected on the screen
             foreach (var objectSprite in _currentSprites)
             {
                 Vector2 playerDist = objectSprite.Position - _player.Position;
 
-
-
-                /***********************/
-                /*                     */
-                /* (dir Y   ,  -dir X) */
-                /* (-plane Y, plane X) */
-                /*                     */
-                /***********************/
-
+                //the X coordinate indicates the position on the screen, the Y coordinate determines the distance from the screen plane
                 Vector2 result = new Vector2(playerDist.X * invMatrix.M11 + playerDist.Y * invMatrix.M12,
                                              playerDist.X * invMatrix.M21 + playerDist.Y * invMatrix.M22);
 
+                //perpendicular distance from the screen plane to avoid fish eye
                 int spriteXPos = (int)(_width / 2F * (1 + result.X / result.Y));
 
                 //is sprite in front of the player?
@@ -621,7 +640,7 @@ namespace Game
                         throw new NullReferenceException("Moving object must be ICrossable in order to be drawn.");
                     }
 
-
+                    //this determines which columns contain a part of the sprite
                     int spriteWidth = (int)(crossableSprite.Width / result.Y);
 
                     for (int i = -spriteWidth / 2; i < spriteWidth / 2; i++)
@@ -631,6 +650,7 @@ namespace Game
                         if (currIndex >= 0 && currIndex < _width)
                         {
                             double xPixel = (i + spriteWidth / 2) / (double)spriteWidth;
+                            //as a part of the sprite could be behind the wall, we need to draw it by columns 
                             _currentRays[currIndex].Add(new DistanceWrapper<ICrossable>(result.Y, xPixel, Side.SideX, crossableSprite, objectSprite.Position, false));
                         }
                     }
@@ -638,12 +658,16 @@ namespace Game
             }
             #endregion
 
-
+            //creates an array of color data from ray information
             _painter.UpdateBuffer(_currentRays, _walls.MaxHeight, _player.Position, _player.Direction);
-
             _wallCanvas.SetData<Color>(_painter.Buffer);
 
-            frameRate = 1 / gameTime.ElapsedGameTime.TotalSeconds;
+            //smoother framerate update
+            if ((frameCount = frameCount % 5) == 0)
+            {
+                frameRate = Math.Round(1 / gameTime.ElapsedGameTime.TotalSeconds);
+            }
+            frameCount++;
 
 
             spriteBatch.Begin();
@@ -651,12 +675,11 @@ namespace Game
             spriteBatch.Draw(_sky, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height / 2), Color.White);
             spriteBatch.Draw(_floor, new Rectangle(0, GraphicsDevice.Viewport.Height / 2, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height / 2), Color.White);
             spriteBatch.Draw(_wallCanvas, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
-            spriteBatch.DrawString(arialFont, $"FPS: {frameRate}", new Vector2(0, 0),
-                gameTime.IsRunningSlowly ? Color.Red : Color.Black);
+            spriteBatch.DrawString(arialFont, $"FPS: {frameRate}", new Vector2(0, 0), gameTime.IsRunningSlowly ? Color.Red : Color.Black);
 
             if (_player.IsKilled)
             {
-                spriteBatch.DrawString(arialFont, $"YOU DIED!", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), Color.Red);
+                spriteBatch.DrawString(bigFont, $"YOU DIED!", new Vector2(GraphicsDevice.Viewport.Width / 2 - 30, GraphicsDevice.Viewport.Height / 2 - 30), Color.Red);
             }
 
             spriteBatch.DrawString(arialFont, $"HP: {_player.HitPoints}", new Vector2(GraphicsDevice.Viewport.Width - 100, 0), Color.Black);

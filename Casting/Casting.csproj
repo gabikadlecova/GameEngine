@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Casting.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL" />
@@ -43,9 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Environment\Exceptions\WallAssignmentException.cs" />
+    <Compile Include="Environment\Exceptions\ContainerAssignmentException.cs" />
     <Compile Include="Environment\Interfaces\IMap.cs" />
-    <Compile Include="Environment\Interfaces\IMapReader.cs" />
     <Compile Include="Environment\Interfaces\ITextureWrapper.cs" />
     <Compile Include="Environment\Interfaces\IWall.cs" />
     <Compile Include="Environment\Interfaces\IContainer.cs" />
@@ -69,15 +70,11 @@
     <Compile Include="RayCasting\Interfaces\ICastCondition.cs" />
     <Compile Include="RayCasting\Interfaces\ICrossable.cs" />
     <Compile Include="RayCasting\Interfaces\IRayCaster.cs" />
-    <Compile Include="RayCasting\Interfaces\IVector.cs" />
     <Compile Include="RayCasting\Ray.cs" />
     <Compile Include="RayCasting\RayCaster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RayCasting\Side.cs" />
-    <Compile Include="RayCasting\Vector.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Environment\Tools\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
