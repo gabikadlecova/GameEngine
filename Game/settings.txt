@@ -5,3 +5,6 @@
 ..\..\..\..\Text\player.txt
 ..\..\..\..\Textures\sky.jpg
 ..\..\..\..\Textures\floor.jpg
+10
+800
+600

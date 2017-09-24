@@ -9,7 +9,7 @@ namespace Casting.Player
 {
     public class EnemyData
     {
-        public EnemyData(int typeId, SpriteData spriteData, int hitPoints, float hitBox, float movementSpeed, float spawnTime)
+        public EnemyData(int typeId, SpriteData spriteData, int hitPoints, float hitBox, float movementSpeed, float spawnTime, IRayCaster caster)
         {
             TypeId = typeId;
             SpriteData = spriteData;
@@ -17,9 +17,10 @@ namespace Casting.Player
             HitBox = hitBox;
             MovementSpeed = movementSpeed;
             SpawnTime = spawnTime;
+            Caster = caster;
         }
 
-        public IRayCaster Caster;
+        public IRayCaster Caster { get; }
         public int TypeId { get; }
         public SpriteData SpriteData { get; }
         public int HitPoints { get; }

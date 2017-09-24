@@ -15,9 +15,14 @@ namespace Input
         public string SkyFilePath { get; }
         public string FloorFilePath { get; }
 
-        public ICastCondition Condition { get; }
+        public int EnemySpawnSecs { get; }
 
-        public EngineSettings(string wallFilePath, string mapFilePath, string enemyFilePath, string weaponFilePath, string playerFilePath, string skyFilePath, string floorFilePath, ICastCondition condition)
+        public ICastCondition Condition { get; }
+        public int Width { get; }
+        public int Height { get; }
+
+        public EngineSettings(string wallFilePath, string mapFilePath, string enemyFilePath, string weaponFilePath, string playerFilePath, string skyFilePath, string floorFilePath,
+            ICastCondition condition, int enemySpawnSecs, int width, int height)
         {
             WallFilePath = wallFilePath;
             MapFilePath = mapFilePath;
@@ -27,6 +32,9 @@ namespace Input
             SkyFilePath = skyFilePath;
             FloorFilePath = floorFilePath;
             Condition = condition;
+            EnemySpawnSecs = enemySpawnSecs;
+            Width = width;
+            Height = height;
         }
     }
 }

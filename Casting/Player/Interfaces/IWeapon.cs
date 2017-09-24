@@ -11,9 +11,11 @@ namespace Casting.Player.Interfaces
 
         List<Bullet> Bullets { get; }
 
+        float MinBulletDist { get; }
+
         SpriteData BulletData { get; }
 
-        IRayCaster Caster { get; set; }
+        IRayCaster Caster { get; }
 
         //todo probably image/bitmap
         Texture2D Texture { get; set; }

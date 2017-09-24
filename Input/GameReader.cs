@@ -1,19 +1,18 @@
-﻿using Casting.Environment.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Net;
+using Casting.Environment;
+using Casting.Environment.Interfaces;
 using Casting.Player;
 using Casting.Player.Interfaces;
 using Casting.RayCasting;
 using Casting.RayCasting.Interfaces;
-using Input;
 using Microsoft.Xna.Framework;
 
-namespace Casting.Environment.Tools
+namespace Input
 {
     public class GameReader : IMapReader
     {
@@ -82,7 +81,7 @@ namespace Casting.Environment.Tools
             }
         }
 
-        public Dictionary<int, EnemyData> ReadEnemies(string filePath)
+        public Dictionary<int, EnemyData> ReadEnemies(string filePath, IRayCaster caster)
         {
             Dictionary<int, EnemyData> enemies = new Dictionary<int, EnemyData>();
 
@@ -98,6 +97,7 @@ namespace Casting.Environment.Tools
                         {
                             int typeId = Int32.Parse(data[0]);
                             int hitPoints = Int32.Parse(data[1]);
+                            //could be used as initial position
                             float positionX = float.Parse(data[2], CultureInfo.InvariantCulture);
                             float positionY = float.Parse(data[3], CultureInfo.InvariantCulture);
                             string texturePath = data[4];
@@ -109,7 +109,7 @@ namespace Casting.Environment.Tools
                             float spawnTime = float.Parse(data[10], CultureInfo.InvariantCulture);
 
                             SpriteData spriteData = new SpriteData(texturePath, killedTexture, height, width);
-                            EnemyData enemyData = new EnemyData(typeId, spriteData, hitPoints, hitBox, speed, spawnTime);
+                            EnemyData enemyData = new EnemyData(typeId, spriteData, hitPoints, hitBox, speed, spawnTime, caster);
 
                             enemies.Add(typeId, enemyData);
                         }
@@ -129,7 +129,7 @@ namespace Casting.Environment.Tools
             return enemies;
         }
 
-        public List<IWeapon> ReadWeapons(string filePath)
+        public List<IWeapon> ReadWeapons(string filePath, IRayCaster caster)
         {
             List<IWeapon> weapons = new List<IWeapon>();
             using (StreamReader reader = new StreamReader(filePath))
@@ -148,9 +148,10 @@ namespace Casting.Environment.Tools
                             string flyPicAdd = line[3];
                             string hitPicAdd = line[4];
                             int bulletSize = Int32.Parse(line[5]);
+                            float minBulletDist = float.Parse(line[6], CultureInfo.InvariantCulture);
 
                             SpriteData bullet = new SpriteData(flyPicAdd, hitPicAdd, bulletSize, bulletSize);
-                            IWeapon weapon = new BasicWeapon(maxAmmo, picAddress, bullet, shootingSpeed);
+                            IWeapon weapon = new BasicWeapon(maxAmmo, picAddress, bullet, shootingSpeed, minBulletDist, caster);
                             weapons.Add(weapon);
                         }
                         catch (Exception e)
@@ -166,6 +167,40 @@ namespace Casting.Environment.Tools
             return weapons;
         }
 
+        public Player ReadPlayer(string filePath, IRayCaster caster)
+        {
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+
+                string[] line = reader.ReadLine()?.Split(',');
+
+                if (line != null)
+                {
+                    try
+                    {
+                        float posX = float.Parse(line[0], CultureInfo.InvariantCulture);
+                        float posY = float.Parse(line[1], CultureInfo.InvariantCulture);
+                        float dirX = float.Parse(line[2], CultureInfo.InvariantCulture);
+                        float dirY = float.Parse(line[3], CultureInfo.InvariantCulture);
+                        int hitPoints = Int32.Parse(line[4]);
+                        string name = line[5];
+                        float speed = float.Parse(line[6], CultureInfo.InvariantCulture);
+
+                        return new Player(posX, posY, dirX, dirY, hitPoints, HumanCastCondition.Default(), name, speed, caster);
+
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.WriteLine(e);
+                        throw;
+                    }
+                }
+
+                throw new Exception("Could not load player");
+
+            }
+        }
+
         public EngineSettings LoadSettings(string path)
         {
             try
@@ -178,9 +213,12 @@ namespace Casting.Environment.Tools
                 string player = lines[4];
                 string sky = lines[5];
                 string floor = lines[6];
+                int enemySecs = Int32.Parse(lines[7]);
+                int width = Int32.Parse(lines[8]);
+                int height = Int32.Parse(lines[9]);
                 ICastCondition condition = CastCondition.WallCountInterval(4, 1);
 
-                return new EngineSettings(wall, map, enemies, weapons, player, sky, floor, condition);
+                return new EngineSettings(wall, map, enemies, weapons, player, sky, floor, condition, enemySecs, width, height);
 
 
             }

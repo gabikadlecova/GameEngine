@@ -13,6 +13,8 @@ namespace Casting.Player.Interfaces
 
         TimeSpan AnimationTime { get; }
 
+        float MinBulletDist { get; }
+
         bool HasHit { get; }
     }
 }

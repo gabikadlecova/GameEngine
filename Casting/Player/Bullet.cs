@@ -15,18 +15,17 @@ namespace Casting.Player
 {
     public class Bullet : MovingObject, IBullet, ICrossable
     {
-        public Bullet(Vector2 position, Vector2 direction, HumanCastCondition condition, float movementSpeed, SpriteData bulletData) : base(position, direction, condition, movementSpeed)
+        public Bullet(Vector2 position, Vector2 direction, HumanCastCondition condition, float movementSpeed, SpriteData bulletData, float minDist, IRayCaster caster) : base(position, direction, condition, movementSpeed, caster)
         {
             HasHit = false;
             Height = bulletData.Height;
             Width = bulletData.Width;
             FlyPic = bulletData.LivingPic;
             HitPic = bulletData.DeadPic;
+            MinBulletDist = minDist;
 
         }
-
-
-        // public abstract Texture2D GetTexture();
+        
 
         public virtual void Hit(TimeSpan explosionTime)
         {
@@ -36,6 +35,7 @@ namespace Casting.Player
 
         
         public TimeSpan AnimationTime { get; private set; }
+        public float MinBulletDist { get; }
         public bool HasHit { get; private set; }
 
 
