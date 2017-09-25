@@ -8,7 +8,10 @@ namespace Game
     /// </summary>
     public static class Program
     {
-        public static bool RestartGame = false;
+        /// <summary>
+        /// Determines whether the game should restart after exiting
+        /// </summary>
+        public static bool RestartGame;
 
         /// <summary>
         /// The main entry point for the application.

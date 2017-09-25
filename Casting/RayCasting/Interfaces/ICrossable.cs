@@ -8,10 +8,24 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Casting.RayCasting.Interfaces
 {
+    /// <summary>
+    /// Represents a game object that can be directly or indirectly crossed by a ray.
+    /// </summary>
     public interface ICrossable
     {
+        /// <summary>
+        /// Height of the object
+        /// </summary>
         int Height { get; }
+        /// <summary>
+        /// Width of the object
+        /// </summary>
         int Width { get; }
+        /// <summary>
+        /// Gets a texture on the side of the object which has been hit.
+        /// </summary>
+        /// <param name="side"></param>
+        /// <returns></returns>
         ITextureWrapper GetTexture(Side side);
 
     }

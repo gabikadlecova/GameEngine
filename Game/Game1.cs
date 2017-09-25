@@ -90,6 +90,9 @@ namespace Game
         private TimeSpan lastSpawnChange;
         private int kills;
 
+        /// <summary>
+        /// Initializes a new Game instance
+        /// </summary>
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this)
@@ -655,7 +658,7 @@ namespace Game
             #endregion
 
             //creates an array of color data from ray information
-            _painter.UpdateBuffer(_currentRays, _walls.MaxHeight, _player.Position, _player.Direction);
+            _painter.UpdateBuffer(_currentRays, _walls.MaxHeight, _player.Position);
             _wallCanvas.SetData<Color>(_painter.Buffer);
 
             //smoother framerate update

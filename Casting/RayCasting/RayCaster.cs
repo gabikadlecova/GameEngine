@@ -6,15 +6,20 @@ using Microsoft.Xna.Framework;
 
 namespace Casting.RayCasting
 {
+    /// <summary>
+    /// Provides 
+    /// </summary>
     public class RayCaster : IRayCaster
     {
-        //ToDo Debug this (or write some nice unit tests)
-        private const double Treshold = 2E-12;
-
         private IMap _map;
         private IContainer<IWall> _container;
-        private List<Ray> _rayBuffer;
+        private readonly List<Ray> _rayBuffer;
 
+        /// <summary>
+        /// Initializes a new ray caster
+        /// </summary>
+        /// <param name="map">Game map on which the raycasting occurs</param>
+        /// <param name="container">All possible wall types</param>
         public RayCaster(IMap map, IContainer<IWall> container)
         {
             _map = map;
@@ -22,18 +27,33 @@ namespace Casting.RayCasting
             _rayBuffer = new List<Ray>();
         }
 
+        /// <summary>
+        /// The game map with integer values on each tile
+        /// </summary>
         public IMap Map
         {
             get { return _map; }
             set { _map = value ?? _map; }
         }
 
+        /// <summary>
+        /// All wall types which correspond to tile numbers
+        /// </summary>
         public IContainer<IWall> Walls
         {
             get { return _container; }
             set { _container = value ?? _container; }
         }
 
+        /// <summary>
+        /// Casts multiple rays to provide full field of view
+        /// </summary>
+        /// <param name="width">Screen width</param>
+        /// <param name="position">Player position on the map</param>
+        /// <param name="startDirection">Straight direction of the player</param>
+        /// <param name="screenPlane">The screen plane vector</param>
+        /// <param name="condition">Cast condition to limit the raycasting</param>
+        /// <returns>List of rays containing data of crossed walls</returns>
         public List<Ray> FieldOfView(int width, Vector2 position, Vector2 startDirection, Vector2 screenPlane, ICastCondition condition)
         {
             _rayBuffer.Clear();
@@ -54,11 +74,18 @@ namespace Casting.RayCasting
             return _rayBuffer;
         }
 
+        /// <summary>
+        /// Casts a single ray in one direction
+        /// </summary>
+        /// <param name="startPosition">Position from where we raycast</param>
+        /// <param name="direction">Direction of the ray</param>
+        /// <param name="stopCondition">Cast condition to limit the raycasting</param>
+        /// <returns>A single ray with data of crossed objects</returns>
         public Ray Cast(Vector2 startPosition, Vector2 direction, ICastCondition stopCondition)
         {
             Ray resultRay = new Ray();
 
-            //todo floats vs doubles
+            //first set the starting values
             double rayPositionX = startPosition.X;
             double rayPositionY = startPosition.Y;
             int mapX = (int)Math.Floor(rayPositionX);
@@ -72,7 +99,9 @@ namespace Casting.RayCasting
             double rayDistX;
             double rayDistY;
 
-            //Todo try to make this more clear
+
+            //rayDist is the distance from one grid cross to another (from one line which is parallel with either the x or y axis to another)
+            //if we are moving right or down, we need to pass to the neighbouring tile
             if (direction.X > 0)
             {
                 sideX = 1;
@@ -108,6 +137,7 @@ namespace Casting.RayCasting
                 stopCondition.ObstacleCrossed(0);
             }
 
+            //we move from one intersection to another
             while (!stopCondition.IsMet)
             {
                 Side side;
@@ -128,13 +158,8 @@ namespace Casting.RayCasting
                     side = Side.SideY;
                 }
 
-
-
-
-                //todo check mapX and mapY
-
-
-
+ 
+                //have we reached the map border?
                 int index = _map.IsInRange(mapX, mapY) ? _map[mapX, mapY] : -1;
                 if (index > 0 || index == -1)
                 {
@@ -171,8 +196,10 @@ namespace Casting.RayCasting
 
                     stopCondition.ObstacleCrossed(wallDistance);
 
+                    //where exactly was the wall hit
                     xWallPoint -= Math.Floor(xWallPoint);
 
+                    //the position of the wall
                     float wallPosX = 0;
                     float wallPosY = 0;
 
@@ -192,18 +219,13 @@ namespace Casting.RayCasting
                     
                     resultRay.ObjectsCrossed.Add(new DistanceWrapper<ICrossable>(wallDistance, xWallPoint, side, crossedWall, wallPos, true));
 
-
+                    //if we reached the border, we stop raycasting
                     if (index == -1)
                     {
                         stopCondition.Reset();
                         return resultRay;
                     }
-
-                    
-
-
                 }
-
 
             }
 
