@@ -10,11 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Rendering;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using Microsoft.Xna.Framework.Graphics.PackedVector;
 using Ray = Casting.RayCasting.Ray;
 
 namespace Game

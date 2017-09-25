@@ -14,9 +14,16 @@ using Microsoft.Xna.Framework;
 
 namespace Input
 {
+    /// <summary>
+    /// Reads game data from specified input text files
+    /// </summary>
     public class GameReader
     {
-
+        /// <summary>
+        /// Reads the game map
+        /// </summary>
+        /// <param name="filePath">Game map file path</param>
+        /// <returns>IMap game map object</returns>
         public IMap ReadMap(string filePath)
         {
             string[] lines = File.ReadAllLines(filePath);
@@ -37,6 +44,11 @@ namespace Input
             return new Map(board);
         }
 
+        /// <summary>
+        /// Reads all possible wall types
+        /// </summary>
+        /// <param name="filePath">Wall type path</param>
+        /// <returns>IContainer of all wall types</returns>
         public IContainer<IWall> ReadWalls(string filePath)
         {
             IContainer<IWall> container = new Container<IWall>();
@@ -81,6 +93,12 @@ namespace Input
             }
         }
 
+        /// <summary>
+        /// Reads all enemy type data
+        /// </summary>
+        /// <param name="filePath">Enemy data path</param>
+        /// <param name="caster">Default movement raycaster</param>
+        /// <returns>Dictionary of all possible enemy types</returns>
         public Dictionary<int, EnemyData> ReadEnemies(string filePath, IRayCaster caster)
         {
             Dictionary<int, EnemyData> enemies = new Dictionary<int, EnemyData>();
@@ -129,6 +147,12 @@ namespace Input
             return enemies;
         }
 
+        /// <summary>
+        /// Reads all available weapons
+        /// </summary>
+        /// <param name="filePath">Weapon file path</param>
+        /// <param name="caster">Default shooting raycaster</param>
+        /// <returns>List of read weapons</returns>
         public List<IWeapon> ReadWeapons(string filePath, IRayCaster caster)
         {
             List<IWeapon> weapons = new List<IWeapon>();
@@ -167,6 +191,12 @@ namespace Input
             return weapons;
         }
 
+        /// <summary>
+        /// Reads player data
+        /// </summary>
+        /// <param name="filePath">Player data file path</param>
+        /// <param name="caster">Default movement raycaster</param>
+        /// <returns>Player data</returns>
         public Player ReadPlayer(string filePath, IRayCaster caster)
         {
             using (StreamReader reader = new StreamReader(filePath))
@@ -201,6 +231,11 @@ namespace Input
             }
         }
 
+        /// <summary>
+        /// Loads game settings from a text file
+        /// </summary>
+        /// <param name="path">Settings file path</param>
+        /// <returns>Game settings</returns>
         public EngineSettings LoadSettings(string path)
         {
             try
@@ -216,7 +251,7 @@ namespace Input
                 int enemySecs = Int32.Parse(lines[7]);
                 int width = Int32.Parse(lines[8]);
                 int height = Int32.Parse(lines[9]);
-                ICastCondition condition = CastCondition.WallCountInterval(4, 1);
+                ICastCondition condition = CastCondition.LimitWalls(4);
 
                 return new EngineSettings(wall, map, enemies, weapons, player, sky, floor, condition, enemySecs, width, height);
 

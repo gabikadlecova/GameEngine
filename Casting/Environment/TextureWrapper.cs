@@ -4,69 +4,62 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Casting.Environment
 {
+    /// <summary>
+    /// Provides direct access to loaded texture pixel data
+    /// </summary>
     public class TextureWrapper : ITextureWrapper
     {
         private Color[,] _buffer;
 
-
+        /// <summary>
+        /// Initializes a new wrapper instance which can be later used to load the texture into memory
+        /// </summary>
+        /// <param name="picAddress">Texture path</param>
+        /// <param name="altColor">Alternative pixel color</param>
         public TextureWrapper(string picAddress, Color altColor)
         {
             PicAddress = picAddress;
             AltColor = altColor;
         }
 
+        /// <summary>
+        /// Is true if the texture had been loaded correctly
+        /// </summary>
         public bool IsOk
         {
             get { return !ReferenceEquals(_buffer, null); }
         }
 
+        /// <summary>
+        /// Texture height
+        /// </summary>
         public int Height
         {
             get { return _buffer.GetLength(0); }
         }
 
+        /// <summary>
+        /// Texture width
+        /// </summary>
         public int Width
         {
             get { return _buffer.GetLength(1); }
         }
 
-        /*public void LoadBitmap()
-        {
-            try
-            {
-                using (Bitmap bitmap = (Bitmap)Image.FromFile(PicAddress))
-                {
-                    BitmapData data = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height),
-                        ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
-                    int[] line = new int[data.Width * data.Height];
-                    Marshal.Copy(data.Scan0,line, 0, data.Width * data.Height);
-
-                    _buffer = new int[data.Width, data.Height];
-
-                    int startIndex = 0;
-                    for (int i = 0; i < data.Height; i++)
-                    {
-                        for (int j = 0; j < data.Width; j++)
-                        {
-                            _buffer[j, i] = line[startIndex];
-                            startIndex++;
-                        }
-                    }
-                }
-            }
-            catch (FileNotFoundException)
-            {
-                throw;
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Bitmap could not be loaded (see inner exception for more information).", e);
-            }
-        }*/
-
+        /// <summary>
+        /// Texture path
+        /// </summary>
         public string PicAddress { get; }
+
+        /// <summary>
+        /// Can be used as alternative pixel color if the texture had not been loaded
+        /// </summary>
         public Color AltColor { get; }
 
+        /// <summary>
+        /// Loads the texture into memory
+        /// </summary>
+        /// <param name="texture">Texture which contains pixel color data</param>
         public void LoadTexture(Texture2D texture)
         {
             _buffer = new Color[texture.Height, texture.Width];
@@ -82,6 +75,12 @@ namespace Casting.Environment
             }
         }
 
+        /// <summary>
+        /// Provides access to specified pixel color
+        /// </summary>
+        /// <param name="x">x coordinate</param>
+        /// <param name="y">y coordinate</param>
+        /// <returns></returns>
         public Color this[int x, int y]
         {
             get { return _buffer[x, y]; }
