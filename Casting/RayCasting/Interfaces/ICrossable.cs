@@ -24,8 +24,8 @@ namespace Casting.RayCasting.Interfaces
         /// <summary>
         /// Gets a texture on the side of the object which has been hit.
         /// </summary>
-        /// <param name="side"></param>
-        /// <returns></returns>
+        /// <param name="side">Side on which has the object been hit</param>
+        /// <returns>Texture that corresponds to the side parameter</returns>
         ITextureWrapper GetTexture(Side side);
 
     }

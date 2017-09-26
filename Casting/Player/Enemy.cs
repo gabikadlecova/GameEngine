@@ -79,7 +79,7 @@ namespace Casting.Player
         /// Gets the current enemy texture
         /// </summary>
         /// <param name="side">Unused side parameter, this enemy can be seen only from one side</param>
-        /// <returns></returns>
+        /// <returns>The enemy's living or dead texture</returns>
         public ITextureWrapper GetTexture(Side side)
         {
             return IsKilled ? KilledTexture : Texture;

@@ -19,7 +19,7 @@
         /// </summary>
         /// <param name="x">x coordinate</param>
         /// <param name="y">y coordinate</param>
-        /// <returns></returns>
+        /// <returns>Returns true if the specified point lies on the map</returns>
         bool IsInRange(int x, int y);
 
         /// <summary>

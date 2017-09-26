@@ -411,7 +411,7 @@ namespace Game
                 diff = diff * RotationSpeed * Math.Sign(difference.X);
 
 
-                currRotation = diff / 8;
+                currRotation = diff / 8.0F;
 
                 lastMouse = new Point(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
 

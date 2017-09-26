@@ -78,7 +78,7 @@ namespace Casting.Player
         /// </summary>
         /// <param name="from">Starting position</param>
         /// <param name="direction">Shooting direction</param>
-        /// <returns></returns>
+        /// <returns>Returns the shot bullet</returns>
         public Bullet Shoot(Vector2 from, Vector2 direction)
         {
             if (Bullets.Count < MaxAmmo)
