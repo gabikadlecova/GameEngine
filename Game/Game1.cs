@@ -399,7 +399,7 @@ namespace Game
 
 
             #region Mouse state
-
+            
             //if the mouse position is close to the middle of the screen, the view is no rotated
             if ((mouseCounter = mouseCounter % 6) == 0)
             {
@@ -412,12 +412,17 @@ namespace Game
 
 
                 currRotation = diff / 6;
-                lastMouse = currMouse;
+
+                lastMouse = new Point(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
+
+                Mouse.SetPosition(lastMouse.X, lastMouse.Y);
+
             }
 
             if (Math.Abs(currRotation) > RotationTreshold)
             {
                 _player.Rotate(currRotation);
+
             }
             mouseCounter++;
 
