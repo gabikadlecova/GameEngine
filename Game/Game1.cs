@@ -39,7 +39,7 @@ namespace Game
         /// <summary>
         /// Determines the view rotation speed
         /// </summary>
-        private const float RotationSpeed = 0.0080F;
+        private const float RotationSpeed = 0.0074F;
         /// <summary>
         /// Limits animation of explosions and so like
         /// </summary>
@@ -401,7 +401,7 @@ namespace Game
             #region Mouse state
             
             //if the mouse position is close to the middle of the screen, the view is no rotated
-            if ((mouseCounter = mouseCounter % 6) == 0)
+            if ((mouseCounter = mouseCounter % 8) == 0)
             {
                 Point currMouse = Mouse.GetState().Position;
 
@@ -411,7 +411,7 @@ namespace Game
                 diff = diff * RotationSpeed * Math.Sign(difference.X);
 
 
-                currRotation = diff / 6;
+                currRotation = diff / 8;
 
                 lastMouse = new Point(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
 
