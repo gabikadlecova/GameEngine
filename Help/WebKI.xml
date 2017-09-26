@@ -1,0 +1,716 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+  <HelpKINode Title="Add method" Url="html/68b4b842-e217-f9ef-40e5-cd0177cea74e.htm" />
+  <HelpKINode Title="AltColor property">
+    <HelpKINode Title="ITextureWrapper.AltColor Property " Url="html/326cc262-f83b-80b8-1092-c882f0ff4571.htm" />
+    <HelpKINode Title="TextureWrapper.AltColor Property " Url="html/35fffb79-d199-b0ef-d077-e01254aee4a4.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AnimationTime property">
+    <HelpKINode Title="Bullet.AnimationTime Property " Url="html/0f4dad14-757c-26b7-e346-12988fa1e740.htm" />
+    <HelpKINode Title="IBullet.AnimationTime Property " Url="html/29965ce9-ba22-5ad2-9cca-3d622c023594.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BackgroundPainter class">
+    <HelpKINode Title="BackgroundPainter Class" Url="html/ed0a0a1d-cc80-3c14-28ab-44750d390eae.htm" />
+    <HelpKINode Title="about BackgroundPainter class" Url="html/ed0a0a1d-cc80-3c14-28ab-44750d390eae.htm" />
+    <HelpKINode Title="constructor" Url="html/b9ed0063-ff99-3a73-192d-877546a0139f.htm" />
+    <HelpKINode Title="methods" Url="html/b8a91cab-55ee-8f51-3e88-6236f95f8567.htm" />
+    <HelpKINode Title="properties" Url="html/20f6d37c-1fdd-9ce2-1001-59e07c32824a.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BackgroundPainter.BackgroundPainter constructor" Url="html/b9ed0063-ff99-3a73-192d-877546a0139f.htm" />
+  <HelpKINode Title="BackgroundPainter.Buffer property" Url="html/3671ca60-ff22-169d-635e-a1e5d89cc515.htm" />
+  <HelpKINode Title="BackgroundPainter.ChangeResolution method" Url="html/091e13be-d654-c316-f0f3-05fc81d8294c.htm" />
+  <HelpKINode Title="BackgroundPainter.Floor property" Url="html/68c382cb-c170-4e38-4abf-5457e503142b.htm" />
+  <HelpKINode Title="BackgroundPainter.Height property" Url="html/f679ec83-e607-d78f-168b-93964d7d8b69.htm" />
+  <HelpKINode Title="BackgroundPainter.Sky property" Url="html/e66a5cd4-a2a6-340a-5c54-5d55921280d3.htm" />
+  <HelpKINode Title="BackgroundPainter.UpdateBuffer method" Url="html/a3a58e40-22ff-3b3d-23aa-4f5fa8c482ee.htm" />
+  <HelpKINode Title="BackgroundPainter.Width property" Url="html/45415010-1ee8-bae9-3504-4238e2bbbfb9.htm" />
+  <HelpKINode Title="BasicWeapon class">
+    <HelpKINode Title="BasicWeapon Class" Url="html/d0e020a4-466f-06a5-a3cc-eb8420aa4158.htm" />
+    <HelpKINode Title="about BasicWeapon class" Url="html/d0e020a4-466f-06a5-a3cc-eb8420aa4158.htm" />
+    <HelpKINode Title="constructor" Url="html/9377843f-b9a1-339b-06e4-e88ecd9d4da3.htm" />
+    <HelpKINode Title="methods" Url="html/e719d2c9-2b67-1b9f-d7f8-340b9700004a.htm" />
+    <HelpKINode Title="properties" Url="html/3101f6c0-bfe8-beaf-f7be-f788c6b09e22.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BasicWeapon.BasicWeapon constructor" Url="html/9377843f-b9a1-339b-06e4-e88ecd9d4da3.htm" />
+  <HelpKINode Title="BasicWeapon.BulletData property" Url="html/9b5ecfbc-5aa8-1e04-2619-3946940e1003.htm" />
+  <HelpKINode Title="BasicWeapon.Bullets property" Url="html/5f44f418-efe0-0fcd-3528-4042a0b3aab8.htm" />
+  <HelpKINode Title="BasicWeapon.Caster property" Url="html/f0253326-8b9a-6f33-10b6-c663bb55b8b6.htm" />
+  <HelpKINode Title="BasicWeapon.MaxAmmo property" Url="html/55383e1c-ce8f-5110-9c3d-013d6b2d3241.htm" />
+  <HelpKINode Title="BasicWeapon.MinBulletDist property" Url="html/f5d5dccc-05db-b1ed-1837-5f1ee17c0531.htm" />
+  <HelpKINode Title="BasicWeapon.MovementSpeed property" Url="html/4b24c5b8-7ff4-7f17-05e1-3f40b741bac1.htm" />
+  <HelpKINode Title="BasicWeapon.PicAddress property" Url="html/30948777-fa13-f502-97de-2718b531e3e9.htm" />
+  <HelpKINode Title="BasicWeapon.Shoot method" Url="html/42b07e67-b950-f605-948b-aa5faad8f894.htm" />
+  <HelpKINode Title="BasicWeapon.Texture property" Url="html/ce555ad7-34a5-474d-53fc-66485923c9bb.htm" />
+  <HelpKINode Title="Buffer property" Url="html/3671ca60-ff22-169d-635e-a1e5d89cc515.htm" />
+  <HelpKINode Title="Bullet class">
+    <HelpKINode Title="Bullet Class" Url="html/3ff10143-7e69-5106-6730-d1f57213f8c1.htm" />
+    <HelpKINode Title="about Bullet class" Url="html/3ff10143-7e69-5106-6730-d1f57213f8c1.htm" />
+    <HelpKINode Title="constructor" Url="html/a06fac95-7dca-39ea-104c-de8ff5ab9c28.htm" />
+    <HelpKINode Title="methods" Url="html/fc49b327-a8b4-add9-121d-1980be9b54e5.htm" />
+    <HelpKINode Title="properties" Url="html/5de4f3b9-be07-48c6-08c2-250e5172a8e5.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Bullet.AnimationTime property" Url="html/0f4dad14-757c-26b7-e346-12988fa1e740.htm" />
+  <HelpKINode Title="Bullet.Bullet constructor" Url="html/a06fac95-7dca-39ea-104c-de8ff5ab9c28.htm" />
+  <HelpKINode Title="Bullet.FlyPic property" Url="html/aa77fe6e-8d22-8d76-ba42-012d6c267227.htm" />
+  <HelpKINode Title="Bullet.GetTexture method" Url="html/efe84eb5-47c3-ef1b-b8d6-52b5dbd0a1ac.htm" />
+  <HelpKINode Title="Bullet.HasHit property" Url="html/c9c3d8c8-59a9-cff6-62a6-a96aed903cf3.htm" />
+  <HelpKINode Title="Bullet.Height property" Url="html/3927693b-acda-8dc8-0572-e558e59a80f5.htm" />
+  <HelpKINode Title="Bullet.Hit method" Url="html/76d9eebf-93b7-b078-9f40-914b2e37444d.htm" />
+  <HelpKINode Title="Bullet.HitPic property" Url="html/5ea2deea-61a6-47b1-ca48-2b0d82ea8840.htm" />
+  <HelpKINode Title="Bullet.Width property" Url="html/e356c359-6d5c-6df4-96a9-29da2d99f252.htm" />
+  <HelpKINode Title="BulletData property">
+    <HelpKINode Title="BasicWeapon.BulletData Property " Url="html/9b5ecfbc-5aa8-1e04-2619-3946940e1003.htm" />
+    <HelpKINode Title="IWeapon.BulletData Property " Url="html/52f0d48b-a662-00a5-a2e4-8616397aa42e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Bullets property">
+    <HelpKINode Title="BasicWeapon.Bullets Property " Url="html/5f44f418-efe0-0fcd-3528-4042a0b3aab8.htm" />
+    <HelpKINode Title="IWeapon.Bullets Property " Url="html/566e725d-ee8c-cab1-9b4f-902664ade004.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Cast method">
+    <HelpKINode Title="IRayCaster.Cast Method " Url="html/db3bf3eb-0fda-2b24-899c-5758f38e2008.htm" />
+    <HelpKINode Title="RayCaster.Cast Method " Url="html/538f799d-7f33-cc3f-6cce-4b646266da59.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CastCondition class">
+    <HelpKINode Title="CastCondition Class" Url="html/b4cd71c9-1043-5118-7d1d-b6929ef97437.htm" />
+    <HelpKINode Title="about CastCondition class" Url="html/b4cd71c9-1043-5118-7d1d-b6929ef97437.htm" />
+    <HelpKINode Title="constructor" Url="html/cb56c29d-2d68-3fb7-b9e5-832cdc3f5b0b.htm" />
+    <HelpKINode Title="fields" Url="html/059c388c-7373-abe8-9c52-2d56e26e885a.htm" />
+    <HelpKINode Title="methods" Url="html/c6723e46-4068-f160-36dd-16306b116a55.htm" />
+    <HelpKINode Title="properties" Url="html/396f3c2c-7f04-f1d8-6a3b-d4b137d4f708.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CastCondition.CastCondition constructor" Url="html/cb56c29d-2d68-3fb7-b9e5-832cdc3f5b0b.htm" />
+  <HelpKINode Title="CastCondition.CastDistance method" Url="html/b1ec9781-fd65-3afe-3be7-181d26921c16.htm" />
+  <HelpKINode Title="CastCondition.CurrentDistance field" Url="html/3a585f8a-2ba8-5ab8-61c4-1ba3432c6c2d.htm" />
+  <HelpKINode Title="CastCondition.IsMet property" Url="html/a242a96a-2720-02b5-8caf-437df612b144.htm" />
+  <HelpKINode Title="CastCondition.LimitWalls method" Url="html/80e56541-e2c7-ba43-c479-33c8bf8f8635.htm" />
+  <HelpKINode Title="CastCondition.MapRangeCrossed method" Url="html/a4f6d2a2-d7ba-f39f-c6b1-253eb7e64c27.htm" />
+  <HelpKINode Title="CastCondition.MaxDistance property" Url="html/29e65305-e720-0052-719b-d4d0399fc20c.htm" />
+  <HelpKINode Title="CastCondition.MaxWalls property" Url="html/480f91b9-4a56-155b-b074-6b4d02d76a70.htm" />
+  <HelpKINode Title="CastCondition.MinWalls property" Url="html/bab39607-c34f-e40c-e7e7-396360105df1.htm" />
+  <HelpKINode Title="CastCondition.ObstacleCount field" Url="html/b6cb83fd-2a84-b22e-ba8a-87c247370ff1.htm" />
+  <HelpKINode Title="CastCondition.ObstacleCrossed method" Url="html/b0d8e2ff-07cc-4a4a-c269-98d8bc1c3d41.htm" />
+  <HelpKINode Title="CastCondition.Reset method" Url="html/170b47f7-2997-0bc6-030e-c7d65ac576b8.htm" />
+  <HelpKINode Title="CastCondition.UpdateDistance method" Url="html/b9d5eaca-e819-ddab-c595-825069b90321.htm" />
+  <HelpKINode Title="CastDistance method" Url="html/b1ec9781-fd65-3afe-3be7-181d26921c16.htm" />
+  <HelpKINode Title="Caster property">
+    <HelpKINode Title="BasicWeapon.Caster Property " Url="html/f0253326-8b9a-6f33-10b6-c663bb55b8b6.htm" />
+    <HelpKINode Title="EnemyData.Caster Property " Url="html/19f7fb5b-26ae-c5aa-e460-d1e211547300.htm" />
+    <HelpKINode Title="IWeapon.Caster Property " Url="html/4343386d-8dff-4ac0-76b1-e38003a09e9e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Casting.Environment namespace" Url="html/f2ba6431-6b76-3d37-94d7-af030bd0deb5.htm" />
+  <HelpKINode Title="Casting.Environment.Container(Of TObj) class" Url="html/b70022a7-fe19-c9d6-5e12-f6e953f73edf.htm" />
+  <HelpKINode Title="Casting.Environment.Container&lt;TObj&gt; class" Url="html/b70022a7-fe19-c9d6-5e12-f6e953f73edf.htm" />
+  <HelpKINode Title="Casting.Environment.Interfaces namespace" Url="html/88c5e314-2b17-3284-c8a2-39e1882fb6fe.htm" />
+  <HelpKINode Title="Casting.Environment.Interfaces.IContainer(Of TObj) interface" Url="html/14af17de-b567-d1e7-063b-9e5ed7ee650b.htm" />
+  <HelpKINode Title="Casting.Environment.Interfaces.IContainer&lt;TObj&gt; interface" Url="html/14af17de-b567-d1e7-063b-9e5ed7ee650b.htm" />
+  <HelpKINode Title="Casting.Environment.Interfaces.IMap interface" Url="html/1f7f5a5f-496b-58a4-fe04-caa15ec64cd9.htm" />
+  <HelpKINode Title="Casting.Environment.Interfaces.ITextureWrapper interface" Url="html/48a4fe58-2f5f-764b-53ca-33d7bb6542d0.htm" />
+  <HelpKINode Title="Casting.Environment.Interfaces.IWall interface" Url="html/1f1915c8-bef0-16a1-cab4-e69bdf30ffce.htm" />
+  <HelpKINode Title="Casting.Environment.Map class" Url="html/50e38177-405b-d1f0-8969-d5379813121d.htm" />
+  <HelpKINode Title="Casting.Environment.TextureWrapper class" Url="html/90a9907e-9d0e-2180-bc3c-de3bfd3d685c.htm" />
+  <HelpKINode Title="Casting.Environment.Wall class" Url="html/33bf7df3-ddb1-7f2c-aaa0-ab0d00e925bb.htm" />
+  <HelpKINode Title="Casting.Player namespace" Url="html/6674b2d2-2435-da2f-4342-610c58851c54.htm" />
+  <HelpKINode Title="Casting.Player.BasicWeapon class" Url="html/d0e020a4-466f-06a5-a3cc-eb8420aa4158.htm" />
+  <HelpKINode Title="Casting.Player.Bullet class" Url="html/3ff10143-7e69-5106-6730-d1f57213f8c1.htm" />
+  <HelpKINode Title="Casting.Player.Enemy class" Url="html/5e694ac7-c63b-e2f7-70e2-b3dcff4ef777.htm" />
+  <HelpKINode Title="Casting.Player.EnemyData class" Url="html/036a61c6-2187-27a8-f86b-671509ea3a99.htm" />
+  <HelpKINode Title="Casting.Player.Interfaces namespace" Url="html/7badd4ef-3d37-0ff3-d4a5-07cef36144b7.htm" />
+  <HelpKINode Title="Casting.Player.Interfaces.IBullet interface" Url="html/252ee43d-64a6-b812-8794-80ec695c5a35.htm" />
+  <HelpKINode Title="Casting.Player.Interfaces.IPerson interface" Url="html/8dc8a2c0-360d-3c77-56da-9ce59a87718e.htm" />
+  <HelpKINode Title="Casting.Player.Interfaces.IWeapon interface" Url="html/00e63899-0795-e270-e3b5-eceae2e26b6e.htm" />
+  <HelpKINode Title="Casting.Player.MovingObject class" Url="html/46347939-7d88-da7c-332a-001656f51c17.htm" />
+  <HelpKINode Title="Casting.Player.Player class" Url="html/7b5ef980-8897-a08b-cea9-057017e41f09.htm" />
+  <HelpKINode Title="Casting.Player.SpriteData class" Url="html/f02f03e6-0dc8-f061-862b-02225b1ee750.htm" />
+  <HelpKINode Title="Casting.RayCasting namespace" Url="html/87d6bd8b-5c59-7554-4550-01409d430b21.htm" />
+  <HelpKINode Title="Casting.RayCasting.CastCondition class" Url="html/b4cd71c9-1043-5118-7d1d-b6929ef97437.htm" />
+  <HelpKINode Title="Casting.RayCasting.DistanceWrapper(Of TObj) class" Url="html/44aae430-45fa-e5f5-9e35-924ef527a68c.htm" />
+  <HelpKINode Title="Casting.RayCasting.DistanceWrapper&lt;TObj&gt; class" Url="html/44aae430-45fa-e5f5-9e35-924ef527a68c.htm" />
+  <HelpKINode Title="Casting.RayCasting.HumanCastCondition class" Url="html/7f4b91c7-1bee-9e47-5012-844938790257.htm" />
+  <HelpKINode Title="Casting.RayCasting.Interfaces namespace" Url="html/914df048-827c-8952-64d0-9237f1266cdf.htm" />
+  <HelpKINode Title="Casting.RayCasting.Interfaces.ICastCondition interface" Url="html/aa8d3cce-42d2-80b8-98f6-2f6db99248d1.htm" />
+  <HelpKINode Title="Casting.RayCasting.Interfaces.ICrossable interface" Url="html/eefd3059-bcf0-54e5-534d-720f81ec9edf.htm" />
+  <HelpKINode Title="Casting.RayCasting.Interfaces.IRayCaster interface" Url="html/f6ec2425-bf19-c1c3-c4b0-7990fdd73924.htm" />
+  <HelpKINode Title="Casting.RayCasting.Ray class" Url="html/72af56d5-fb01-aaaf-ada7-0924bec5bb64.htm" />
+  <HelpKINode Title="Casting.RayCasting.RayCaster class" Url="html/593a0504-3d5c-99f5-8ceb-53111a378b82.htm" />
+  <HelpKINode Title="Casting.RayCasting.Side enumeration" Url="html/297bfdd1-6e95-16ab-9705-0a7bdb3652f6.htm" />
+  <HelpKINode Title="ChangeResolution method" Url="html/091e13be-d654-c316-f0f3-05fc81d8294c.htm" />
+  <HelpKINode Title="Condition property" Url="html/e12cd752-fce0-2b55-53bc-9c35a7f5a0ce.htm" />
+  <HelpKINode Title="Container(Of TObj) class">
+    <HelpKINode Title="Container(TObj) Class" Url="html/b70022a7-fe19-c9d6-5e12-f6e953f73edf.htm" />
+    <HelpKINode Title="about Container(Of TObj) class" Url="html/b70022a7-fe19-c9d6-5e12-f6e953f73edf.htm" />
+    <HelpKINode Title="constructor" Url="html/628b2016-7a6e-b610-b3cf-08b5c353ded7.htm" />
+    <HelpKINode Title="methods" Url="html/3aaecbc6-253d-cdd3-49a6-bdfd1e509190.htm" />
+    <HelpKINode Title="properties" Url="html/283e327b-71d9-0fae-0615-01ef1e2ab6ec.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Container(Of TObj).Container constructor" Url="html/628b2016-7a6e-b610-b3cf-08b5c353ded7.htm" />
+  <HelpKINode Title="Container(Of TObj).GetEnumerator method" Url="html/ae2ce950-14a9-b3fb-d8f8-cbb76456a9ae.htm" />
+  <HelpKINode Title="Container(Of TObj).Item property" Url="html/0afed31b-df69-7594-6ff5-1d834ffd87e7.htm" />
+  <HelpKINode Title="Container(Of TObj).MaxHeight property" Url="html/c6c50e88-bff7-8942-8b5f-bb1b5102b4fe.htm" />
+  <HelpKINode Title="Container&lt;TObj&gt; class">
+    <HelpKINode Title="Container(TObj) Class" Url="html/b70022a7-fe19-c9d6-5e12-f6e953f73edf.htm" />
+    <HelpKINode Title="about Container&lt;TObj&gt; class" Url="html/b70022a7-fe19-c9d6-5e12-f6e953f73edf.htm" />
+    <HelpKINode Title="constructor" Url="html/628b2016-7a6e-b610-b3cf-08b5c353ded7.htm" />
+    <HelpKINode Title="methods" Url="html/3aaecbc6-253d-cdd3-49a6-bdfd1e509190.htm" />
+    <HelpKINode Title="properties" Url="html/283e327b-71d9-0fae-0615-01ef1e2ab6ec.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Container&lt;TObj&gt;.Container constructor" Url="html/628b2016-7a6e-b610-b3cf-08b5c353ded7.htm" />
+  <HelpKINode Title="Container&lt;TObj&gt;.GetEnumerator method" Url="html/ae2ce950-14a9-b3fb-d8f8-cbb76456a9ae.htm" />
+  <HelpKINode Title="Container&lt;TObj&gt;.Item property" Url="html/0afed31b-df69-7594-6ff5-1d834ffd87e7.htm" />
+  <HelpKINode Title="Container&lt;TObj&gt;.MaxHeight property" Url="html/c6c50e88-bff7-8942-8b5f-bb1b5102b4fe.htm" />
+  <HelpKINode Title="CurrentDistance field" Url="html/3a585f8a-2ba8-5ab8-61c4-1ba3432c6c2d.htm" />
+  <HelpKINode Title="DeadPic property" Url="html/d291f1ea-9e8e-d667-32bb-1e78b000ab9e.htm" />
+  <HelpKINode Title="DeathSecs field" Url="html/fc176822-e61b-cf88-46b1-07324cf9be8e.htm" />
+  <HelpKINode Title="Default method" Url="html/05b84430-8625-1f67-64dc-8ad679b37868.htm" />
+  <HelpKINode Title="Direction property" Url="html/3c8bbe4b-e44f-ded7-d357-9134bde99f37.htm" />
+  <HelpKINode Title="Distance property" Url="html/728dd915-7d2f-4e56-b5e2-758d45e1fb74.htm" />
+  <HelpKINode Title="DistanceWrapper(Of TObj) class">
+    <HelpKINode Title="DistanceWrapper(TObj) Class" Url="html/44aae430-45fa-e5f5-9e35-924ef527a68c.htm" />
+    <HelpKINode Title="about DistanceWrapper(Of TObj) class" Url="html/44aae430-45fa-e5f5-9e35-924ef527a68c.htm" />
+    <HelpKINode Title="constructor" Url="html/dce366a9-a8e5-3913-21e2-0ea391828f3c.htm" />
+    <HelpKINode Title="methods" Url="html/5c287c83-f0f6-1339-e678-94d4da554c4e.htm" />
+    <HelpKINode Title="properties" Url="html/6f62cad8-c1ee-9c7b-0e39-4fcc3eb60dc5.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DistanceWrapper(Of TObj).Distance property" Url="html/728dd915-7d2f-4e56-b5e2-758d45e1fb74.htm" />
+  <HelpKINode Title="DistanceWrapper(Of TObj).DistanceWrapper constructor" Url="html/dce366a9-a8e5-3913-21e2-0ea391828f3c.htm" />
+  <HelpKINode Title="DistanceWrapper(Of TObj).Element property" Url="html/1c12a8ba-f5ad-ad94-9166-1b37003cf8e7.htm" />
+  <HelpKINode Title="DistanceWrapper(Of TObj).ElementPos property" Url="html/02cbd986-8b14-d1f9-a4ec-5a654d5b38e8.htm" />
+  <HelpKINode Title="DistanceWrapper(Of TObj).IsNotTransparent property" Url="html/ab142dd6-c875-996e-50d2-45f10eeef1d6.htm" />
+  <HelpKINode Title="DistanceWrapper(Of TObj).Side property" Url="html/54fa3f2c-c64b-11f4-4fa0-e2ba474568d5.htm" />
+  <HelpKINode Title="DistanceWrapper(Of TObj).TextureXRatio property" Url="html/433b633e-451f-fef8-b56b-b1623beb462c.htm" />
+  <HelpKINode Title="DistanceWrapper&lt;TObj&gt; class">
+    <HelpKINode Title="DistanceWrapper(TObj) Class" Url="html/44aae430-45fa-e5f5-9e35-924ef527a68c.htm" />
+    <HelpKINode Title="about DistanceWrapper&lt;TObj&gt; class" Url="html/44aae430-45fa-e5f5-9e35-924ef527a68c.htm" />
+    <HelpKINode Title="constructor" Url="html/dce366a9-a8e5-3913-21e2-0ea391828f3c.htm" />
+    <HelpKINode Title="methods" Url="html/5c287c83-f0f6-1339-e678-94d4da554c4e.htm" />
+    <HelpKINode Title="properties" Url="html/6f62cad8-c1ee-9c7b-0e39-4fcc3eb60dc5.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DistanceWrapper&lt;TObj&gt;.Distance property" Url="html/728dd915-7d2f-4e56-b5e2-758d45e1fb74.htm" />
+  <HelpKINode Title="DistanceWrapper&lt;TObj&gt;.DistanceWrapper constructor" Url="html/dce366a9-a8e5-3913-21e2-0ea391828f3c.htm" />
+  <HelpKINode Title="DistanceWrapper&lt;TObj&gt;.Element property" Url="html/1c12a8ba-f5ad-ad94-9166-1b37003cf8e7.htm" />
+  <HelpKINode Title="DistanceWrapper&lt;TObj&gt;.ElementPos property" Url="html/02cbd986-8b14-d1f9-a4ec-5a654d5b38e8.htm" />
+  <HelpKINode Title="DistanceWrapper&lt;TObj&gt;.IsNotTransparent property" Url="html/ab142dd6-c875-996e-50d2-45f10eeef1d6.htm" />
+  <HelpKINode Title="DistanceWrapper&lt;TObj&gt;.Side property" Url="html/54fa3f2c-c64b-11f4-4fa0-e2ba474568d5.htm" />
+  <HelpKINode Title="DistanceWrapper&lt;TObj&gt;.TextureXRatio property" Url="html/433b633e-451f-fef8-b56b-b1623beb462c.htm" />
+  <HelpKINode Title="Draw method" Url="html/baf756a8-5a0b-7187-c4f1-6b528eeb7aef.htm" />
+  <HelpKINode Title="Element property" Url="html/1c12a8ba-f5ad-ad94-9166-1b37003cf8e7.htm" />
+  <HelpKINode Title="ElementPos property" Url="html/02cbd986-8b14-d1f9-a4ec-5a654d5b38e8.htm" />
+  <HelpKINode Title="Enemy class">
+    <HelpKINode Title="Enemy Class" Url="html/5e694ac7-c63b-e2f7-70e2-b3dcff4ef777.htm" />
+    <HelpKINode Title="about Enemy class" Url="html/5e694ac7-c63b-e2f7-70e2-b3dcff4ef777.htm" />
+    <HelpKINode Title="constructor" Url="html/0d46f192-a7ee-7d86-3381-062d61b44032.htm" />
+    <HelpKINode Title="fields" Url="html/4c0c6463-7dea-2da7-4562-0f3c58a956fd.htm" />
+    <HelpKINode Title="methods" Url="html/505f0e61-06b5-370d-ea11-6ee1794a8649.htm" />
+    <HelpKINode Title="properties" Url="html/6fd9fc0c-d45b-e018-2fa4-0f3bcf2808f6.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Enemy.DeathSecs field" Url="html/fc176822-e61b-cf88-46b1-07324cf9be8e.htm" />
+  <HelpKINode Title="Enemy.Enemy constructor" Url="html/0d46f192-a7ee-7d86-3381-062d61b44032.htm" />
+  <HelpKINode Title="Enemy.GetTexture method" Url="html/c683be0b-dcb7-1856-6285-3e43f3278e6c.htm" />
+  <HelpKINode Title="Enemy.Height property" Url="html/4a647eb2-5a04-f382-235b-a98d6aac9c57.htm" />
+  <HelpKINode Title="Enemy.HitBox property" Url="html/35f411e0-6afb-7152-8a63-06f7dc11fca1.htm" />
+  <HelpKINode Title="Enemy.HitPoints property" Url="html/182de1ce-9eb8-c8b1-a305-d1dd8ad195d5.htm" />
+  <HelpKINode Title="Enemy.IsKilled property" Url="html/a7691ea4-2d36-e319-7327-0f8228bd3b79.htm" />
+  <HelpKINode Title="Enemy.KilledTexture property" Url="html/9ac03b17-b50b-f770-6c84-c665a6ff1c35.htm" />
+  <HelpKINode Title="Enemy.Texture property" Url="html/212dd5e1-4965-69fc-f9ce-b50e934888d0.htm" />
+  <HelpKINode Title="Enemy.TypeId property" Url="html/0d568adf-81c7-89ae-1b62-347309eb292a.htm" />
+  <HelpKINode Title="Enemy.Width property" Url="html/64f971d0-1c23-ecda-afd8-a8cf60644ec4.htm" />
+  <HelpKINode Title="EnemyData class">
+    <HelpKINode Title="EnemyData Class" Url="html/036a61c6-2187-27a8-f86b-671509ea3a99.htm" />
+    <HelpKINode Title="about EnemyData class" Url="html/036a61c6-2187-27a8-f86b-671509ea3a99.htm" />
+    <HelpKINode Title="constructor" Url="html/06055ce1-0932-bdbd-9b8e-bcb18993d130.htm" />
+    <HelpKINode Title="fields" Url="html/59d7e158-7345-418d-6d83-1d31881a3a80.htm" />
+    <HelpKINode Title="methods" Url="html/052c3685-51ac-c588-928e-fa2d9431da19.htm" />
+    <HelpKINode Title="properties" Url="html/f1dc311e-725c-27c2-16e7-e639f02a0e20.htm" />
+  </HelpKINode>
+  <HelpKINode Title="EnemyData.Caster property" Url="html/19f7fb5b-26ae-c5aa-e460-d1e211547300.htm" />
+  <HelpKINode Title="EnemyData.EnemyData constructor" Url="html/06055ce1-0932-bdbd-9b8e-bcb18993d130.htm" />
+  <HelpKINode Title="EnemyData.HitBox property" Url="html/b67618da-e895-b6ca-bbc5-b976650aef2f.htm" />
+  <HelpKINode Title="EnemyData.HitPoints property" Url="html/a8e2a331-f92c-5497-746c-f8a5d266e436.htm" />
+  <HelpKINode Title="EnemyData.LastSpawn field" Url="html/32c0969f-38f4-05ba-9d2b-b6edaca13051.htm" />
+  <HelpKINode Title="EnemyData.MovementSpeed property" Url="html/325fdcaf-eacd-67b7-7ee8-00051521a335.htm" />
+  <HelpKINode Title="EnemyData.SpawnTime field" Url="html/21b10eff-00b7-84a1-a3a6-7f1eb3806239.htm" />
+  <HelpKINode Title="EnemyData.SpriteData property" Url="html/ae6351d9-b0cd-6756-4a24-9e45cbe9c442.htm" />
+  <HelpKINode Title="EnemyData.TypeId property" Url="html/c1e9a80c-2f3b-dc49-a680-36185ac30613.htm" />
+  <HelpKINode Title="EnemyFilePath property" Url="html/12f2ae6a-1beb-972d-c203-654cdb97ce7f.htm" />
+  <HelpKINode Title="EnemySpawnSecs property" Url="html/f3c74188-cfc9-7b02-c235-139d40ff333d.htm" />
+  <HelpKINode Title="EngineSettings class">
+    <HelpKINode Title="EngineSettings Class" Url="html/81385866-76bd-9f06-dab3-7903ef09edce.htm" />
+    <HelpKINode Title="about EngineSettings class" Url="html/81385866-76bd-9f06-dab3-7903ef09edce.htm" />
+    <HelpKINode Title="constructor" Url="html/1206cdea-7042-e993-8790-87e082aafd1d.htm" />
+    <HelpKINode Title="methods" Url="html/72aa060e-1bc8-9e04-6415-f899e890a4e5.htm" />
+    <HelpKINode Title="properties" Url="html/43712cb1-4ea0-34e7-54f3-dd9240875b10.htm" />
+  </HelpKINode>
+  <HelpKINode Title="EngineSettings.Condition property" Url="html/e12cd752-fce0-2b55-53bc-9c35a7f5a0ce.htm" />
+  <HelpKINode Title="EngineSettings.EnemyFilePath property" Url="html/12f2ae6a-1beb-972d-c203-654cdb97ce7f.htm" />
+  <HelpKINode Title="EngineSettings.EnemySpawnSecs property" Url="html/f3c74188-cfc9-7b02-c235-139d40ff333d.htm" />
+  <HelpKINode Title="EngineSettings.EngineSettings constructor" Url="html/1206cdea-7042-e993-8790-87e082aafd1d.htm" />
+  <HelpKINode Title="EngineSettings.FloorFilePath property" Url="html/eee9ee40-62d0-a621-6177-0110edb143a9.htm" />
+  <HelpKINode Title="EngineSettings.Height property" Url="html/d39cdf5c-d3a8-e73a-74ae-74a480aa0f85.htm" />
+  <HelpKINode Title="EngineSettings.MapFilePath property" Url="html/7174090f-9da0-965b-1279-cb80dc7c4494.htm" />
+  <HelpKINode Title="EngineSettings.PlayerFilePath property" Url="html/e3058edf-e44a-546a-bf4a-705952aef2ab.htm" />
+  <HelpKINode Title="EngineSettings.SkyFilePath property" Url="html/e51535bd-dd7e-3d61-a157-deb114af4549.htm" />
+  <HelpKINode Title="EngineSettings.WallFilePath property" Url="html/a4254a5f-fafb-2399-33cd-a3b8d983edb7.htm" />
+  <HelpKINode Title="EngineSettings.WeaponFilePath property" Url="html/0f15af47-0fe0-202f-eb6f-f86647e08f10.htm" />
+  <HelpKINode Title="EngineSettings.Width property" Url="html/f21a863d-41ae-8a23-c808-fc1f64b562ef.htm" />
+  <HelpKINode Title="FieldOfView method" Url="html/af72b186-9f41-b54a-b6a7-27b77bc76a99.htm" />
+  <HelpKINode Title="Floor property" Url="html/68c382cb-c170-4e38-4abf-5457e503142b.htm" />
+  <HelpKINode Title="FloorFilePath property" Url="html/eee9ee40-62d0-a621-6177-0110edb143a9.htm" />
+  <HelpKINode Title="FlyPic property" Url="html/aa77fe6e-8d22-8d76-ba42-012d6c267227.htm" />
+  <HelpKINode Title="Game namespace" Url="html/4fed8d5d-41f7-c819-6be3-cc6d072a34b2.htm" />
+  <HelpKINode Title="Game.Game1 class" Url="html/93e76f8c-7bba-7ab1-9eae-656eeb1ebdcd.htm" />
+  <HelpKINode Title="Game.Program class" Url="html/4cbfc109-f314-dc19-df48-89e4834f31e5.htm" />
+  <HelpKINode Title="Game1 class">
+    <HelpKINode Title="Game1 Class" Url="html/93e76f8c-7bba-7ab1-9eae-656eeb1ebdcd.htm" />
+    <HelpKINode Title="about Game1 class" Url="html/93e76f8c-7bba-7ab1-9eae-656eeb1ebdcd.htm" />
+    <HelpKINode Title="constructor" Url="html/2cd394ad-06fb-8f47-3e8a-95992f9d0569.htm" />
+    <HelpKINode Title="events" Url="html/ca57b60c-ed08-114b-43a4-922b265468dc.htm" />
+    <HelpKINode Title="methods" Url="html/acc501a6-2731-4a2b-e305-d1d56afbf0f5.htm" />
+    <HelpKINode Title="properties" Url="html/6302101c-767b-590e-0985-3f1ae75cdb48.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Game1.Draw method" Url="html/baf756a8-5a0b-7187-c4f1-6b528eeb7aef.htm" />
+  <HelpKINode Title="Game1.Game1 constructor" Url="html/2cd394ad-06fb-8f47-3e8a-95992f9d0569.htm" />
+  <HelpKINode Title="Game1.Initialize method" Url="html/457534ae-2a8c-2ee9-ec02-344522ca2a4a.htm" />
+  <HelpKINode Title="Game1.LoadContent method" Url="html/17dac09b-96d2-4fc9-4d2c-11f2507936a0.htm" />
+  <HelpKINode Title="Game1.UnloadContent method" Url="html/bbfc856b-41e4-10b9-1d48-08be6eab1585.htm" />
+  <HelpKINode Title="Game1.Update method" Url="html/970a061f-8cfc-2341-1a80-a36aef5334ae.htm" />
+  <HelpKINode Title="GameReader class">
+    <HelpKINode Title="GameReader Class" Url="html/8fffef02-b52c-a622-5d0e-aa07691f1f58.htm" />
+    <HelpKINode Title="about GameReader class" Url="html/8fffef02-b52c-a622-5d0e-aa07691f1f58.htm" />
+    <HelpKINode Title="constructor" Url="html/a6b84c33-b4f0-090b-19d0-e506a3d7e161.htm" />
+    <HelpKINode Title="methods" Url="html/d37c8368-50ff-8020-d6c9-848220d1dc72.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GameReader.GameReader constructor" Url="html/a6b84c33-b4f0-090b-19d0-e506a3d7e161.htm" />
+  <HelpKINode Title="GameReader.LoadSettings method" Url="html/e7d15730-d997-21a6-5187-e0f2e3751e9a.htm" />
+  <HelpKINode Title="GameReader.ReadEnemies method" Url="html/74642dd7-c1d1-dec4-1a00-efa2232851db.htm" />
+  <HelpKINode Title="GameReader.ReadMap method" Url="html/6aa1be4f-4a86-c1a9-bf12-141e64a1b912.htm" />
+  <HelpKINode Title="GameReader.ReadPlayer method" Url="html/c7b8211e-5070-c3d9-c269-3c3ae57aaaef.htm" />
+  <HelpKINode Title="GameReader.ReadWalls method" Url="html/8042a74e-3439-6df8-042c-30db3ab8851b.htm" />
+  <HelpKINode Title="GameReader.ReadWeapons method" Url="html/8fe0f932-a1a9-7fb3-1c35-e538171147bb.htm" />
+  <HelpKINode Title="GetEnumerator method" Url="html/ae2ce950-14a9-b3fb-d8f8-cbb76456a9ae.htm" />
+  <HelpKINode Title="GetTexture method">
+    <HelpKINode Title="Bullet.GetTexture Method " Url="html/efe84eb5-47c3-ef1b-b8d6-52b5dbd0a1ac.htm" />
+    <HelpKINode Title="Enemy.GetTexture Method " Url="html/c683be0b-dcb7-1856-6285-3e43f3278e6c.htm" />
+    <HelpKINode Title="ICrossable.GetTexture Method " Url="html/84c867a3-6de0-883a-99f9-9bbee3c1179a.htm" />
+    <HelpKINode Title="Wall.GetTexture Method " Url="html/77fcf2ba-41d1-2508-ec05-df7439690610.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HasHit property">
+    <HelpKINode Title="Bullet.HasHit Property " Url="html/c9c3d8c8-59a9-cff6-62a6-a96aed903cf3.htm" />
+    <HelpKINode Title="IBullet.HasHit Property " Url="html/d995c84a-0a0f-5afa-b506-f2b32f144997.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Height property">
+    <HelpKINode Title="BackgroundPainter.Height Property " Url="html/f679ec83-e607-d78f-168b-93964d7d8b69.htm" />
+    <HelpKINode Title="Bullet.Height Property " Url="html/3927693b-acda-8dc8-0572-e558e59a80f5.htm" />
+    <HelpKINode Title="Enemy.Height Property " Url="html/4a647eb2-5a04-f382-235b-a98d6aac9c57.htm" />
+    <HelpKINode Title="EngineSettings.Height Property " Url="html/d39cdf5c-d3a8-e73a-74ae-74a480aa0f85.htm" />
+    <HelpKINode Title="ICrossable.Height Property " Url="html/ab99ab1a-3571-a454-a080-1a7f81141e84.htm" />
+    <HelpKINode Title="IMap.Height Property " Url="html/59fe0fba-a5de-53a2-16a9-d386bb851128.htm" />
+    <HelpKINode Title="ITextureWrapper.Height Property " Url="html/94898726-7078-5651-e912-2c13fb955847.htm" />
+    <HelpKINode Title="Map.Height Property " Url="html/c9f63624-2af8-b732-cc21-324b939939c6.htm" />
+    <HelpKINode Title="SpriteData.Height Property " Url="html/d59c4f73-b2f2-834c-f47b-57cccbd2c93b.htm" />
+    <HelpKINode Title="TextureWrapper.Height Property " Url="html/6f34f74b-cd7c-3174-9c09-b0cc1923d9a2.htm" />
+    <HelpKINode Title="Wall.Height Property " Url="html/a8b4e24a-20f8-c767-dcbe-84e5d5557d6b.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Hit method">
+    <HelpKINode Title="Bullet.Hit Method " Url="html/76d9eebf-93b7-b078-9f40-914b2e37444d.htm" />
+    <HelpKINode Title="IBullet.Hit Method " Url="html/cd6f50b0-f01d-14ac-4eee-58e423e07a75.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HitBox property">
+    <HelpKINode Title="Enemy.HitBox Property " Url="html/35f411e0-6afb-7152-8a63-06f7dc11fca1.htm" />
+    <HelpKINode Title="EnemyData.HitBox Property " Url="html/b67618da-e895-b6ca-bbc5-b976650aef2f.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HitPic property" Url="html/5ea2deea-61a6-47b1-ca48-2b0d82ea8840.htm" />
+  <HelpKINode Title="HitPoints property">
+    <HelpKINode Title="Enemy.HitPoints Property " Url="html/182de1ce-9eb8-c8b1-a305-d1dd8ad195d5.htm" />
+    <HelpKINode Title="EnemyData.HitPoints Property " Url="html/a8e2a331-f92c-5497-746c-f8a5d266e436.htm" />
+    <HelpKINode Title="IPerson.HitPoints Property " Url="html/9edc34df-80b5-a906-a2ad-58913fd4b0ec.htm" />
+    <HelpKINode Title="Player.HitPoints Property " Url="html/854b333e-6aff-a748-e18b-f27d7133d14a.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HumanCastCondition class">
+    <HelpKINode Title="HumanCastCondition Class" Url="html/7f4b91c7-1bee-9e47-5012-844938790257.htm" />
+    <HelpKINode Title="about HumanCastCondition class" Url="html/7f4b91c7-1bee-9e47-5012-844938790257.htm" />
+    <HelpKINode Title="constructor" Url="html/51d21cba-9d95-b91e-52f2-76df75191bab.htm" />
+    <HelpKINode Title="fields" Url="html/335899ad-89ef-8f69-410c-5be7f095b452.htm" />
+    <HelpKINode Title="methods" Url="html/a846601a-bb04-112e-75ac-357576ccc941.htm" />
+    <HelpKINode Title="properties" Url="html/ec92dde6-e89f-7de7-2262-f4a389bf5de8.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HumanCastCondition.Default method" Url="html/05b84430-8625-1f67-64dc-8ad679b37868.htm" />
+  <HelpKINode Title="HumanCastCondition.HumanCastCondition constructor" Url="html/51d21cba-9d95-b91e-52f2-76df75191bab.htm" />
+  <HelpKINode Title="HumanCastCondition.ObstacleCrossed method" Url="html/a55dffd8-b0d3-08ed-f717-f988087cdc9c.htm" />
+  <HelpKINode Title="HumanCastCondition.Reset method" Url="html/08dc8962-2d53-e4d8-675d-8e0e531e43d9.htm" />
+  <HelpKINode Title="IBullet interface">
+    <HelpKINode Title="IBullet Interface" Url="html/252ee43d-64a6-b812-8794-80ec695c5a35.htm" />
+    <HelpKINode Title="about IBullet interface" Url="html/252ee43d-64a6-b812-8794-80ec695c5a35.htm" />
+    <HelpKINode Title="methods" Url="html/13029ef5-0576-308b-0152-521509eb3329.htm" />
+    <HelpKINode Title="properties" Url="html/e8ecf8bd-4d33-c4ee-513e-cf60c860e867.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IBullet.AnimationTime property" Url="html/29965ce9-ba22-5ad2-9cca-3d622c023594.htm" />
+  <HelpKINode Title="IBullet.HasHit property" Url="html/d995c84a-0a0f-5afa-b506-f2b32f144997.htm" />
+  <HelpKINode Title="IBullet.Hit method" Url="html/cd6f50b0-f01d-14ac-4eee-58e423e07a75.htm" />
+  <HelpKINode Title="ICastCondition interface">
+    <HelpKINode Title="ICastCondition Interface" Url="html/aa8d3cce-42d2-80b8-98f6-2f6db99248d1.htm" />
+    <HelpKINode Title="about ICastCondition interface" Url="html/aa8d3cce-42d2-80b8-98f6-2f6db99248d1.htm" />
+    <HelpKINode Title="methods" Url="html/19680a33-e16a-5b2f-bfc1-d0d55008f3d2.htm" />
+    <HelpKINode Title="properties" Url="html/aa14fe49-b7e3-a423-2306-09ba682507fa.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ICastCondition.IsMet property" Url="html/2aaee723-b7f4-2549-cd89-eed5e6bec2da.htm" />
+  <HelpKINode Title="ICastCondition.ObstacleCrossed method" Url="html/054fb9cf-31f5-791c-33c2-637ddf50573c.htm" />
+  <HelpKINode Title="ICastCondition.Reset method" Url="html/ce6b5c2c-4be2-c602-84e5-f4d985a981df.htm" />
+  <HelpKINode Title="ICastCondition.UpdateDistance method" Url="html/5331b737-92d5-a357-f566-15cb96bf428d.htm" />
+  <HelpKINode Title="IContainer(Of TObj) interface">
+    <HelpKINode Title="IContainer(TObj) Interface" Url="html/14af17de-b567-d1e7-063b-9e5ed7ee650b.htm" />
+    <HelpKINode Title="about IContainer(Of TObj) interface" Url="html/14af17de-b567-d1e7-063b-9e5ed7ee650b.htm" />
+    <HelpKINode Title="methods" Url="html/fb017346-e5f0-3a35-76ce-60496f69c215.htm" />
+    <HelpKINode Title="properties" Url="html/ad4d0356-5422-906e-cf7d-6e351f2ae35c.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IContainer(Of TObj).Item property" Url="html/bca0dd89-f925-5fac-0854-b5bdb32bba54.htm" />
+  <HelpKINode Title="IContainer(Of TObj).MaxHeight property" Url="html/d2ffd00e-063a-a13e-68e8-87285f30bc6b.htm" />
+  <HelpKINode Title="IContainer&lt;TObj&gt; interface">
+    <HelpKINode Title="IContainer(TObj) Interface" Url="html/14af17de-b567-d1e7-063b-9e5ed7ee650b.htm" />
+    <HelpKINode Title="about IContainer&lt;TObj&gt; interface" Url="html/14af17de-b567-d1e7-063b-9e5ed7ee650b.htm" />
+    <HelpKINode Title="methods" Url="html/fb017346-e5f0-3a35-76ce-60496f69c215.htm" />
+    <HelpKINode Title="properties" Url="html/ad4d0356-5422-906e-cf7d-6e351f2ae35c.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IContainer&lt;TObj&gt;.Item property" Url="html/bca0dd89-f925-5fac-0854-b5bdb32bba54.htm" />
+  <HelpKINode Title="IContainer&lt;TObj&gt;.MaxHeight property" Url="html/d2ffd00e-063a-a13e-68e8-87285f30bc6b.htm" />
+  <HelpKINode Title="ICrossable interface">
+    <HelpKINode Title="ICrossable Interface" Url="html/eefd3059-bcf0-54e5-534d-720f81ec9edf.htm" />
+    <HelpKINode Title="about ICrossable interface" Url="html/eefd3059-bcf0-54e5-534d-720f81ec9edf.htm" />
+    <HelpKINode Title="methods" Url="html/edf1ef2b-b857-53f7-7664-7b757c89c4e7.htm" />
+    <HelpKINode Title="properties" Url="html/1512a7be-ccc8-aea2-4ccd-4df2b2055ee7.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ICrossable.GetTexture method" Url="html/84c867a3-6de0-883a-99f9-9bbee3c1179a.htm" />
+  <HelpKINode Title="ICrossable.Height property" Url="html/ab99ab1a-3571-a454-a080-1a7f81141e84.htm" />
+  <HelpKINode Title="ICrossable.Width property" Url="html/455e9435-1532-40cd-2a59-4aa326cb3e7c.htm" />
+  <HelpKINode Title="IMap interface">
+    <HelpKINode Title="IMap Interface" Url="html/1f7f5a5f-496b-58a4-fe04-caa15ec64cd9.htm" />
+    <HelpKINode Title="about IMap interface" Url="html/1f7f5a5f-496b-58a4-fe04-caa15ec64cd9.htm" />
+    <HelpKINode Title="methods" Url="html/c3375c6d-e67b-ee3b-7ee2-83b013f59a14.htm" />
+    <HelpKINode Title="properties" Url="html/f122767a-0be2-830f-8871-369609667ee9.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IMap.Height property" Url="html/59fe0fba-a5de-53a2-16a9-d386bb851128.htm" />
+  <HelpKINode Title="IMap.IsInRange method" Url="html/f02bbd69-bf32-f5a2-4e3d-5b6e19e616eb.htm" />
+  <HelpKINode Title="IMap.Item property" Url="html/819dc5ab-9989-b379-b536-29eb33673884.htm" />
+  <HelpKINode Title="IMap.Width property" Url="html/b94474ae-1eb5-e234-e4da-0721dc6c4401.htm" />
+  <HelpKINode Title="Initialize method" Url="html/457534ae-2a8c-2ee9-ec02-344522ca2a4a.htm" />
+  <HelpKINode Title="Input namespace" Url="html/804c2b9e-8245-9171-43d1-c61e62010dfa.htm" />
+  <HelpKINode Title="Input.EngineSettings class" Url="html/81385866-76bd-9f06-dab3-7903ef09edce.htm" />
+  <HelpKINode Title="Input.GameReader class" Url="html/8fffef02-b52c-a622-5d0e-aa07691f1f58.htm" />
+  <HelpKINode Title="IPerson interface">
+    <HelpKINode Title="IPerson Interface" Url="html/8dc8a2c0-360d-3c77-56da-9ce59a87718e.htm" />
+    <HelpKINode Title="about IPerson interface" Url="html/8dc8a2c0-360d-3c77-56da-9ce59a87718e.htm" />
+    <HelpKINode Title="properties" Url="html/45bb34f0-f14d-d1f3-6a1e-f810fa1109b2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IPerson.HitPoints property" Url="html/9edc34df-80b5-a906-a2ad-58913fd4b0ec.htm" />
+  <HelpKINode Title="IPerson.IsKilled property" Url="html/9e0ddf07-c608-e6fb-1738-40ff6b103168.htm" />
+  <HelpKINode Title="IRayCaster interface">
+    <HelpKINode Title="IRayCaster Interface" Url="html/f6ec2425-bf19-c1c3-c4b0-7990fdd73924.htm" />
+    <HelpKINode Title="about IRayCaster interface" Url="html/f6ec2425-bf19-c1c3-c4b0-7990fdd73924.htm" />
+    <HelpKINode Title="methods" Url="html/722c930b-ee6a-12ce-6362-3c24de9a3446.htm" />
+    <HelpKINode Title="properties" Url="html/e4b6b9b0-b469-f26c-9fbe-09efe2834bcf.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IRayCaster.Cast method" Url="html/db3bf3eb-0fda-2b24-899c-5758f38e2008.htm" />
+  <HelpKINode Title="IRayCaster.Map property" Url="html/57f7719d-2c9d-e984-6b92-98f75f62145d.htm" />
+  <HelpKINode Title="IRayCaster.Walls property" Url="html/2d4e86d6-bce1-ff31-3113-854a1e0a9f4a.htm" />
+  <HelpKINode Title="IsInRange method">
+    <HelpKINode Title="IMap.IsInRange Method " Url="html/f02bbd69-bf32-f5a2-4e3d-5b6e19e616eb.htm" />
+    <HelpKINode Title="Map.IsInRange Method " Url="html/50dfd56a-6e0f-a86c-ab88-9ea5216eb263.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IsKilled property">
+    <HelpKINode Title="Enemy.IsKilled Property " Url="html/a7691ea4-2d36-e319-7327-0f8228bd3b79.htm" />
+    <HelpKINode Title="IPerson.IsKilled Property " Url="html/9e0ddf07-c608-e6fb-1738-40ff6b103168.htm" />
+    <HelpKINode Title="Player.IsKilled Property " Url="html/2689c20d-e248-29b3-5ad5-107dd618b1dc.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IsMet property">
+    <HelpKINode Title="CastCondition.IsMet Property " Url="html/a242a96a-2720-02b5-8caf-437df612b144.htm" />
+    <HelpKINode Title="ICastCondition.IsMet Property " Url="html/2aaee723-b7f4-2549-cd89-eed5e6bec2da.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IsNotTransparent property" Url="html/ab142dd6-c875-996e-50d2-45f10eeef1d6.htm" />
+  <HelpKINode Title="IsOk property">
+    <HelpKINode Title="ITextureWrapper.IsOk Property " Url="html/b16b00d2-8fe0-1fe7-d155-c0e9065fdce9.htm" />
+    <HelpKINode Title="TextureWrapper.IsOk Property " Url="html/abb9e28b-7f46-a860-37ea-df8911693082.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Item property">
+    <HelpKINode Title="Container(TObj).Item Property " Url="html/0afed31b-df69-7594-6ff5-1d834ffd87e7.htm" />
+    <HelpKINode Title="IContainer(TObj).Item Property " Url="html/bca0dd89-f925-5fac-0854-b5bdb32bba54.htm" />
+    <HelpKINode Title="IMap.Item Property " Url="html/819dc5ab-9989-b379-b536-29eb33673884.htm" />
+    <HelpKINode Title="ITextureWrapper.Item Property " Url="html/4539b7f3-2dc8-169d-96ff-2ebcac629ba3.htm" />
+    <HelpKINode Title="Map.Item Property " Url="html/01885e28-8945-4377-25a4-6d329bff52ea.htm" />
+    <HelpKINode Title="TextureWrapper.Item Property " Url="html/5f17ccee-65b7-8497-f95c-acf58f8465c8.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ITextureWrapper interface">
+    <HelpKINode Title="ITextureWrapper Interface" Url="html/48a4fe58-2f5f-764b-53ca-33d7bb6542d0.htm" />
+    <HelpKINode Title="about ITextureWrapper interface" Url="html/48a4fe58-2f5f-764b-53ca-33d7bb6542d0.htm" />
+    <HelpKINode Title="methods" Url="html/51b4d380-be62-c4f8-a0b7-5e70b88f2a46.htm" />
+    <HelpKINode Title="properties" Url="html/e428b4af-a001-df76-815f-2726e370dfea.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ITextureWrapper.AltColor property" Url="html/326cc262-f83b-80b8-1092-c882f0ff4571.htm" />
+  <HelpKINode Title="ITextureWrapper.Height property" Url="html/94898726-7078-5651-e912-2c13fb955847.htm" />
+  <HelpKINode Title="ITextureWrapper.IsOk property" Url="html/b16b00d2-8fe0-1fe7-d155-c0e9065fdce9.htm" />
+  <HelpKINode Title="ITextureWrapper.Item property" Url="html/4539b7f3-2dc8-169d-96ff-2ebcac629ba3.htm" />
+  <HelpKINode Title="ITextureWrapper.LoadTexture method" Url="html/cce56d55-3de0-638c-d0d3-5ffd2a7d6bad.htm" />
+  <HelpKINode Title="ITextureWrapper.PicAddress property" Url="html/db7c81bf-501d-c31f-fe0d-90aab9d73674.htm" />
+  <HelpKINode Title="ITextureWrapper.Width property" Url="html/9a012dbc-636e-9eff-851b-4b70b22caa79.htm" />
+  <HelpKINode Title="IWall interface">
+    <HelpKINode Title="IWall Interface" Url="html/1f1915c8-bef0-16a1-cab4-e69bdf30ffce.htm" />
+    <HelpKINode Title="about IWall interface" Url="html/1f1915c8-bef0-16a1-cab4-e69bdf30ffce.htm" />
+    <HelpKINode Title="methods" Url="html/9aaea71c-c860-9507-748d-7dc3a42cdb31.htm" />
+    <HelpKINode Title="properties" Url="html/e5725ed2-6071-b257-dad2-12aa90335381.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IWall.TextureX property" Url="html/9eee0e51-f9d1-c918-1aae-0bccb447e016.htm" />
+  <HelpKINode Title="IWall.TextureY property" Url="html/ef1faaf6-d074-bb9a-19c4-a0ecf9095a03.htm" />
+  <HelpKINode Title="IWeapon interface">
+    <HelpKINode Title="IWeapon Interface" Url="html/00e63899-0795-e270-e3b5-eceae2e26b6e.htm" />
+    <HelpKINode Title="about IWeapon interface" Url="html/00e63899-0795-e270-e3b5-eceae2e26b6e.htm" />
+    <HelpKINode Title="methods" Url="html/d120811a-be10-eb47-ada0-bf1f670bd6ca.htm" />
+    <HelpKINode Title="properties" Url="html/17ab71d0-fa36-6d6e-d8b4-28123d9417ad.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IWeapon.BulletData property" Url="html/52f0d48b-a662-00a5-a2e4-8616397aa42e.htm" />
+  <HelpKINode Title="IWeapon.Bullets property" Url="html/566e725d-ee8c-cab1-9b4f-902664ade004.htm" />
+  <HelpKINode Title="IWeapon.Caster property" Url="html/4343386d-8dff-4ac0-76b1-e38003a09e9e.htm" />
+  <HelpKINode Title="IWeapon.MaxAmmo property" Url="html/05b454cc-772f-75c6-7f33-3625f56a36e9.htm" />
+  <HelpKINode Title="IWeapon.MinBulletDist property" Url="html/372a2dfe-cf38-5b09-4fc4-f5c51f049c49.htm" />
+  <HelpKINode Title="IWeapon.Shoot method" Url="html/99d5bfdf-c608-4b7d-193a-273fe7a12c36.htm" />
+  <HelpKINode Title="IWeapon.Texture property" Url="html/36ff2ac5-8668-44ae-bb20-1dcdc4ec9093.htm" />
+  <HelpKINode Title="KilledTexture property" Url="html/9ac03b17-b50b-f770-6c84-c665a6ff1c35.htm" />
+  <HelpKINode Title="LastSpawn field" Url="html/32c0969f-38f4-05ba-9d2b-b6edaca13051.htm" />
+  <HelpKINode Title="LimitWalls method" Url="html/80e56541-e2c7-ba43-c479-33c8bf8f8635.htm" />
+  <HelpKINode Title="LivingPic property" Url="html/5e6cf5be-169f-807a-9440-eaff3f2f0a0b.htm" />
+  <HelpKINode Title="LoadContent method" Url="html/17dac09b-96d2-4fc9-4d2c-11f2507936a0.htm" />
+  <HelpKINode Title="LoadSettings method" Url="html/e7d15730-d997-21a6-5187-e0f2e3751e9a.htm" />
+  <HelpKINode Title="LoadTexture method">
+    <HelpKINode Title="ITextureWrapper.LoadTexture Method " Url="html/cce56d55-3de0-638c-d0d3-5ffd2a7d6bad.htm" />
+    <HelpKINode Title="TextureWrapper.LoadTexture Method " Url="html/845ac527-e393-c499-8e61-542c53b43ea9.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Map class">
+    <HelpKINode Title="Map Class" Url="html/50e38177-405b-d1f0-8969-d5379813121d.htm" />
+    <HelpKINode Title="about Map class" Url="html/50e38177-405b-d1f0-8969-d5379813121d.htm" />
+    <HelpKINode Title="constructor" Url="html/63ef6f72-3c8f-e898-8503-933db7809430.htm" />
+    <HelpKINode Title="methods" Url="html/3919c4ae-2f56-8ad2-73f8-37d4573a040d.htm" />
+    <HelpKINode Title="properties" Url="html/b2c124d6-89bf-c17f-01df-4c8554361b42.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Map property">
+    <HelpKINode Title="IRayCaster.Map Property " Url="html/57f7719d-2c9d-e984-6b92-98f75f62145d.htm" />
+    <HelpKINode Title="RayCaster.Map Property " Url="html/9ae9b88b-658b-9180-5127-276032135e8d.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Map.Height property" Url="html/c9f63624-2af8-b732-cc21-324b939939c6.htm" />
+  <HelpKINode Title="Map.IsInRange method" Url="html/50dfd56a-6e0f-a86c-ab88-9ea5216eb263.htm" />
+  <HelpKINode Title="Map.Item property" Url="html/01885e28-8945-4377-25a4-6d329bff52ea.htm" />
+  <HelpKINode Title="Map.Map constructor" Url="html/63ef6f72-3c8f-e898-8503-933db7809430.htm" />
+  <HelpKINode Title="Map.Width property" Url="html/9fea1493-85ff-9cd3-694b-85f57e22ab65.htm" />
+  <HelpKINode Title="MapFilePath property" Url="html/7174090f-9da0-965b-1279-cb80dc7c4494.htm" />
+  <HelpKINode Title="MapRangeCrossed method" Url="html/a4f6d2a2-d7ba-f39f-c6b1-253eb7e64c27.htm" />
+  <HelpKINode Title="MaxAmmo property">
+    <HelpKINode Title="BasicWeapon.MaxAmmo Property " Url="html/55383e1c-ce8f-5110-9c3d-013d6b2d3241.htm" />
+    <HelpKINode Title="IWeapon.MaxAmmo Property " Url="html/05b454cc-772f-75c6-7f33-3625f56a36e9.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MaxDistance property" Url="html/29e65305-e720-0052-719b-d4d0399fc20c.htm" />
+  <HelpKINode Title="MaxHeight property">
+    <HelpKINode Title="Container(TObj).MaxHeight Property " Url="html/c6c50e88-bff7-8942-8b5f-bb1b5102b4fe.htm" />
+    <HelpKINode Title="IContainer(TObj).MaxHeight Property " Url="html/d2ffd00e-063a-a13e-68e8-87285f30bc6b.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MaxWalls property" Url="html/480f91b9-4a56-155b-b074-6b4d02d76a70.htm" />
+  <HelpKINode Title="MinBulletDist property">
+    <HelpKINode Title="BasicWeapon.MinBulletDist Property " Url="html/f5d5dccc-05db-b1ed-1837-5f1ee17c0531.htm" />
+    <HelpKINode Title="IWeapon.MinBulletDist Property " Url="html/372a2dfe-cf38-5b09-4fc4-f5c51f049c49.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MinWallDist field" Url="html/9664f8f3-e046-ae27-bbf1-b0f26aa9b48a.htm" />
+  <HelpKINode Title="MinWalls property" Url="html/bab39607-c34f-e40c-e7e7-396360105df1.htm" />
+  <HelpKINode Title="Move method" Url="html/1f907fb4-6603-9576-91a8-a959d3a8c7b6.htm" />
+  <HelpKINode Title="MovementCondition property" Url="html/e3203865-4539-65e9-6ce4-0fc40e8f386a.htm" />
+  <HelpKINode Title="MovementSpeed property">
+    <HelpKINode Title="BasicWeapon.MovementSpeed Property " Url="html/4b24c5b8-7ff4-7f17-05e1-3f40b741bac1.htm" />
+    <HelpKINode Title="EnemyData.MovementSpeed Property " Url="html/325fdcaf-eacd-67b7-7ee8-00051521a335.htm" />
+    <HelpKINode Title="MovingObject.MovementSpeed Property " Url="html/a9d3cb7d-8b6a-d61a-12f5-8d4a3145dec7.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MovingObject class">
+    <HelpKINode Title="MovingObject Class" Url="html/46347939-7d88-da7c-332a-001656f51c17.htm" />
+    <HelpKINode Title="about MovingObject class" Url="html/46347939-7d88-da7c-332a-001656f51c17.htm" />
+    <HelpKINode Title="constructor" Url="html/07b518d5-1fab-55b3-6284-42318c742e19.htm" />
+    <HelpKINode Title="fields" Url="html/435cf254-951c-53c6-22cc-ba171ec5cb84.htm" />
+    <HelpKINode Title="methods" Url="html/880fd749-bad9-4a9f-36ff-dbc704f6d2d4.htm" />
+    <HelpKINode Title="properties" Url="html/107d369f-3c40-7afe-ae8d-281e629900fa.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MovingObject.Direction property" Url="html/3c8bbe4b-e44f-ded7-d357-9134bde99f37.htm" />
+  <HelpKINode Title="MovingObject.MinWallDist field" Url="html/9664f8f3-e046-ae27-bbf1-b0f26aa9b48a.htm" />
+  <HelpKINode Title="MovingObject.Move method" Url="html/1f907fb4-6603-9576-91a8-a959d3a8c7b6.htm" />
+  <HelpKINode Title="MovingObject.MovementCondition property" Url="html/e3203865-4539-65e9-6ce4-0fc40e8f386a.htm" />
+  <HelpKINode Title="MovingObject.MovementSpeed property" Url="html/a9d3cb7d-8b6a-d61a-12f5-8d4a3145dec7.htm" />
+  <HelpKINode Title="MovingObject.MovingObject constructor" Url="html/07b518d5-1fab-55b3-6284-42318c742e19.htm" />
+  <HelpKINode Title="MovingObject.Position property" Url="html/703511ce-7132-93c6-13f0-076f8dd2a0cd.htm" />
+  <HelpKINode Title="MovingObject.Rotate method" Url="html/14073722-f299-4d52-dce1-f382259f2e73.htm" />
+  <HelpKINode Title="Name property" Url="html/27d71ad9-1e17-af30-e2f8-0b18c508dfb6.htm" />
+  <HelpKINode Title="ObjectsCrossed property" Url="html/673c51f0-0e80-42d6-2652-5f168004cbf3.htm" />
+  <HelpKINode Title="ObstacleCount field" Url="html/b6cb83fd-2a84-b22e-ba8a-87c247370ff1.htm" />
+  <HelpKINode Title="ObstacleCrossed method">
+    <HelpKINode Title="CastCondition.ObstacleCrossed Method " Url="html/b0d8e2ff-07cc-4a4a-c269-98d8bc1c3d41.htm" />
+    <HelpKINode Title="HumanCastCondition.ObstacleCrossed Method " Url="html/a55dffd8-b0d3-08ed-f717-f988087cdc9c.htm" />
+    <HelpKINode Title="ICastCondition.ObstacleCrossed Method " Url="html/054fb9cf-31f5-791c-33c2-637ddf50573c.htm" />
+  </HelpKINode>
+  <HelpKINode Title="PicAddress property">
+    <HelpKINode Title="BasicWeapon.PicAddress Property " Url="html/30948777-fa13-f502-97de-2718b531e3e9.htm" />
+    <HelpKINode Title="ITextureWrapper.PicAddress Property " Url="html/db7c81bf-501d-c31f-fe0d-90aab9d73674.htm" />
+    <HelpKINode Title="TextureWrapper.PicAddress Property " Url="html/6b79ceda-4e7a-a26f-899c-8daa2ba35806.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Player class">
+    <HelpKINode Title="Player Class" Url="html/7b5ef980-8897-a08b-cea9-057017e41f09.htm" />
+    <HelpKINode Title="about Player class" Url="html/7b5ef980-8897-a08b-cea9-057017e41f09.htm" />
+    <HelpKINode Title="constructor" Url="html/de465b0c-5185-b1dd-c6df-43ca3bc31991.htm" />
+    <HelpKINode Title="methods" Url="html/b6bddd47-e119-d915-cb6f-b928d42d13ae.htm" />
+    <HelpKINode Title="properties" Url="html/4eff90f8-2828-db63-e7e6-ea3a5930d46d.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Player.HitPoints property" Url="html/854b333e-6aff-a748-e18b-f27d7133d14a.htm" />
+  <HelpKINode Title="Player.IsKilled property" Url="html/2689c20d-e248-29b3-5ad5-107dd618b1dc.htm" />
+  <HelpKINode Title="Player.Name property" Url="html/27d71ad9-1e17-af30-e2f8-0b18c508dfb6.htm" />
+  <HelpKINode Title="Player.Player constructor" Url="html/de465b0c-5185-b1dd-c6df-43ca3bc31991.htm" />
+  <HelpKINode Title="Player.Rotate method" Url="html/ce26b3e8-0f88-ebbd-d36c-6ad58680991f.htm" />
+  <HelpKINode Title="Player.ScreenPlane property" Url="html/3c938055-6e17-d391-e2e7-97e3d1e2c633.htm" />
+  <HelpKINode Title="Player.Shoot method" Url="html/616ea091-d7f8-b866-c5d8-090577ddc3cf.htm" />
+  <HelpKINode Title="Player.Weapon property" Url="html/18b03dd9-7c1e-214a-d135-a15a865a2047.htm" />
+  <HelpKINode Title="PlayerFilePath property" Url="html/e3058edf-e44a-546a-bf4a-705952aef2ab.htm" />
+  <HelpKINode Title="Position property" Url="html/703511ce-7132-93c6-13f0-076f8dd2a0cd.htm" />
+  <HelpKINode Title="Program class">
+    <HelpKINode Title="Program Class" Url="html/4cbfc109-f314-dc19-df48-89e4834f31e5.htm" />
+    <HelpKINode Title="about Program class" Url="html/4cbfc109-f314-dc19-df48-89e4834f31e5.htm" />
+    <HelpKINode Title="fields" Url="html/8f24e531-8101-8624-dd73-88c0ea60e643.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Program.RestartGame field" Url="html/dcde15e3-e8f9-9009-2e61-e0ac2870e8b3.htm" />
+  <HelpKINode Title="Ray class">
+    <HelpKINode Title="Ray Class" Url="html/72af56d5-fb01-aaaf-ada7-0924bec5bb64.htm" />
+    <HelpKINode Title="about Ray class" Url="html/72af56d5-fb01-aaaf-ada7-0924bec5bb64.htm" />
+    <HelpKINode Title="constructor" Url="html/2718c844-ee8c-a5b0-3f16-fc176a8a65ea.htm" />
+    <HelpKINode Title="methods" Url="html/73d7375f-95b5-0514-92b4-22f3e15402f7.htm" />
+    <HelpKINode Title="properties" Url="html/0d0dacd8-a9b8-4246-7062-5a96b7b0fb87.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Ray.Add method" Url="html/68b4b842-e217-f9ef-40e5-cd0177cea74e.htm" />
+  <HelpKINode Title="Ray.ObjectsCrossed property" Url="html/673c51f0-0e80-42d6-2652-5f168004cbf3.htm" />
+  <HelpKINode Title="Ray.Ray constructor" Url="html/2718c844-ee8c-a5b0-3f16-fc176a8a65ea.htm" />
+  <HelpKINode Title="RayCaster class">
+    <HelpKINode Title="RayCaster Class" Url="html/593a0504-3d5c-99f5-8ceb-53111a378b82.htm" />
+    <HelpKINode Title="about RayCaster class" Url="html/593a0504-3d5c-99f5-8ceb-53111a378b82.htm" />
+    <HelpKINode Title="constructor" Url="html/5e2ce808-5263-62f8-c75c-2966e603aff3.htm" />
+    <HelpKINode Title="methods" Url="html/4169583f-d273-75c2-5c8d-70746894710e.htm" />
+    <HelpKINode Title="properties" Url="html/e3bdbe9d-5791-0d73-38d8-c3788221988d.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RayCaster.Cast method" Url="html/538f799d-7f33-cc3f-6cce-4b646266da59.htm" />
+  <HelpKINode Title="RayCaster.FieldOfView method" Url="html/af72b186-9f41-b54a-b6a7-27b77bc76a99.htm" />
+  <HelpKINode Title="RayCaster.Map property" Url="html/9ae9b88b-658b-9180-5127-276032135e8d.htm" />
+  <HelpKINode Title="RayCaster.RayCaster constructor" Url="html/5e2ce808-5263-62f8-c75c-2966e603aff3.htm" />
+  <HelpKINode Title="RayCaster.Walls property" Url="html/6bb1cb13-d10c-55f2-d9b6-f6191c797e1e.htm" />
+  <HelpKINode Title="ReadEnemies method" Url="html/74642dd7-c1d1-dec4-1a00-efa2232851db.htm" />
+  <HelpKINode Title="ReadMap method" Url="html/6aa1be4f-4a86-c1a9-bf12-141e64a1b912.htm" />
+  <HelpKINode Title="ReadPlayer method" Url="html/c7b8211e-5070-c3d9-c269-3c3ae57aaaef.htm" />
+  <HelpKINode Title="ReadWalls method" Url="html/8042a74e-3439-6df8-042c-30db3ab8851b.htm" />
+  <HelpKINode Title="ReadWeapons method" Url="html/8fe0f932-a1a9-7fb3-1c35-e538171147bb.htm" />
+  <HelpKINode Title="Rendering namespace" Url="html/1eff44e0-c405-40aa-9aee-12a5fcca49de.htm" />
+  <HelpKINode Title="Rendering.BackgroundPainter class" Url="html/ed0a0a1d-cc80-3c14-28ab-44750d390eae.htm" />
+  <HelpKINode Title="Reset method">
+    <HelpKINode Title="CastCondition.Reset Method " Url="html/170b47f7-2997-0bc6-030e-c7d65ac576b8.htm" />
+    <HelpKINode Title="HumanCastCondition.Reset Method " Url="html/08dc8962-2d53-e4d8-675d-8e0e531e43d9.htm" />
+    <HelpKINode Title="ICastCondition.Reset Method " Url="html/ce6b5c2c-4be2-c602-84e5-f4d985a981df.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RestartGame field" Url="html/dcde15e3-e8f9-9009-2e61-e0ac2870e8b3.htm" />
+  <HelpKINode Title="Rotate method">
+    <HelpKINode Title="MovingObject.Rotate Method " Url="html/14073722-f299-4d52-dce1-f382259f2e73.htm" />
+    <HelpKINode Title="Player.Rotate Method " Url="html/ce26b3e8-0f88-ebbd-d36c-6ad58680991f.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ScreenPlane property" Url="html/3c938055-6e17-d391-e2e7-97e3d1e2c633.htm" />
+  <HelpKINode Title="Shoot method">
+    <HelpKINode Title="BasicWeapon.Shoot Method " Url="html/42b07e67-b950-f605-948b-aa5faad8f894.htm" />
+    <HelpKINode Title="IWeapon.Shoot Method " Url="html/99d5bfdf-c608-4b7d-193a-273fe7a12c36.htm" />
+    <HelpKINode Title="Player.Shoot Method " Url="html/616ea091-d7f8-b866-c5d8-090577ddc3cf.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Side enumeration" Url="html/297bfdd1-6e95-16ab-9705-0a7bdb3652f6.htm" />
+  <HelpKINode Title="Side property" Url="html/54fa3f2c-c64b-11f4-4fa0-e2ba474568d5.htm" />
+  <HelpKINode Title="SideX enumeration member" Url="html/297bfdd1-6e95-16ab-9705-0a7bdb3652f6.htm" />
+  <HelpKINode Title="SideY enumeration member" Url="html/297bfdd1-6e95-16ab-9705-0a7bdb3652f6.htm" />
+  <HelpKINode Title="Sky property" Url="html/e66a5cd4-a2a6-340a-5c54-5d55921280d3.htm" />
+  <HelpKINode Title="SkyFilePath property" Url="html/e51535bd-dd7e-3d61-a157-deb114af4549.htm" />
+  <HelpKINode Title="SpawnTime field" Url="html/21b10eff-00b7-84a1-a3a6-7f1eb3806239.htm" />
+  <HelpKINode Title="SpriteData class">
+    <HelpKINode Title="SpriteData Class" Url="html/f02f03e6-0dc8-f061-862b-02225b1ee750.htm" />
+    <HelpKINode Title="about SpriteData class" Url="html/f02f03e6-0dc8-f061-862b-02225b1ee750.htm" />
+    <HelpKINode Title="constructor" Url="html/4d44db9e-805a-b7f2-94ca-4feb815ff374.htm" />
+    <HelpKINode Title="methods" Url="html/45d1d3a8-f2ba-1611-fd35-c9ee43dd0e86.htm" />
+    <HelpKINode Title="properties" Url="html/0cd898ee-a06b-127f-afbe-5c03fd5349f4.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SpriteData property" Url="html/ae6351d9-b0cd-6756-4a24-9e45cbe9c442.htm" />
+  <HelpKINode Title="SpriteData.DeadPic property" Url="html/d291f1ea-9e8e-d667-32bb-1e78b000ab9e.htm" />
+  <HelpKINode Title="SpriteData.Height property" Url="html/d59c4f73-b2f2-834c-f47b-57cccbd2c93b.htm" />
+  <HelpKINode Title="SpriteData.LivingPic property" Url="html/5e6cf5be-169f-807a-9440-eaff3f2f0a0b.htm" />
+  <HelpKINode Title="SpriteData.SpriteData constructor" Url="html/4d44db9e-805a-b7f2-94ca-4feb815ff374.htm" />
+  <HelpKINode Title="SpriteData.Width property" Url="html/9811765c-cfe7-51ac-d13c-420acaa655ec.htm" />
+  <HelpKINode Title="Texture property">
+    <HelpKINode Title="BasicWeapon.Texture Property " Url="html/ce555ad7-34a5-474d-53fc-66485923c9bb.htm" />
+    <HelpKINode Title="Enemy.Texture Property " Url="html/212dd5e1-4965-69fc-f9ce-b50e934888d0.htm" />
+    <HelpKINode Title="IWeapon.Texture Property " Url="html/36ff2ac5-8668-44ae-bb20-1dcdc4ec9093.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Textures property" Url="html/612616fa-928e-a71f-ffcf-5607194a0448.htm" />
+  <HelpKINode Title="TextureWrapper class">
+    <HelpKINode Title="TextureWrapper Class" Url="html/90a9907e-9d0e-2180-bc3c-de3bfd3d685c.htm" />
+    <HelpKINode Title="about TextureWrapper class" Url="html/90a9907e-9d0e-2180-bc3c-de3bfd3d685c.htm" />
+    <HelpKINode Title="constructor" Url="html/8882bfae-4725-7d5b-58de-f7bc2b95e85c.htm" />
+    <HelpKINode Title="methods" Url="html/26fe031e-4081-2d83-7317-b42793c56862.htm" />
+    <HelpKINode Title="properties" Url="html/a7d06eba-08e2-835d-a4b1-a8345f29dbd9.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TextureWrapper.AltColor property" Url="html/35fffb79-d199-b0ef-d077-e01254aee4a4.htm" />
+  <HelpKINode Title="TextureWrapper.Height property" Url="html/6f34f74b-cd7c-3174-9c09-b0cc1923d9a2.htm" />
+  <HelpKINode Title="TextureWrapper.IsOk property" Url="html/abb9e28b-7f46-a860-37ea-df8911693082.htm" />
+  <HelpKINode Title="TextureWrapper.Item property" Url="html/5f17ccee-65b7-8497-f95c-acf58f8465c8.htm" />
+  <HelpKINode Title="TextureWrapper.LoadTexture method" Url="html/845ac527-e393-c499-8e61-542c53b43ea9.htm" />
+  <HelpKINode Title="TextureWrapper.PicAddress property" Url="html/6b79ceda-4e7a-a26f-899c-8daa2ba35806.htm" />
+  <HelpKINode Title="TextureWrapper.TextureWrapper constructor" Url="html/8882bfae-4725-7d5b-58de-f7bc2b95e85c.htm" />
+  <HelpKINode Title="TextureWrapper.Width property" Url="html/73a38027-568f-d997-4cff-56d8be6b9d2d.htm" />
+  <HelpKINode Title="TextureX property">
+    <HelpKINode Title="IWall.TextureX Property " Url="html/9eee0e51-f9d1-c918-1aae-0bccb447e016.htm" />
+    <HelpKINode Title="Wall.TextureX Property " Url="html/eaea5df8-8a90-89d0-6c79-c4e1940defb2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TextureXRatio property" Url="html/433b633e-451f-fef8-b56b-b1623beb462c.htm" />
+  <HelpKINode Title="TextureY property">
+    <HelpKINode Title="IWall.TextureY Property " Url="html/ef1faaf6-d074-bb9a-19c4-a0ecf9095a03.htm" />
+    <HelpKINode Title="Wall.TextureY Property " Url="html/b075cbf1-efb1-a71e-3c59-ac2bb8ec43fe.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TypeId property">
+    <HelpKINode Title="Enemy.TypeId Property " Url="html/0d568adf-81c7-89ae-1b62-347309eb292a.htm" />
+    <HelpKINode Title="EnemyData.TypeId Property " Url="html/c1e9a80c-2f3b-dc49-a680-36185ac30613.htm" />
+  </HelpKINode>
+  <HelpKINode Title="UnloadContent method" Url="html/bbfc856b-41e4-10b9-1d48-08be6eab1585.htm" />
+  <HelpKINode Title="Update method" Url="html/970a061f-8cfc-2341-1a80-a36aef5334ae.htm" />
+  <HelpKINode Title="UpdateBuffer method" Url="html/a3a58e40-22ff-3b3d-23aa-4f5fa8c482ee.htm" />
+  <HelpKINode Title="UpdateDistance method">
+    <HelpKINode Title="CastCondition.UpdateDistance Method " Url="html/b9d5eaca-e819-ddab-c595-825069b90321.htm" />
+    <HelpKINode Title="ICastCondition.UpdateDistance Method " Url="html/5331b737-92d5-a357-f566-15cb96bf428d.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Wall class">
+    <HelpKINode Title="Wall Class" Url="html/33bf7df3-ddb1-7f2c-aaa0-ab0d00e925bb.htm" />
+    <HelpKINode Title="about Wall class" Url="html/33bf7df3-ddb1-7f2c-aaa0-ab0d00e925bb.htm" />
+    <HelpKINode Title="constructor" Url="html/dcdcb74d-b5a3-64b0-fb18-6a6ee4f45273.htm" />
+    <HelpKINode Title="methods" Url="html/1f87f9c3-6813-4dcd-43b3-fd12fd98f3bb.htm" />
+    <HelpKINode Title="properties" Url="html/5dd418fb-132a-7122-0f7f-c2e200c4cd06.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Wall.GetTexture method" Url="html/77fcf2ba-41d1-2508-ec05-df7439690610.htm" />
+  <HelpKINode Title="Wall.Height property" Url="html/a8b4e24a-20f8-c767-dcbe-84e5d5557d6b.htm" />
+  <HelpKINode Title="Wall.Textures property" Url="html/612616fa-928e-a71f-ffcf-5607194a0448.htm" />
+  <HelpKINode Title="Wall.TextureX property" Url="html/eaea5df8-8a90-89d0-6c79-c4e1940defb2.htm" />
+  <HelpKINode Title="Wall.TextureY property" Url="html/b075cbf1-efb1-a71e-3c59-ac2bb8ec43fe.htm" />
+  <HelpKINode Title="Wall.Wall constructor" Url="html/dcdcb74d-b5a3-64b0-fb18-6a6ee4f45273.htm" />
+  <HelpKINode Title="Wall.Width property" Url="html/e8b02b15-c74e-f67a-42ad-fbb3289b94d4.htm" />
+  <HelpKINode Title="WallFilePath property" Url="html/a4254a5f-fafb-2399-33cd-a3b8d983edb7.htm" />
+  <HelpKINode Title="Walls property">
+    <HelpKINode Title="IRayCaster.Walls Property " Url="html/2d4e86d6-bce1-ff31-3113-854a1e0a9f4a.htm" />
+    <HelpKINode Title="RayCaster.Walls Property " Url="html/6bb1cb13-d10c-55f2-d9b6-f6191c797e1e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Weapon property" Url="html/18b03dd9-7c1e-214a-d135-a15a865a2047.htm" />
+  <HelpKINode Title="WeaponFilePath property" Url="html/0f15af47-0fe0-202f-eb6f-f86647e08f10.htm" />
+  <HelpKINode Title="Width property">
+    <HelpKINode Title="BackgroundPainter.Width Property " Url="html/45415010-1ee8-bae9-3504-4238e2bbbfb9.htm" />
+    <HelpKINode Title="Bullet.Width Property " Url="html/e356c359-6d5c-6df4-96a9-29da2d99f252.htm" />
+    <HelpKINode Title="Enemy.Width Property " Url="html/64f971d0-1c23-ecda-afd8-a8cf60644ec4.htm" />
+    <HelpKINode Title="EngineSettings.Width Property " Url="html/f21a863d-41ae-8a23-c808-fc1f64b562ef.htm" />
+    <HelpKINode Title="ICrossable.Width Property " Url="html/455e9435-1532-40cd-2a59-4aa326cb3e7c.htm" />
+    <HelpKINode Title="IMap.Width Property " Url="html/b94474ae-1eb5-e234-e4da-0721dc6c4401.htm" />
+    <HelpKINode Title="ITextureWrapper.Width Property " Url="html/9a012dbc-636e-9eff-851b-4b70b22caa79.htm" />
+    <HelpKINode Title="Map.Width Property " Url="html/9fea1493-85ff-9cd3-694b-85f57e22ab65.htm" />
+    <HelpKINode Title="SpriteData.Width Property " Url="html/9811765c-cfe7-51ac-d13c-420acaa655ec.htm" />
+    <HelpKINode Title="TextureWrapper.Width Property " Url="html/73a38027-568f-d997-4cff-56d8be6b9d2d.htm" />
+    <HelpKINode Title="Wall.Width Property " Url="html/e8b02b15-c74e-f67a-42ad-fbb3289b94d4.htm" />
+  </HelpKINode>
+</HelpKI>

@@ -27,7 +27,7 @@ namespace Game
         /// <summary>
         /// Represents the pixel distance from the middle of the screen. In this area, no view rotation occurs
         /// </summary>
-        private const float RotationTreshold = 30;
+        private const float RotationTreshold = 0.005F;
         /// <summary>
         /// If the distance of two objects is less than this constant, the objects touch.
         /// </summary>
@@ -39,7 +39,7 @@ namespace Game
         /// <summary>
         /// Determines the view rotation speed
         /// </summary>
-        private const float RotationSpeed = 0.03F;
+        private const float RotationSpeed = 0.0080F;
         /// <summary>
         /// Limits animation of explosions and so like
         /// </summary>
@@ -83,6 +83,10 @@ namespace Game
 
         //in-game changing values
         private bool paused;
+
+        private Point lastMouse;
+        private int mouseCounter;
+        private float currRotation;
 
         private bool pausedBefore;
         private bool resetedBefore;
@@ -146,7 +150,9 @@ namespace Game
             //initializing counters
             lastSpawnChange = TimeSpan.Zero;
             enemySpawnChange = new TimeSpan(0, 0, 0, settings.EnemySpawnSecs);
-
+            kills = 0;
+            paused = false;
+            lastMouse = Mouse.GetState().Position;
 
             base.Initialize();
         }
@@ -285,6 +291,7 @@ namespace Game
                 if (!resetedBefore)
                 {
                     resetedBefore = true;
+                    UnloadContent();
                     Initialize();
 
                     LoadContent();
@@ -393,18 +400,26 @@ namespace Game
 
             #region Mouse state
 
-            Point currMouse = Mouse.GetState().Position;
-
-            float screenWidth = GraphicsDevice.Viewport.Width;
-            float difference = screenWidth / 2F - currMouse.X;
-
             //if the mouse position is close to the middle of the screen, the view is no rotated
-            if (Math.Abs(difference) > RotationTreshold)
+            if ((mouseCounter = mouseCounter % 6) == 0)
             {
-                difference = 2 * difference / screenWidth * RotationSpeed;
-                _player.Rotate(difference);
+                Point currMouse = Mouse.GetState().Position;
 
+                Vector2 difference = (lastMouse - currMouse).ToVector2();
+
+                float diff = difference.Length();
+                diff = diff * RotationSpeed * Math.Sign(difference.X);
+
+
+                currRotation = diff / 6;
+                lastMouse = currMouse;
             }
+
+            if (Math.Abs(currRotation) > RotationTreshold)
+            {
+                _player.Rotate(currRotation);
+            }
+            mouseCounter++;
 
             #endregion
 

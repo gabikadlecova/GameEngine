@@ -25,8 +25,14 @@
     <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
     <CleanIntermediates>True</CleanIntermediates>
     <DocumentationSources>
-      <DocumentationSource sourceFile="Casting\bin\Debug\Casting.dll" xmlns="" />
-    </DocumentationSources>
+      <DocumentationSource sourceFile="Casting\bin\Release\Casting.dll" />
+<DocumentationSource sourceFile="Casting\bin\Release\Casting.xml" />
+<DocumentationSource sourceFile="Game\bin\Windows\x86\Release\Game.exe" />
+<DocumentationSource sourceFile="Game\bin\Windows\x86\Release\Game.xml" />
+<DocumentationSource sourceFile="Game\bin\Windows\x86\Release\Input.dll" />
+<DocumentationSource sourceFile="Game\bin\Windows\x86\Release\Input.xml" />
+<DocumentationSource sourceFile="Game\bin\Windows\x86\Release\Rendering.dll" />
+<DocumentationSource sourceFile="Game\bin\Windows\x86\Release\Rendering.xml" /></DocumentationSources>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->

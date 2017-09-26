@@ -1,0 +1,406 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Id="12090a13-563c-4cd7-bc5d-38d8f7096168" Title="Casting.Environment" Url="html/f2ba6431-6b76-3d37-94d7-af030bd0deb5.htm">
+    <HelpTOCNode Id="ff9d6019-7414-41ae-8ee3-fe61644b1c87" Title="Container(TObj) Class" Url="html/b70022a7-fe19-c9d6-5e12-f6e953f73edf.htm">
+      <HelpTOCNode Title="Container(TObj) Constructor " Url="html/628b2016-7a6e-b610-b3cf-08b5c353ded7.htm" />
+      <HelpTOCNode Id="c51d9c56-47d9-4ecc-8e94-093ddec0f150" Title="Container(TObj) Properties" Url="html/283e327b-71d9-0fae-0615-01ef1e2ab6ec.htm">
+        <HelpTOCNode Title="Item Property " Url="html/0afed31b-df69-7594-6ff5-1d834ffd87e7.htm" />
+        <HelpTOCNode Title="MaxHeight Property " Url="html/c6c50e88-bff7-8942-8b5f-bb1b5102b4fe.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="39e059c6-fcd2-4635-8585-81fd1435bb0a" Title="Container(TObj) Methods" Url="html/3aaecbc6-253d-cdd3-49a6-bdfd1e509190.htm">
+        <HelpTOCNode Title="GetEnumerator Method " Url="html/ae2ce950-14a9-b3fb-d8f8-cbb76456a9ae.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="62f470c6-2243-4e62-bb3a-6aed209004cc" Title="Map Class" Url="html/50e38177-405b-d1f0-8969-d5379813121d.htm">
+      <HelpTOCNode Title="Map Constructor " Url="html/63ef6f72-3c8f-e898-8503-933db7809430.htm" />
+      <HelpTOCNode Id="0e712cbc-02f1-444b-b08d-2e46da06206b" Title="Map Properties" Url="html/b2c124d6-89bf-c17f-01df-4c8554361b42.htm">
+        <HelpTOCNode Title="Height Property " Url="html/c9f63624-2af8-b732-cc21-324b939939c6.htm" />
+        <HelpTOCNode Title="Item Property " Url="html/01885e28-8945-4377-25a4-6d329bff52ea.htm" />
+        <HelpTOCNode Title="Width Property " Url="html/9fea1493-85ff-9cd3-694b-85f57e22ab65.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="829175ee-298b-444f-9841-a52a4faa58e8" Title="Map Methods" Url="html/3919c4ae-2f56-8ad2-73f8-37d4573a040d.htm">
+        <HelpTOCNode Title="IsInRange Method " Url="html/50dfd56a-6e0f-a86c-ab88-9ea5216eb263.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="408417a1-c30d-421c-a1cc-e815271f2d3c" Title="TextureWrapper Class" Url="html/90a9907e-9d0e-2180-bc3c-de3bfd3d685c.htm">
+      <HelpTOCNode Title="TextureWrapper Constructor " Url="html/8882bfae-4725-7d5b-58de-f7bc2b95e85c.htm" />
+      <HelpTOCNode Id="f3f135b6-3795-4580-b03e-b67dd5ff8b72" Title="TextureWrapper Properties" Url="html/a7d06eba-08e2-835d-a4b1-a8345f29dbd9.htm">
+        <HelpTOCNode Title="AltColor Property " Url="html/35fffb79-d199-b0ef-d077-e01254aee4a4.htm" />
+        <HelpTOCNode Title="Height Property " Url="html/6f34f74b-cd7c-3174-9c09-b0cc1923d9a2.htm" />
+        <HelpTOCNode Title="IsOk Property " Url="html/abb9e28b-7f46-a860-37ea-df8911693082.htm" />
+        <HelpTOCNode Title="Item Property " Url="html/5f17ccee-65b7-8497-f95c-acf58f8465c8.htm" />
+        <HelpTOCNode Title="PicAddress Property " Url="html/6b79ceda-4e7a-a26f-899c-8daa2ba35806.htm" />
+        <HelpTOCNode Title="Width Property " Url="html/73a38027-568f-d997-4cff-56d8be6b9d2d.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="0226f49f-8d5a-4691-94b6-b6e7bc3dc786" Title="TextureWrapper Methods" Url="html/26fe031e-4081-2d83-7317-b42793c56862.htm">
+        <HelpTOCNode Title="LoadTexture Method " Url="html/845ac527-e393-c499-8e61-542c53b43ea9.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="84427aaa-d294-4ede-b90b-da33db541241" Title="Wall Class" Url="html/33bf7df3-ddb1-7f2c-aaa0-ab0d00e925bb.htm">
+      <HelpTOCNode Title="Wall Constructor " Url="html/dcdcb74d-b5a3-64b0-fb18-6a6ee4f45273.htm" />
+      <HelpTOCNode Id="a85509f7-65e7-4a77-9305-31e4ab180bdf" Title="Wall Properties" Url="html/5dd418fb-132a-7122-0f7f-c2e200c4cd06.htm">
+        <HelpTOCNode Title="Height Property " Url="html/a8b4e24a-20f8-c767-dcbe-84e5d5557d6b.htm" />
+        <HelpTOCNode Title="Textures Property " Url="html/612616fa-928e-a71f-ffcf-5607194a0448.htm" />
+        <HelpTOCNode Title="TextureX Property " Url="html/eaea5df8-8a90-89d0-6c79-c4e1940defb2.htm" />
+        <HelpTOCNode Title="TextureY Property " Url="html/b075cbf1-efb1-a71e-3c59-ac2bb8ec43fe.htm" />
+        <HelpTOCNode Title="Width Property " Url="html/e8b02b15-c74e-f67a-42ad-fbb3289b94d4.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="375971ba-9522-47a0-8783-7ab5f0a59e9c" Title="Wall Methods" Url="html/1f87f9c3-6813-4dcd-43b3-fd12fd98f3bb.htm">
+        <HelpTOCNode Title="GetTexture Method " Url="html/77fcf2ba-41d1-2508-ec05-df7439690610.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="d9f60797-cce3-4c0b-82d5-6b91837cd5e8" Title="Casting.Environment.Interfaces" Url="html/88c5e314-2b17-3284-c8a2-39e1882fb6fe.htm">
+    <HelpTOCNode Id="3d535aee-1188-42e2-ac21-1197b49b0133" Title="IContainer(TObj) Interface" Url="html/14af17de-b567-d1e7-063b-9e5ed7ee650b.htm">
+      <HelpTOCNode Id="7c6c41ba-d724-4aa5-b6ef-a35d4aa472ad" Title="IContainer(TObj) Properties" Url="html/ad4d0356-5422-906e-cf7d-6e351f2ae35c.htm">
+        <HelpTOCNode Title="Item Property " Url="html/bca0dd89-f925-5fac-0854-b5bdb32bba54.htm" />
+        <HelpTOCNode Title="MaxHeight Property " Url="html/d2ffd00e-063a-a13e-68e8-87285f30bc6b.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="IContainer(TObj) Methods" Url="html/fb017346-e5f0-3a35-76ce-60496f69c215.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="c74084cb-285c-49ea-8b4a-443bafc6b079" Title="IMap Interface" Url="html/1f7f5a5f-496b-58a4-fe04-caa15ec64cd9.htm">
+      <HelpTOCNode Id="12332a1a-7ad3-4669-8e9f-6c14a696a31b" Title="IMap Properties" Url="html/f122767a-0be2-830f-8871-369609667ee9.htm">
+        <HelpTOCNode Title="Height Property " Url="html/59fe0fba-a5de-53a2-16a9-d386bb851128.htm" />
+        <HelpTOCNode Title="Item Property " Url="html/819dc5ab-9989-b379-b536-29eb33673884.htm" />
+        <HelpTOCNode Title="Width Property " Url="html/b94474ae-1eb5-e234-e4da-0721dc6c4401.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="df953ce9-418f-40da-89fd-284ce795c3ed" Title="IMap Methods" Url="html/c3375c6d-e67b-ee3b-7ee2-83b013f59a14.htm">
+        <HelpTOCNode Title="IsInRange Method " Url="html/f02bbd69-bf32-f5a2-4e3d-5b6e19e616eb.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c77db7b4-b3a4-417c-a6ad-aa763fbeae4d" Title="ITextureWrapper Interface" Url="html/48a4fe58-2f5f-764b-53ca-33d7bb6542d0.htm">
+      <HelpTOCNode Id="831dea5b-318c-4182-88ea-de2f74622136" Title="ITextureWrapper Properties" Url="html/e428b4af-a001-df76-815f-2726e370dfea.htm">
+        <HelpTOCNode Title="AltColor Property " Url="html/326cc262-f83b-80b8-1092-c882f0ff4571.htm" />
+        <HelpTOCNode Title="Height Property " Url="html/94898726-7078-5651-e912-2c13fb955847.htm" />
+        <HelpTOCNode Title="IsOk Property " Url="html/b16b00d2-8fe0-1fe7-d155-c0e9065fdce9.htm" />
+        <HelpTOCNode Title="Item Property " Url="html/4539b7f3-2dc8-169d-96ff-2ebcac629ba3.htm" />
+        <HelpTOCNode Title="PicAddress Property " Url="html/db7c81bf-501d-c31f-fe0d-90aab9d73674.htm" />
+        <HelpTOCNode Title="Width Property " Url="html/9a012dbc-636e-9eff-851b-4b70b22caa79.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="6ea9f99e-c802-4503-b547-679179f21988" Title="ITextureWrapper Methods" Url="html/51b4d380-be62-c4f8-a0b7-5e70b88f2a46.htm">
+        <HelpTOCNode Title="LoadTexture Method " Url="html/cce56d55-3de0-638c-d0d3-5ffd2a7d6bad.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="0cf944d2-1125-4cbc-a6d5-5183fae0df8b" Title="IWall Interface" Url="html/1f1915c8-bef0-16a1-cab4-e69bdf30ffce.htm">
+      <HelpTOCNode Id="ba27626d-c60f-44ed-81b7-6da2ab89aafc" Title="IWall Properties" Url="html/e5725ed2-6071-b257-dad2-12aa90335381.htm">
+        <HelpTOCNode Title="TextureX Property " Url="html/9eee0e51-f9d1-c918-1aae-0bccb447e016.htm" />
+        <HelpTOCNode Title="TextureY Property " Url="html/ef1faaf6-d074-bb9a-19c4-a0ecf9095a03.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="IWall Methods" Url="html/9aaea71c-c860-9507-748d-7dc3a42cdb31.htm" />
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="c6516ee7-6c75-41d5-9e64-e45110b6633d" Title="Casting.Player" Url="html/6674b2d2-2435-da2f-4342-610c58851c54.htm">
+    <HelpTOCNode Id="207755ff-83ab-4ae4-a733-272a518b971a" Title="BasicWeapon Class" Url="html/d0e020a4-466f-06a5-a3cc-eb8420aa4158.htm">
+      <HelpTOCNode Title="BasicWeapon Constructor " Url="html/9377843f-b9a1-339b-06e4-e88ecd9d4da3.htm" />
+      <HelpTOCNode Id="bc0228c2-24db-4ec7-9856-5be27161f2ef" Title="BasicWeapon Properties" Url="html/3101f6c0-bfe8-beaf-f7be-f788c6b09e22.htm">
+        <HelpTOCNode Title="BulletData Property " Url="html/9b5ecfbc-5aa8-1e04-2619-3946940e1003.htm" />
+        <HelpTOCNode Title="Bullets Property " Url="html/5f44f418-efe0-0fcd-3528-4042a0b3aab8.htm" />
+        <HelpTOCNode Title="Caster Property " Url="html/f0253326-8b9a-6f33-10b6-c663bb55b8b6.htm" />
+        <HelpTOCNode Title="MaxAmmo Property " Url="html/55383e1c-ce8f-5110-9c3d-013d6b2d3241.htm" />
+        <HelpTOCNode Title="MinBulletDist Property " Url="html/f5d5dccc-05db-b1ed-1837-5f1ee17c0531.htm" />
+        <HelpTOCNode Title="MovementSpeed Property " Url="html/4b24c5b8-7ff4-7f17-05e1-3f40b741bac1.htm" />
+        <HelpTOCNode Title="PicAddress Property " Url="html/30948777-fa13-f502-97de-2718b531e3e9.htm" />
+        <HelpTOCNode Title="Texture Property " Url="html/ce555ad7-34a5-474d-53fc-66485923c9bb.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="8e1574fc-164b-4d5f-bbeb-8799b7945769" Title="BasicWeapon Methods" Url="html/e719d2c9-2b67-1b9f-d7f8-340b9700004a.htm">
+        <HelpTOCNode Title="Shoot Method " Url="html/42b07e67-b950-f605-948b-aa5faad8f894.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ad42a074-b901-45cf-82da-73a545823f15" Title="Bullet Class" Url="html/3ff10143-7e69-5106-6730-d1f57213f8c1.htm">
+      <HelpTOCNode Title="Bullet Constructor " Url="html/a06fac95-7dca-39ea-104c-de8ff5ab9c28.htm" />
+      <HelpTOCNode Id="fde51fd9-089a-4218-aa45-fb10bd6e0c8b" Title="Bullet Properties" Url="html/5de4f3b9-be07-48c6-08c2-250e5172a8e5.htm">
+        <HelpTOCNode Title="AnimationTime Property " Url="html/0f4dad14-757c-26b7-e346-12988fa1e740.htm" />
+        <HelpTOCNode Title="FlyPic Property " Url="html/aa77fe6e-8d22-8d76-ba42-012d6c267227.htm" />
+        <HelpTOCNode Title="HasHit Property " Url="html/c9c3d8c8-59a9-cff6-62a6-a96aed903cf3.htm" />
+        <HelpTOCNode Title="Height Property " Url="html/3927693b-acda-8dc8-0572-e558e59a80f5.htm" />
+        <HelpTOCNode Title="HitPic Property " Url="html/5ea2deea-61a6-47b1-ca48-2b0d82ea8840.htm" />
+        <HelpTOCNode Title="Width Property " Url="html/e356c359-6d5c-6df4-96a9-29da2d99f252.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="a3dbe612-58b8-4a79-99c7-12321faab4f3" Title="Bullet Methods" Url="html/fc49b327-a8b4-add9-121d-1980be9b54e5.htm">
+        <HelpTOCNode Title="GetTexture Method " Url="html/efe84eb5-47c3-ef1b-b8d6-52b5dbd0a1ac.htm" />
+        <HelpTOCNode Title="Hit Method " Url="html/76d9eebf-93b7-b078-9f40-914b2e37444d.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="69eee284-77e2-4475-9b63-6476d61082fc" Title="Enemy Class" Url="html/5e694ac7-c63b-e2f7-70e2-b3dcff4ef777.htm">
+      <HelpTOCNode Id="8dee0504-b564-4118-9554-c9173da9651f" Title="Enemy Constructor " Url="html/0d46f192-a7ee-7d86-3381-062d61b44032.htm">
+        <HelpTOCNode Title="Enemy Constructor (Vector2, Vector2, HumanCastCondition, EnemyData, IRayCaster)" Url="html/212422be-a55c-ef38-de9c-60c43e096559.htm" />
+        <HelpTOCNode Title="Enemy Constructor (Single, Single, Single, Single, HumanCastCondition, EnemyData, IRayCaster)" Url="html/1b947341-89f7-d974-2e7c-f1a39054fd25.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="e080eace-1d13-482a-ae28-3f0413dd2e2c" Title="Enemy Properties" Url="html/6fd9fc0c-d45b-e018-2fa4-0f3bcf2808f6.htm">
+        <HelpTOCNode Title="Height Property " Url="html/4a647eb2-5a04-f382-235b-a98d6aac9c57.htm" />
+        <HelpTOCNode Title="HitBox Property " Url="html/35f411e0-6afb-7152-8a63-06f7dc11fca1.htm" />
+        <HelpTOCNode Title="HitPoints Property " Url="html/182de1ce-9eb8-c8b1-a305-d1dd8ad195d5.htm" />
+        <HelpTOCNode Title="IsKilled Property " Url="html/a7691ea4-2d36-e319-7327-0f8228bd3b79.htm" />
+        <HelpTOCNode Title="KilledTexture Property " Url="html/9ac03b17-b50b-f770-6c84-c665a6ff1c35.htm" />
+        <HelpTOCNode Title="Texture Property " Url="html/212dd5e1-4965-69fc-f9ce-b50e934888d0.htm" />
+        <HelpTOCNode Title="TypeId Property " Url="html/0d568adf-81c7-89ae-1b62-347309eb292a.htm" />
+        <HelpTOCNode Title="Width Property " Url="html/64f971d0-1c23-ecda-afd8-a8cf60644ec4.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="0a2c3d2b-1cf6-4b47-8c3b-6d237cec735d" Title="Enemy Methods" Url="html/505f0e61-06b5-370d-ea11-6ee1794a8649.htm">
+        <HelpTOCNode Title="GetTexture Method " Url="html/c683be0b-dcb7-1856-6285-3e43f3278e6c.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="74ed853e-623c-43f7-b7c9-71b75f078159" Title="Enemy Fields" Url="html/4c0c6463-7dea-2da7-4562-0f3c58a956fd.htm">
+        <HelpTOCNode Title="DeathSecs Field" Url="html/fc176822-e61b-cf88-46b1-07324cf9be8e.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c77d4fcd-8cbc-4fb9-b66b-f146ea5a0f5a" Title="EnemyData Class" Url="html/036a61c6-2187-27a8-f86b-671509ea3a99.htm">
+      <HelpTOCNode Title="EnemyData Constructor " Url="html/06055ce1-0932-bdbd-9b8e-bcb18993d130.htm" />
+      <HelpTOCNode Id="5270b5e8-5063-4726-9429-9f9ff241332f" Title="EnemyData Properties" Url="html/f1dc311e-725c-27c2-16e7-e639f02a0e20.htm">
+        <HelpTOCNode Title="Caster Property " Url="html/19f7fb5b-26ae-c5aa-e460-d1e211547300.htm" />
+        <HelpTOCNode Title="HitBox Property " Url="html/b67618da-e895-b6ca-bbc5-b976650aef2f.htm" />
+        <HelpTOCNode Title="HitPoints Property " Url="html/a8e2a331-f92c-5497-746c-f8a5d266e436.htm" />
+        <HelpTOCNode Title="MovementSpeed Property " Url="html/325fdcaf-eacd-67b7-7ee8-00051521a335.htm" />
+        <HelpTOCNode Title="SpriteData Property " Url="html/ae6351d9-b0cd-6756-4a24-9e45cbe9c442.htm" />
+        <HelpTOCNode Title="TypeId Property " Url="html/c1e9a80c-2f3b-dc49-a680-36185ac30613.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="EnemyData Methods" Url="html/052c3685-51ac-c588-928e-fa2d9431da19.htm" />
+      <HelpTOCNode Id="73c58866-ccf1-4756-b156-5aa9ea11f87d" Title="EnemyData Fields" Url="html/59d7e158-7345-418d-6d83-1d31881a3a80.htm">
+        <HelpTOCNode Title="LastSpawn Field" Url="html/32c0969f-38f4-05ba-9d2b-b6edaca13051.htm" />
+        <HelpTOCNode Title="SpawnTime Field" Url="html/21b10eff-00b7-84a1-a3a6-7f1eb3806239.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="047202e8-f5fd-4fc2-8f2e-739c79587bd7" Title="MovingObject Class" Url="html/46347939-7d88-da7c-332a-001656f51c17.htm">
+      <HelpTOCNode Id="14ff1b61-e703-4c8f-8b57-1a664156771c" Title="MovingObject Constructor " Url="html/07b518d5-1fab-55b3-6284-42318c742e19.htm">
+        <HelpTOCNode Title="MovingObject Constructor (Vector2, Vector2, HumanCastCondition, Single, IRayCaster)" Url="html/3bff017b-5a63-1c86-1e24-ac6c4369a72b.htm" />
+        <HelpTOCNode Title="MovingObject Constructor (Single, Single, Single, Single, HumanCastCondition, Single, IRayCaster)" Url="html/c922e9f0-bd0d-3a8c-9ff9-1f899ce3a382.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="cadbf97b-4e57-46fc-b885-4e85d78389d3" Title="MovingObject Properties" Url="html/107d369f-3c40-7afe-ae8d-281e629900fa.htm">
+        <HelpTOCNode Title="Direction Property " Url="html/3c8bbe4b-e44f-ded7-d357-9134bde99f37.htm" />
+        <HelpTOCNode Title="MovementCondition Property " Url="html/e3203865-4539-65e9-6ce4-0fc40e8f386a.htm" />
+        <HelpTOCNode Title="MovementSpeed Property " Url="html/a9d3cb7d-8b6a-d61a-12f5-8d4a3145dec7.htm" />
+        <HelpTOCNode Title="Position Property " Url="html/703511ce-7132-93c6-13f0-076f8dd2a0cd.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="a0b32f4a-b821-4fe5-83a4-435a1be48e7f" Title="MovingObject Methods" Url="html/880fd749-bad9-4a9f-36ff-dbc704f6d2d4.htm">
+        <HelpTOCNode Title="Move Method " Url="html/1f907fb4-6603-9576-91a8-a959d3a8c7b6.htm" />
+        <HelpTOCNode Title="Rotate Method " Url="html/14073722-f299-4d52-dce1-f382259f2e73.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="7f05d64c-c61c-497d-8864-547222c9dd20" Title="MovingObject Fields" Url="html/435cf254-951c-53c6-22cc-ba171ec5cb84.htm">
+        <HelpTOCNode Title="MinWallDist Field" Url="html/9664f8f3-e046-ae27-bbf1-b0f26aa9b48a.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="1a879c88-5d1f-47d4-bdde-abb306508066" Title="Player Class" Url="html/7b5ef980-8897-a08b-cea9-057017e41f09.htm">
+      <HelpTOCNode Id="aca060ef-1a03-4f8a-8a4e-b41d2478512f" Title="Player Constructor " Url="html/de465b0c-5185-b1dd-c6df-43ca3bc31991.htm">
+        <HelpTOCNode Title="Player Constructor (Vector2, Vector2, Int32, HumanCastCondition, String, Single, IRayCaster)" Url="html/026a1bef-a70c-4118-5418-ddcecf0af51a.htm" />
+        <HelpTOCNode Title="Player Constructor (Single, Single, Single, Single, Int32, HumanCastCondition, String, Single, IRayCaster)" Url="html/0256563e-2d05-f26b-3777-f468b6b714eb.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="262094c0-8329-4375-ad35-8d76c8e18016" Title="Player Properties" Url="html/4eff90f8-2828-db63-e7e6-ea3a5930d46d.htm">
+        <HelpTOCNode Title="HitPoints Property " Url="html/854b333e-6aff-a748-e18b-f27d7133d14a.htm" />
+        <HelpTOCNode Title="IsKilled Property " Url="html/2689c20d-e248-29b3-5ad5-107dd618b1dc.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/27d71ad9-1e17-af30-e2f8-0b18c508dfb6.htm" />
+        <HelpTOCNode Title="ScreenPlane Property " Url="html/3c938055-6e17-d391-e2e7-97e3d1e2c633.htm" />
+        <HelpTOCNode Title="Weapon Property " Url="html/18b03dd9-7c1e-214a-d135-a15a865a2047.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="0ec3fbb3-dee0-4d50-8168-f26a1d7060c3" Title="Player Methods" Url="html/b6bddd47-e119-d915-cb6f-b928d42d13ae.htm">
+        <HelpTOCNode Title="Rotate Method " Url="html/ce26b3e8-0f88-ebbd-d36c-6ad58680991f.htm" />
+        <HelpTOCNode Title="Shoot Method " Url="html/616ea091-d7f8-b866-c5d8-090577ddc3cf.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="27d1761e-8eb8-40a7-82c8-c78b39fcca10" Title="SpriteData Class" Url="html/f02f03e6-0dc8-f061-862b-02225b1ee750.htm">
+      <HelpTOCNode Title="SpriteData Constructor " Url="html/4d44db9e-805a-b7f2-94ca-4feb815ff374.htm" />
+      <HelpTOCNode Id="01716865-9176-4ff0-8c02-b026efc84a41" Title="SpriteData Properties" Url="html/0cd898ee-a06b-127f-afbe-5c03fd5349f4.htm">
+        <HelpTOCNode Title="DeadPic Property " Url="html/d291f1ea-9e8e-d667-32bb-1e78b000ab9e.htm" />
+        <HelpTOCNode Title="Height Property " Url="html/d59c4f73-b2f2-834c-f47b-57cccbd2c93b.htm" />
+        <HelpTOCNode Title="LivingPic Property " Url="html/5e6cf5be-169f-807a-9440-eaff3f2f0a0b.htm" />
+        <HelpTOCNode Title="Width Property " Url="html/9811765c-cfe7-51ac-d13c-420acaa655ec.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="SpriteData Methods" Url="html/45d1d3a8-f2ba-1611-fd35-c9ee43dd0e86.htm" />
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="e65e2b1c-f867-4897-b34d-fe7f12b666d6" Title="Casting.Player.Interfaces" Url="html/7badd4ef-3d37-0ff3-d4a5-07cef36144b7.htm">
+    <HelpTOCNode Id="3d92ae99-7555-4d74-9693-b4933cb8bf1d" Title="IBullet Interface" Url="html/252ee43d-64a6-b812-8794-80ec695c5a35.htm">
+      <HelpTOCNode Id="aece026d-0388-49e6-a608-b5503429d6f2" Title="IBullet Properties" Url="html/e8ecf8bd-4d33-c4ee-513e-cf60c860e867.htm">
+        <HelpTOCNode Title="AnimationTime Property " Url="html/29965ce9-ba22-5ad2-9cca-3d622c023594.htm" />
+        <HelpTOCNode Title="HasHit Property " Url="html/d995c84a-0a0f-5afa-b506-f2b32f144997.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="8fd38784-e0e4-4af8-8dfe-8c76fecaa196" Title="IBullet Methods" Url="html/13029ef5-0576-308b-0152-521509eb3329.htm">
+        <HelpTOCNode Title="Hit Method " Url="html/cd6f50b0-f01d-14ac-4eee-58e423e07a75.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="e367665c-71b5-481a-aff7-711a84237bc3" Title="IPerson Interface" Url="html/8dc8a2c0-360d-3c77-56da-9ce59a87718e.htm">
+      <HelpTOCNode Id="a47221a3-7e1a-4d09-aa03-be5cec2b6250" Title="IPerson Properties" Url="html/45bb34f0-f14d-d1f3-6a1e-f810fa1109b2.htm">
+        <HelpTOCNode Title="HitPoints Property " Url="html/9edc34df-80b5-a906-a2ad-58913fd4b0ec.htm" />
+        <HelpTOCNode Title="IsKilled Property " Url="html/9e0ddf07-c608-e6fb-1738-40ff6b103168.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5b604b53-21bc-4297-9015-c86018d860e7" Title="IWeapon Interface" Url="html/00e63899-0795-e270-e3b5-eceae2e26b6e.htm">
+      <HelpTOCNode Id="0807b060-6a16-428a-a223-5f577ab2af87" Title="IWeapon Properties" Url="html/17ab71d0-fa36-6d6e-d8b4-28123d9417ad.htm">
+        <HelpTOCNode Title="BulletData Property " Url="html/52f0d48b-a662-00a5-a2e4-8616397aa42e.htm" />
+        <HelpTOCNode Title="Bullets Property " Url="html/566e725d-ee8c-cab1-9b4f-902664ade004.htm" />
+        <HelpTOCNode Title="Caster Property " Url="html/4343386d-8dff-4ac0-76b1-e38003a09e9e.htm" />
+        <HelpTOCNode Title="MaxAmmo Property " Url="html/05b454cc-772f-75c6-7f33-3625f56a36e9.htm" />
+        <HelpTOCNode Title="MinBulletDist Property " Url="html/372a2dfe-cf38-5b09-4fc4-f5c51f049c49.htm" />
+        <HelpTOCNode Title="Texture Property " Url="html/36ff2ac5-8668-44ae-bb20-1dcdc4ec9093.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="bb2b8751-50ee-4ad3-bffb-f14f78168c96" Title="IWeapon Methods" Url="html/d120811a-be10-eb47-ada0-bf1f670bd6ca.htm">
+        <HelpTOCNode Title="Shoot Method " Url="html/99d5bfdf-c608-4b7d-193a-273fe7a12c36.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="9a94e6a3-0701-44a2-9c4a-9640dae0a8ab" Title="Casting.RayCasting" Url="html/87d6bd8b-5c59-7554-4550-01409d430b21.htm">
+    <HelpTOCNode Id="9ded199e-d5c5-4302-b946-4907d0daec60" Title="CastCondition Class" Url="html/b4cd71c9-1043-5118-7d1d-b6929ef97437.htm">
+      <HelpTOCNode Title="CastCondition Constructor " Url="html/cb56c29d-2d68-3fb7-b9e5-832cdc3f5b0b.htm" />
+      <HelpTOCNode Id="e670d121-4343-4f34-b8d6-085072fd80de" Title="CastCondition Properties" Url="html/396f3c2c-7f04-f1d8-6a3b-d4b137d4f708.htm">
+        <HelpTOCNode Title="IsMet Property " Url="html/a242a96a-2720-02b5-8caf-437df612b144.htm" />
+        <HelpTOCNode Title="MaxDistance Property " Url="html/29e65305-e720-0052-719b-d4d0399fc20c.htm" />
+        <HelpTOCNode Title="MaxWalls Property " Url="html/480f91b9-4a56-155b-b074-6b4d02d76a70.htm" />
+        <HelpTOCNode Title="MinWalls Property " Url="html/bab39607-c34f-e40c-e7e7-396360105df1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="1f305072-bec4-4175-b516-3aef3d9e4617" Title="CastCondition Methods" Url="html/c6723e46-4068-f160-36dd-16306b116a55.htm">
+        <HelpTOCNode Title="CastDistance Method " Url="html/b1ec9781-fd65-3afe-3be7-181d26921c16.htm" />
+        <HelpTOCNode Title="LimitWalls Method " Url="html/80e56541-e2c7-ba43-c479-33c8bf8f8635.htm" />
+        <HelpTOCNode Title="MapRangeCrossed Method " Url="html/a4f6d2a2-d7ba-f39f-c6b1-253eb7e64c27.htm" />
+        <HelpTOCNode Title="ObstacleCrossed Method " Url="html/b0d8e2ff-07cc-4a4a-c269-98d8bc1c3d41.htm" />
+        <HelpTOCNode Title="Reset Method " Url="html/170b47f7-2997-0bc6-030e-c7d65ac576b8.htm" />
+        <HelpTOCNode Title="UpdateDistance Method " Url="html/b9d5eaca-e819-ddab-c595-825069b90321.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="206b3f7b-7227-42cf-9476-bce231aff321" Title="CastCondition Fields" Url="html/059c388c-7373-abe8-9c52-2d56e26e885a.htm">
+        <HelpTOCNode Title="CurrentDistance Field" Url="html/3a585f8a-2ba8-5ab8-61c4-1ba3432c6c2d.htm" />
+        <HelpTOCNode Title="ObstacleCount Field" Url="html/b6cb83fd-2a84-b22e-ba8a-87c247370ff1.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="04c1c346-7260-4876-b181-30bddd68df22" Title="DistanceWrapper(TObj) Class" Url="html/44aae430-45fa-e5f5-9e35-924ef527a68c.htm">
+      <HelpTOCNode Title="DistanceWrapper(TObj) Constructor " Url="html/dce366a9-a8e5-3913-21e2-0ea391828f3c.htm" />
+      <HelpTOCNode Id="98fe1e73-eba8-43a3-b12e-4699ddfc08b4" Title="DistanceWrapper(TObj) Properties" Url="html/6f62cad8-c1ee-9c7b-0e39-4fcc3eb60dc5.htm">
+        <HelpTOCNode Title="Distance Property " Url="html/728dd915-7d2f-4e56-b5e2-758d45e1fb74.htm" />
+        <HelpTOCNode Title="Element Property " Url="html/1c12a8ba-f5ad-ad94-9166-1b37003cf8e7.htm" />
+        <HelpTOCNode Title="ElementPos Property " Url="html/02cbd986-8b14-d1f9-a4ec-5a654d5b38e8.htm" />
+        <HelpTOCNode Title="IsNotTransparent Property " Url="html/ab142dd6-c875-996e-50d2-45f10eeef1d6.htm" />
+        <HelpTOCNode Title="Side Property " Url="html/54fa3f2c-c64b-11f4-4fa0-e2ba474568d5.htm" />
+        <HelpTOCNode Title="TextureXRatio Property " Url="html/433b633e-451f-fef8-b56b-b1623beb462c.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="DistanceWrapper(TObj) Methods" Url="html/5c287c83-f0f6-1339-e678-94d4da554c4e.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="abfe13de-4cfc-4602-9821-82821bba4317" Title="HumanCastCondition Class" Url="html/7f4b91c7-1bee-9e47-5012-844938790257.htm">
+      <HelpTOCNode Title="HumanCastCondition Constructor " Url="html/51d21cba-9d95-b91e-52f2-76df75191bab.htm" />
+      <HelpTOCNode Title="HumanCastCondition Properties" Url="html/ec92dde6-e89f-7de7-2262-f4a389bf5de8.htm" />
+      <HelpTOCNode Id="8a376eb1-b703-498d-a399-5dd9dea44874" Title="HumanCastCondition Methods" Url="html/a846601a-bb04-112e-75ac-357576ccc941.htm">
+        <HelpTOCNode Title="Default Method " Url="html/05b84430-8625-1f67-64dc-8ad679b37868.htm" />
+        <HelpTOCNode Title="ObstacleCrossed Method " Url="html/a55dffd8-b0d3-08ed-f717-f988087cdc9c.htm" />
+        <HelpTOCNode Id="3a328e56-e66b-4bc6-b13d-4c78ea2cd7e3" Title="Reset Method " Url="html/08dc8962-2d53-e4d8-675d-8e0e531e43d9.htm">
+          <HelpTOCNode Title="Reset Method (Double)" Url="html/e2dddefa-dcfd-9588-1b81-e7ed04a9fd94.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Title="HumanCastCondition Fields" Url="html/335899ad-89ef-8f69-410c-5be7f095b452.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="b8d01234-3e83-4c78-a0b1-e042bec8a186" Title="Ray Class" Url="html/72af56d5-fb01-aaaf-ada7-0924bec5bb64.htm">
+      <HelpTOCNode Title="Ray Constructor " Url="html/2718c844-ee8c-a5b0-3f16-fc176a8a65ea.htm" />
+      <HelpTOCNode Id="b1b2c348-8be6-406f-9b77-a15beb1fe6d4" Title="Ray Properties" Url="html/0d0dacd8-a9b8-4246-7062-5a96b7b0fb87.htm">
+        <HelpTOCNode Title="ObjectsCrossed Property " Url="html/673c51f0-0e80-42d6-2652-5f168004cbf3.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="4d8f69c7-3bc2-4cd1-8ec4-d1896c52eb61" Title="Ray Methods" Url="html/73d7375f-95b5-0514-92b4-22f3e15402f7.htm">
+        <HelpTOCNode Title="Add Method " Url="html/68b4b842-e217-f9ef-40e5-cd0177cea74e.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5ccfb86e-dc62-47e1-ba23-530b18624d8b" Title="RayCaster Class" Url="html/593a0504-3d5c-99f5-8ceb-53111a378b82.htm">
+      <HelpTOCNode Title="RayCaster Constructor " Url="html/5e2ce808-5263-62f8-c75c-2966e603aff3.htm" />
+      <HelpTOCNode Id="9b62ab28-cd66-49e5-a9ac-ad748c227a2d" Title="RayCaster Properties" Url="html/e3bdbe9d-5791-0d73-38d8-c3788221988d.htm">
+        <HelpTOCNode Title="Map Property " Url="html/9ae9b88b-658b-9180-5127-276032135e8d.htm" />
+        <HelpTOCNode Title="Walls Property " Url="html/6bb1cb13-d10c-55f2-d9b6-f6191c797e1e.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="a5ca6c7a-8797-4b4d-8fed-83fb2a825a16" Title="RayCaster Methods" Url="html/4169583f-d273-75c2-5c8d-70746894710e.htm">
+        <HelpTOCNode Title="Cast Method " Url="html/538f799d-7f33-cc3f-6cce-4b646266da59.htm" />
+        <HelpTOCNode Title="FieldOfView Method " Url="html/af72b186-9f41-b54a-b6a7-27b77bc76a99.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="Side Enumeration" Url="html/297bfdd1-6e95-16ab-9705-0a7bdb3652f6.htm" />
+  </HelpTOCNode>
+  <HelpTOCNode Id="c3fb2cee-83db-4dc1-8b82-d1fbbd5bebbc" Title="Casting.RayCasting.Interfaces" Url="html/914df048-827c-8952-64d0-9237f1266cdf.htm">
+    <HelpTOCNode Id="4294d23d-a45e-4230-a687-fd704179fa61" Title="ICastCondition Interface" Url="html/aa8d3cce-42d2-80b8-98f6-2f6db99248d1.htm">
+      <HelpTOCNode Id="79f3565e-ee54-4999-8c25-3b9f0126ad21" Title="ICastCondition Properties" Url="html/aa14fe49-b7e3-a423-2306-09ba682507fa.htm">
+        <HelpTOCNode Title="IsMet Property " Url="html/2aaee723-b7f4-2549-cd89-eed5e6bec2da.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="1c40d4b3-4812-44da-bb79-f4faa4214268" Title="ICastCondition Methods" Url="html/19680a33-e16a-5b2f-bfc1-d0d55008f3d2.htm">
+        <HelpTOCNode Title="ObstacleCrossed Method " Url="html/054fb9cf-31f5-791c-33c2-637ddf50573c.htm" />
+        <HelpTOCNode Title="Reset Method " Url="html/ce6b5c2c-4be2-c602-84e5-f4d985a981df.htm" />
+        <HelpTOCNode Title="UpdateDistance Method " Url="html/5331b737-92d5-a357-f566-15cb96bf428d.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="8f04679b-6afa-4c7b-9836-2cc77beba769" Title="ICrossable Interface" Url="html/eefd3059-bcf0-54e5-534d-720f81ec9edf.htm">
+      <HelpTOCNode Id="20d61ec1-3667-4992-b63a-8f2630447886" Title="ICrossable Properties" Url="html/1512a7be-ccc8-aea2-4ccd-4df2b2055ee7.htm">
+        <HelpTOCNode Title="Height Property " Url="html/ab99ab1a-3571-a454-a080-1a7f81141e84.htm" />
+        <HelpTOCNode Title="Width Property " Url="html/455e9435-1532-40cd-2a59-4aa326cb3e7c.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="e9f3482a-da16-4afa-9cac-0087c2eab98f" Title="ICrossable Methods" Url="html/edf1ef2b-b857-53f7-7664-7b757c89c4e7.htm">
+        <HelpTOCNode Title="GetTexture Method " Url="html/84c867a3-6de0-883a-99f9-9bbee3c1179a.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="44d2d095-feb6-48a6-a779-d1077f7fe98d" Title="IRayCaster Interface" Url="html/f6ec2425-bf19-c1c3-c4b0-7990fdd73924.htm">
+      <HelpTOCNode Id="86baafd6-f15e-4ddc-a9ae-0abcfbbdbc4b" Title="IRayCaster Properties" Url="html/e4b6b9b0-b469-f26c-9fbe-09efe2834bcf.htm">
+        <HelpTOCNode Title="Map Property " Url="html/57f7719d-2c9d-e984-6b92-98f75f62145d.htm" />
+        <HelpTOCNode Title="Walls Property " Url="html/2d4e86d6-bce1-ff31-3113-854a1e0a9f4a.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="bfe70923-b5ba-4946-afef-53a691ad4cfc" Title="IRayCaster Methods" Url="html/722c930b-ee6a-12ce-6362-3c24de9a3446.htm">
+        <HelpTOCNode Title="Cast Method " Url="html/db3bf3eb-0fda-2b24-899c-5758f38e2008.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="a10f5e65-79d7-4b5c-b39c-b4654dbd5649" Title="Game" Url="html/4fed8d5d-41f7-c819-6be3-cc6d072a34b2.htm">
+    <HelpTOCNode Id="cf01164c-f190-4d68-8626-9ad471b5be5f" Title="Game1 Class" Url="html/93e76f8c-7bba-7ab1-9eae-656eeb1ebdcd.htm">
+      <HelpTOCNode Title="Game1 Constructor " Url="html/2cd394ad-06fb-8f47-3e8a-95992f9d0569.htm" />
+      <HelpTOCNode Title="Game1 Properties" Url="html/6302101c-767b-590e-0985-3f1ae75cdb48.htm" />
+      <HelpTOCNode Id="ff9b4c2b-32d7-4281-9f29-5ed087e1ddbb" Title="Game1 Methods" Url="html/acc501a6-2731-4a2b-e305-d1d56afbf0f5.htm">
+        <HelpTOCNode Title="Draw Method " Url="html/baf756a8-5a0b-7187-c4f1-6b528eeb7aef.htm" />
+        <HelpTOCNode Title="Initialize Method " Url="html/457534ae-2a8c-2ee9-ec02-344522ca2a4a.htm" />
+        <HelpTOCNode Title="LoadContent Method " Url="html/17dac09b-96d2-4fc9-4d2c-11f2507936a0.htm" />
+        <HelpTOCNode Title="UnloadContent Method " Url="html/bbfc856b-41e4-10b9-1d48-08be6eab1585.htm" />
+        <HelpTOCNode Title="Update Method " Url="html/970a061f-8cfc-2341-1a80-a36aef5334ae.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="Game1 Events" Url="html/ca57b60c-ed08-114b-43a4-922b265468dc.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="1c07932d-fec6-4c12-b330-e5aa45702b45" Title="Program Class" Url="html/4cbfc109-f314-dc19-df48-89e4834f31e5.htm">
+      <HelpTOCNode Id="b06c9a11-3801-4c06-bc39-cb4cf7f91c2c" Title="Program Fields" Url="html/8f24e531-8101-8624-dd73-88c0ea60e643.htm">
+        <HelpTOCNode Title="RestartGame Field" Url="html/dcde15e3-e8f9-9009-2e61-e0ac2870e8b3.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="d1e80a4a-6c87-4969-9c31-49afdae0334e" Title="Input" Url="html/804c2b9e-8245-9171-43d1-c61e62010dfa.htm">
+    <HelpTOCNode Id="af0c9d8d-0074-4cd5-976a-5cfc604610d0" Title="EngineSettings Class" Url="html/81385866-76bd-9f06-dab3-7903ef09edce.htm">
+      <HelpTOCNode Title="EngineSettings Constructor " Url="html/1206cdea-7042-e993-8790-87e082aafd1d.htm" />
+      <HelpTOCNode Id="d5d75e2e-5d25-4ae8-bbec-0118fed2f800" Title="EngineSettings Properties" Url="html/43712cb1-4ea0-34e7-54f3-dd9240875b10.htm">
+        <HelpTOCNode Title="Condition Property " Url="html/e12cd752-fce0-2b55-53bc-9c35a7f5a0ce.htm" />
+        <HelpTOCNode Title="EnemyFilePath Property " Url="html/12f2ae6a-1beb-972d-c203-654cdb97ce7f.htm" />
+        <HelpTOCNode Title="EnemySpawnSecs Property " Url="html/f3c74188-cfc9-7b02-c235-139d40ff333d.htm" />
+        <HelpTOCNode Title="FloorFilePath Property " Url="html/eee9ee40-62d0-a621-6177-0110edb143a9.htm" />
+        <HelpTOCNode Title="Height Property " Url="html/d39cdf5c-d3a8-e73a-74ae-74a480aa0f85.htm" />
+        <HelpTOCNode Title="MapFilePath Property " Url="html/7174090f-9da0-965b-1279-cb80dc7c4494.htm" />
+        <HelpTOCNode Title="PlayerFilePath Property " Url="html/e3058edf-e44a-546a-bf4a-705952aef2ab.htm" />
+        <HelpTOCNode Title="SkyFilePath Property " Url="html/e51535bd-dd7e-3d61-a157-deb114af4549.htm" />
+        <HelpTOCNode Title="WallFilePath Property " Url="html/a4254a5f-fafb-2399-33cd-a3b8d983edb7.htm" />
+        <HelpTOCNode Title="WeaponFilePath Property " Url="html/0f15af47-0fe0-202f-eb6f-f86647e08f10.htm" />
+        <HelpTOCNode Title="Width Property " Url="html/f21a863d-41ae-8a23-c808-fc1f64b562ef.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="EngineSettings Methods" Url="html/72aa060e-1bc8-9e04-6415-f899e890a4e5.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="7aaff274-0674-444d-9472-ae48847062fe" Title="GameReader Class" Url="html/8fffef02-b52c-a622-5d0e-aa07691f1f58.htm">
+      <HelpTOCNode Title="GameReader Constructor " Url="html/a6b84c33-b4f0-090b-19d0-e506a3d7e161.htm" />
+      <HelpTOCNode Id="d6b7c4e7-3aaf-4426-b49f-c569a4e2c52b" Title="GameReader Methods" Url="html/d37c8368-50ff-8020-d6c9-848220d1dc72.htm">
+        <HelpTOCNode Title="LoadSettings Method " Url="html/e7d15730-d997-21a6-5187-e0f2e3751e9a.htm" />
+        <HelpTOCNode Title="ReadEnemies Method " Url="html/74642dd7-c1d1-dec4-1a00-efa2232851db.htm" />
+        <HelpTOCNode Title="ReadMap Method " Url="html/6aa1be4f-4a86-c1a9-bf12-141e64a1b912.htm" />
+        <HelpTOCNode Title="ReadPlayer Method " Url="html/c7b8211e-5070-c3d9-c269-3c3ae57aaaef.htm" />
+        <HelpTOCNode Title="ReadWalls Method " Url="html/8042a74e-3439-6df8-042c-30db3ab8851b.htm" />
+        <HelpTOCNode Title="ReadWeapons Method " Url="html/8fe0f932-a1a9-7fb3-1c35-e538171147bb.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="7de5a0b5-58d8-45d1-8944-1a94aed46360" Title="Rendering" Url="html/1eff44e0-c405-40aa-9aee-12a5fcca49de.htm">
+    <HelpTOCNode Id="b8d033d9-f4d4-4cde-aafa-4ca219c553ba" Title="BackgroundPainter Class" Url="html/ed0a0a1d-cc80-3c14-28ab-44750d390eae.htm">
+      <HelpTOCNode Title="BackgroundPainter Constructor " Url="html/b9ed0063-ff99-3a73-192d-877546a0139f.htm" />
+      <HelpTOCNode Id="5b46383b-184d-45f6-9c1e-d708c93ac735" Title="BackgroundPainter Properties" Url="html/20f6d37c-1fdd-9ce2-1001-59e07c32824a.htm">
+        <HelpTOCNode Title="Buffer Property " Url="html/3671ca60-ff22-169d-635e-a1e5d89cc515.htm" />
+        <HelpTOCNode Title="Floor Property " Url="html/68c382cb-c170-4e38-4abf-5457e503142b.htm" />
+        <HelpTOCNode Title="Height Property " Url="html/f679ec83-e607-d78f-168b-93964d7d8b69.htm" />
+        <HelpTOCNode Title="Sky Property " Url="html/e66a5cd4-a2a6-340a-5c54-5d55921280d3.htm" />
+        <HelpTOCNode Title="Width Property " Url="html/45415010-1ee8-bae9-3504-4238e2bbbfb9.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="0020aac0-f274-4aab-a099-e0d819f489c1" Title="BackgroundPainter Methods" Url="html/b8a91cab-55ee-8f51-3e88-6236f95f8567.htm">
+        <HelpTOCNode Title="ChangeResolution Method " Url="html/091e13be-d654-c316-f0f3-05fc81d8294c.htm" />
+        <HelpTOCNode Id="239bf244-329d-4f6b-a81e-ccca998c2f22" Title="UpdateBuffer Method " Url="html/a3a58e40-22ff-3b3d-23aa-4f5fa8c482ee.htm">
+          <HelpTOCNode Title="UpdateBuffer Method (List(Ray), Int32, Vector2)" Url="html/41640953-c8f8-e997-d3c9-e2f6d4212692.htm" />
+          <HelpTOCNode Title="UpdateBuffer Method (Ray, Int32, Int32, Vector2)" Url="html/a4e73ef0-5c1e-f225-6e4b-4d8b0ecb29e5.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>
